@@ -26,6 +26,8 @@ const CTA = () => {
           w-[84vw] sm:w-[84vw] lg:w-[84vw]
           max-w-none
           opacity-80
+          hidden
+          md:block
         "
         priority
         unoptimized

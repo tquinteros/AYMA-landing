@@ -24,6 +24,8 @@ const OurSpace = () => {
                top-0
                w-screen 
                max-w-none 
+               hidden
+               md:block
                opacity-80"
             />
             <div className="relative z-10 px-5 sm:px-8 lg:px-24">

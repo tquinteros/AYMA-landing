@@ -13,7 +13,7 @@ interface Membership {
 
 const MemberShipCard = ({ membership }: { membership: Membership }) => {
     return (
-        <Card className="w-full flex flex-col bg-background-500 p-6 sm:p-8 lg:py-10 lg:px-6">
+        <Card className="w-full flex flex-col rounded-3xl! bg-background-500 p-6 sm:p-8 lg:py-10 lg:px-6">
             <CardHeader className="p-0">
                 <CardTitle className="text-2xl sm:text-3xl text-primary-500">{membership.name}</CardTitle>
             </CardHeader>
