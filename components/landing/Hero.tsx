@@ -37,7 +37,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative z-10 flex h-full items-center text-white">
-        <div className="w-full container mx-auto flex flex-col gap-12 sm:gap-16 lg:gap-28 px-5 sm:px-8 lg:px-24">
+        <div className="w-full flex flex-col gap-12 sm:gap-16 lg:gap-28 px-5 sm:px-8 lg:px-24">
           <div className="flex items-center">
             <div className="flex flex-col gap-8 sm:gap-10 w-full">
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
