@@ -62,25 +62,27 @@ const Panel = ({
 
   return (
     <>
-      <button
-        style={{ backgroundColor: backgroundColorAccordion }}
-        className={`${triggerTextClass} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
-        onClick={() => setOpen(id)}
-      >
-        <span className="text-sm font-medium tracking-wide">{numberLabel}</span>
-
-        <span
-          style={{ writingMode: "vertical-rl" }}
-          className="hidden lg:flex text-sm font-medium rotate-180 text-center leading-none"
+      {!isOpen && (
+        <button
+          style={{ backgroundColor: backgroundColorAccordion }}
+          className={`${triggerTextClass} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
+          onClick={() => setOpen(id)}
         >
-          {title}
-        </span>
-        <span className="flex lg:hidden text-base font-medium text-center flex-1 justify-center">
-          {title}
-        </span>
+          <span className="text-sm font-medium tracking-wide">{numberLabel}</span>
 
-        <MoveUp className="h-4 w-4 lg:rotate-90" />
-      </button>
+          <span
+            style={{ writingMode: "vertical-rl" }}
+            className="hidden lg:flex text-sm font-medium rotate-180 text-center leading-none"
+          >
+            {title}
+          </span>
+          <span className="flex lg:hidden text-base font-medium text-center flex-1 justify-center">
+            {title}
+          </span>
+
+          <MoveUp className="h-4 w-4 lg:rotate-90" />
+        </button>
+      )}
 
       <AnimatePresence>
         {isOpen && (
