@@ -135,8 +135,8 @@ const Panel = ({
 
                   <ul className="flex flex-col gap-2 text-sm sm:text-base">
                     {features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary-500" />
+                      <li key={feature} className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary-500" />
                         <span className="leading-relaxed font-bold">{feature}</span>
                       </li>
                     ))}
