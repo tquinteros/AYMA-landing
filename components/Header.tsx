@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolledPastHero
-        ? "bg-background backdrop-blur-md shadow-sm"
+        ? "bg-background-500 backdrop-blur-md shadow-sm"
         : "bg-transparent"
         }`}
     >

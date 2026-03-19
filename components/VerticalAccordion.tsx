@@ -8,8 +8,9 @@ const VerticalAccordion = () => {
   const [open, setOpen] = useState(items[0].id);
 
   return (
-    <section className="w-full px-5 sm:px-8 lg:px-24 py-8 sm:py-12 lg:py-16 bg-white" id="services">
-      <div className="flex flex-col lg:flex-row h-fit lg:h-[580px] w-full overflow-hidden rounded-3xl border border-primary/20 md:border-t-0">
+    <section className="w-full bg-background-100" id="services">
+      {/* <div className="flex flex-col lg:flex-row h-fit lg:h-[580px] w-full overflow-hidden rounded-3xl border border-primary/20 md:border-t-0"> */}
+      <div className="flex flex-col lg:flex-row h-fit lg:h-[580px] w-full overflow-hidden rounded-3xl border-none">
         {items.map((item, index) => {
           return (
             <Panel
@@ -119,7 +120,7 @@ const Panel = ({
                     src={imgSrc}
                     alt={title}
                     fill
-                    className="object-cover aspect-[1/2]!"
+                    className="object-cover aspect-1/2!"
                     sizes="(max-width: 1024px) 100vw, 420px"
                     priority={id === items[0].id}
                   />
