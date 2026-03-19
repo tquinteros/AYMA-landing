@@ -49,7 +49,7 @@ const Hero = () => {
                 </div>
               </div>
               <Button
-                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-surface-500 text-base sm:text-lg hover:bg-surface-500/80 rounded-lg mx-auto lg:mx-0"
+                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-water-500 text-base sm:text-lg hover:bg-water-500/80 rounded-lg mx-auto lg:mx-0"
                 size="lg"
                 onClick={handleScrollToMemberships}
               >

@@ -176,7 +176,7 @@ const items = [
     id: 1,
     title: "Servicios: Movimiento y entrenamiento",
     imgSrc:
-      "/accordionimage.png",
+      "/services/movement.png",
     backgroundColorAccordion: "#FFFFFF",
     description:
       "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
@@ -193,7 +193,7 @@ const items = [
     id: 2,
     title: "Recuperación y contraste",
     imgSrc:
-      "/accordionimage.png",
+      "/services/recovery.png",
     backgroundColorAccordion: "#F7F0E9",
     description:
       "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
@@ -210,7 +210,7 @@ const items = [
     id: 3,
     title: "Terapias restaurativas",
     imgSrc:
-      "/accordionimage.png",
+      "/services/therapies.png",
     backgroundColorAccordion: "#6C5751",
     description:
       "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
@@ -227,7 +227,7 @@ const items = [
     id: 4,
     title: "Wellness integral",
     imgSrc:
-      "/accordionimage.png",
+      "/services/wellness.png",
     backgroundColorAccordion: "#678881",
     description:
       "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
