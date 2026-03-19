@@ -49,12 +49,12 @@ const Header = () => {
             alt="AYMAText"
             width={250}
             height={250}
-            className={`w-28 sm:w-36 md:w-40 transition-all duration-300 ${scrolledPastHero ? "invert" : ""
+            className={`w-48 sm:w-56 md:w-64 transition-all duration-300 ${scrolledPastHero ? "invert" : ""
               }`}
           />
         </a>
 
-        <nav className={`hidden md:flex items-center gap-8 ${navTextColor}`}>
+        <nav className={`hidden md:flex items-center gap-10 ${navTextColor}`}>
           <a href="#hero" className="text-lg hover:opacity-75 duration-300 transition-all">Home</a>
           <a href="#services" className="text-lg hover:opacity-75 duration-300 transition-all">Servicios</a>
           <a href="#memberships" className="text-lg hover:opacity-75 duration-300 transition-all">Membresías</a>

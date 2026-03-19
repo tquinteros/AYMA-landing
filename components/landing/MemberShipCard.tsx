@@ -23,8 +23,8 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                 <span className="text-[#6C5751] text-base sm:text-lg font-bold">Incluye:</span>
                 <ul className="flex flex-col gap-2">
                     {membership.features.map((feature: string) => (
-                        <li key={feature} className="flex text-base sm:text-lg items-start text-[#6C5751] gap-3">
-                            <Image className="shrink-0 mt-1" src="/check.svg" alt="check" width={18} height={18} />
+                        <li key={feature} className="flex text-base sm:text-lg items-center text-[#6C5751] gap-3">
+                            <Image className="shrink-0" src="/check.svg" alt="check" width={20} height={20} />
                             {feature}
                         </li>
                     ))}
