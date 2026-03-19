@@ -9,7 +9,7 @@ const VerticalAccordion = () => {
 
   return (
     <section className="w-full px-5 sm:px-8 lg:px-24 py-8 sm:py-12 lg:py-16 bg-white" id="services">
-      <div className="flex flex-col lg:flex-row h-fit lg:h-[450px] w-full overflow-hidden rounded-3xl border border-primary-500/20">
+      <div className="flex flex-col lg:flex-row h-fit lg:h-[480px] w-full overflow-hidden rounded-3xl border border-primary/20">
         {items.map((item, index) => {
           return (
             <Panel
@@ -19,6 +19,7 @@ const VerticalAccordion = () => {
               id={item.id}
               index={index}
               title={item.title}
+              subtitle={item.subtitle}
               imgSrc={item.imgSrc}
               description={item.description}
               features={item.features}
@@ -37,6 +38,7 @@ const Panel = ({
   id,
   index,
   title,
+  subtitle,
   imgSrc,
   description,
   features,
@@ -47,6 +49,7 @@ const Panel = ({
   id: number
   index: number
   title: string
+  subtitle: string
   imgSrc: string
   description: string
   features: string[]
@@ -94,9 +97,19 @@ const Panel = ({
               initial="closed"
               animate="open"
               exit="closed"
-              className="h-full w-full p-5 sm:p-8"
+              className="h-full w-full p-5 sm:p-8 flex flex-col"
             >
-              <div className="h-full w-full grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6 lg:gap-10 items-center">
+              <div className="flex items-baseline gap-3 mb-6 min-w-0">
+                <span className="text-sm sm:text-xl font-bold tracking-wide text-primary-500">
+                  {numberLabel}
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-primary-500 flex-1 truncate">
+                  {title}
+                </h3>
+              </div>
+
+              {/* Keep the layout anchored to the top (no vertical centering) */}
+              <div className="flex-1 h-full w-full grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6 lg:gap-10 items-start">
                 <div className="relative w-full h-52 sm:h-72 lg:h-[360px] rounded-2xl overflow-hidden">
                   <Image
                     src={imgSrc}
@@ -109,20 +122,16 @@ const Panel = ({
                 </div>
 
                 <div className="text-primary-500 flex flex-col gap-4">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-2xl sm:text-3xl font-medium leading-tight">
-                      {title}
-                    </h3>
-                    <p className="text-sm sm:text-base leading-relaxed max-w-2xl">
-                      {description}
-                    </p>
+                  <div className="flex flex-col gap-3">
+                    <p className="text-sm sm:text-xl leading-relaxed max-w-2xl">{subtitle}</p>
+                    <p className="text-sm sm:text-base leading-relaxed max-w-2xl">{description}</p>
                   </div>
 
                   <ul className="flex flex-col gap-2 text-sm sm:text-base">
                     {features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
+                      <li key={feature} className="flex items-start gap-2">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary-500" />
-                        <span className="leading-relaxed">{feature}</span>
+                        <span className="leading-relaxed font-bold">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -175,6 +184,7 @@ const items = [
   {
     id: 1,
     title: "Servicios: Movimiento y entrenamiento",
+    subtitle: "Prácticas que integran fuerza, movilidad y conexión mente-cuerpo. ",
     imgSrc:
       "/services/movement.png",
     backgroundColorAccordion: "#FFFFFF",
@@ -192,6 +202,7 @@ const items = [
   {
     id: 2,
     title: "Recuperación y contraste",
+    subtitle: "Un circuito de estímulos térmicos pensado para revitalizar el cuerpo y activar los procesos naturales de recuperación.",
     imgSrc:
       "/services/recovery.png",
     backgroundColorAccordion: "#F7F0E9",
@@ -209,6 +220,7 @@ const items = [
   {
     id: 3,
     title: "Terapias restaurativas",
+    subtitle: "Un espacio dedicado a la recuperación profunda y al cuidado físico especializado.",
     imgSrc:
       "/services/therapies.png",
     backgroundColorAccordion: "#6C5751",
@@ -226,6 +238,7 @@ const items = [
   {
     id: 4,
     title: "Wellness integral",
+    subtitle: "Servicios pensados para acompañar el equilibrio físico, energético y nutricional.",
     imgSrc:
       "/services/wellness.png",
     backgroundColorAccordion: "#678881",
