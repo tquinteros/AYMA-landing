@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Footer = () => {
     return (
         <footer className="bg-background-500">
-            <div className='flex flex-col gap-6 px-5 sm:px-8 lg:px-16 py-8 lg:flex-row lg:items-center lg:justify-between'>
+            <div className='flex flex-col gap-6 px-6 sm:px-8 lg:px-24 py-8 lg:flex-row lg:items-center lg:justify-between'>
                 <p className='text-primary-500 text-sm sm:text-base text-center lg:text-left'>
                     © AYMA Wellness Club l Remeros Beach, Rincon de Milberg l Buenos Aires, Argentina.
                 </p>

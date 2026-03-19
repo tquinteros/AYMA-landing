@@ -3,17 +3,15 @@ import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 
 const ourSpaceItemsSrcImages = [
     "/ourspace/ourspace1.png",
-    "/ourspace/ourspace1.png",
-    "/ourspace/ourspace1.png",
-    "/ourspace/ourspace1.png",
-    "/ourspace/ourspace1.png",
-    "/ourspace/ourspace1.png",
-    "/ourspace/ourspace1.png",
+    "/ourspace/ourspace2.png",
+    "/ourspace/ourspace3.png",
+    "/ourspace/ourspace4.png",
+    "/ourspace/ourspace5.png",
 ]
 
 const OurSpace = () => {
     return (
-        <section id="ourspace" className="relative overflow-hidden py-8 sm:py-12 lg:py-16 bg-background-500">
+        <section id="ourspace" className="relative overflow-hidden py-8 sm:py-12 lg:py-21 bg-background-500">
             <Image
                 src="/ourspace/shape.svg"
                 alt=""
@@ -48,8 +46,8 @@ const OurSpace = () => {
                 <Carousel opts={{ loop: true }}>
                     <CarouselContent className="items-stretch gap-4 px-5 sm:px-8 lg:px-0">
                         {ourSpaceItemsSrcImages.map((ourSpaceItemSrcImage, index) => (
-                            <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/6 flex" key={index}>
-                                <Image src={ourSpaceItemSrcImage} alt="Our Space" className="w-full h-full object-cover" width={264} height={264} />
+                            <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/5 flex" key={index}>
+                                <Image src={ourSpaceItemSrcImage} alt="Our Space" className="w-full h-full rounded-lg" width={264} height={264} />
                             </CarouselItem>
                         ))}
                     </CarouselContent>

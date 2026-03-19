@@ -37,7 +37,7 @@ const Memberships = () => {
 
     return (
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
-        <section id="memberships" className="py-8 sm:py-12 lg:py-16 bg-white">
+        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-white">
             <div className="flex flex-col gap-4 px-5 sm:px-8 lg:px-24 lg:flex-row lg:items-center lg:justify-between">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center italic text-primary-500 lg:text-left">
                     Membresías
