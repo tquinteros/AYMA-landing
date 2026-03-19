@@ -9,7 +9,7 @@ const VerticalAccordion = () => {
 
   return (
     <section className="w-full px-5 sm:px-8 lg:px-24 py-8 sm:py-12 lg:py-16 bg-white" id="services">
-      <div className="flex flex-col lg:flex-row h-fit lg:h-[450px] w-full overflow-hidden rounded-3xl border border-[#6C5751]/20">
+      <div className="flex flex-col lg:flex-row h-fit lg:h-[450px] w-full overflow-hidden rounded-3xl border border-primary-500/20">
         {items.map((item, index) => {
           return (
             <Panel
@@ -55,13 +55,13 @@ const Panel = ({
   const { width } = useWindowsSize()
   const isOpen = open === id
   const numberLabel = String(index + 1).padStart(2, "0")
-  const triggerTextClass = index >= 2 ? "text-white" : "text-[#6C5751]"
+  const triggerTextClass = index >= 2 ? "text-white" : "text-primary-500"
 
   return (
     <>
       <button
         style={{ backgroundColor: backgroundColorAccordion }}
-        className={`${triggerTextClass} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-[#6C5751]/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
+        className={`${triggerTextClass} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
         onClick={() => setOpen(id)}
       >
         <span className="text-sm font-medium tracking-wide">{numberLabel}</span>
@@ -87,7 +87,7 @@ const Panel = ({
             initial="closed"
             animate="open"
             exit="closed"
-            className="w-full h-full overflow-hidden lg:overflow-hidden relative bg-[#FFFCF8] max-lg:max-h-[75vh] max-lg:overflow-y-auto"
+            className="w-full h-full overflow-hidden lg:overflow-hidden relative bg-background-100 max-lg:max-h-[75vh] max-lg:overflow-y-auto"
           >
             <motion.div
               variants={descriptionVariants}
@@ -108,7 +108,7 @@ const Panel = ({
                   />
                 </div>
 
-                <div className="text-[#6C5751] flex flex-col gap-4">
+                <div className="text-primary-500 flex flex-col gap-4">
                   <div className="flex flex-col gap-2">
                     <h3 className="text-2xl sm:text-3xl font-medium leading-tight">
                       {title}
@@ -121,7 +121,7 @@ const Panel = ({
                   <ul className="flex flex-col gap-2 text-sm sm:text-base">
                     {features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#6C5751]" />
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary-500" />
                         <span className="leading-relaxed">{feature}</span>
                       </li>
                     ))}

@@ -118,6 +118,22 @@
 
 @theme {
   --font-sans: var(--font-glacialIndifference);
+/* arena */
+  --color-background-100: #FFFCF8;
+  --color-background-500: #F7F0E9;
+  --color-background-900: #DFD5CA;
+  /* arcilla */
+  --color-surface-100: #FFE2CC;
+  --color-surface-500: #EDC8AD;
+  --color-surface-900: #C4A893;
+  /* TIERRA */
+  --color-primary-100: #A4908B;
+  --color-primary-500: #6C5751;
+  --color-primary-900: #3C312E;
+  /* AGUA */
+  --color-surface-100: #A1BCB6;
+  --color-surface-500: #678881;
+  --color-surface-900: #44635C;
 }
 
 @layer base {
