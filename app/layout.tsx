@@ -1,17 +1,36 @@
-import { Geist, Geist_Mono } from "next/font/google"
-
+import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
+import { Metadata } from "next";
+import Header from "@/components/Header";
+import localFont from "next/font/local"
+import Footer from "@/components/Footer"
 
-const fontSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+export const metadata: Metadata = {
+  title: "AYMA",
+  description: "AYMA",
+}
 
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+const glacialIndifference = localFont({
+  src: [
+    {
+      path: "../public/GlacialIndifference-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/GlacialIndifference-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/GlacialIndifference-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-glacialIndifference",
 })
 
 export default function RootLayout({
@@ -23,10 +42,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", fontSans.variable)}
+      className={cn("antialiased", glacialIndifference.variable, "font-sans")}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

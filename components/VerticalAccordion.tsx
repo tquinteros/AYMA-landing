@@ -1,0 +1,243 @@
+"use client"
+import { AnimatePresence, motion } from "framer-motion"
+import Image from "next/image"
+import { useWindowsSize } from "@/lib/use-windows-size"
+import { useState } from "react"
+import { MoveUp } from "lucide-react"
+const VerticalAccordion = () => {
+  const [open, setOpen] = useState(items[0].id);
+
+  return (
+    <section className="w-full px-24" id="services">
+      <div className="flex flex-col lg:flex-row h-fit lg:h-[450px] w-full overflow-hidden rounded-3xl border border-[#6C5751]/20">
+        {items.map((item, index) => {
+          return (
+            <Panel
+              key={item.id}
+              open={open}
+              setOpen={setOpen}
+              id={item.id}
+              index={index}
+              title={item.title}
+              imgSrc={item.imgSrc}
+              description={item.description}
+              features={item.features}
+              backgroundColorAccordion={item.backgroundColorAccordion}
+            />
+          )
+        })}
+      </div>
+    </section>
+  )
+};
+
+const Panel = ({
+  open,
+  setOpen,
+  id,
+  index,
+  title,
+  imgSrc,
+  description,
+  features,
+  backgroundColorAccordion,
+}: {
+  open: number
+  setOpen: (id: number) => void
+  id: number
+  index: number
+  title: string
+  imgSrc: string
+  description: string
+  features: string[]
+  backgroundColorAccordion: string
+}) => {
+  const { width } = useWindowsSize()
+  const isOpen = open === id
+  const numberLabel = String(index + 1).padStart(2, "0")
+  const triggerTextClass = index >= 2 ? "text-white" : "text-[#6C5751]"
+
+  return (
+    <>
+      <button
+        style={{ backgroundColor: backgroundColorAccordion }}
+        className={`${triggerTextClass} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-[#6C5751]/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
+        onClick={() => setOpen(id)}
+      >
+        <span className="text-sm font-medium tracking-wide">{numberLabel}</span>
+
+        <span
+          style={{ writingMode: "vertical-rl" }}
+          className="hidden lg:flex text-sm font-medium rotate-180 text-center leading-none"
+        >
+          {title}
+        </span>
+        <span className="flex lg:hidden text-base font-medium text-center flex-1 justify-center">
+          {title}
+        </span>
+
+        <MoveUp className="h-4 w-4 lg:rotate-90" />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key={`panel-${id}`}
+            variants={width && width > 1024 ? panelVariants : panelVariantsSm}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="w-full h-full overflow-hidden lg:overflow-hidden relative bg-[#FFFCF8] max-lg:max-h-[75vh] max-lg:overflow-y-auto"
+          >
+            <motion.div
+              variants={descriptionVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="h-full w-full p-5 sm:p-8"
+            >
+              <div className="h-full w-full grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6 lg:gap-10 items-center">
+                <div className="relative w-full h-52 sm:h-72 lg:h-[360px] rounded-2xl overflow-hidden">
+                  <Image
+                    src={imgSrc}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    priority={id === items[0].id}
+                  />
+                </div>
+
+                <div className="text-[#6C5751] flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-2xl sm:text-3xl font-medium leading-tight">
+                      {title}
+                    </h3>
+                    <p className="text-sm sm:text-base leading-relaxed max-w-2xl">
+                      {description}
+                    </p>
+                  </div>
+
+                  <ul className="flex flex-col gap-2 text-sm sm:text-base">
+                    {features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#6C5751]" />
+                        <span className="leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  )
+}
+
+export default VerticalAccordion;
+
+const panelVariants = {
+  open: {
+    width: "100%",
+    height: "100%",
+  },
+  closed: {
+    width: "0%",
+    height: "100%",
+  },
+};
+
+const panelVariantsSm = {
+  open: {
+    width: "100%",
+    height: "auto",
+  },
+  closed: {
+    width: "100%",
+    height: "0px",
+  },
+};
+
+const descriptionVariants = {
+  open: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      delay: 0.125,
+    },
+  },
+  closed: { opacity: 0, y: "100%" },
+};
+
+const items = [
+  {
+    id: 1,
+    title: "Servicios: Movimiento y entrenamiento",
+    imgSrc:
+      "/accordionimage.png",
+    backgroundColorAccordion: "#FFFFFF",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+    features: [
+      "Clases de Lagree - ilimitado",
+      "Clases de Yoga - ilimitado",
+      "Clases de Pilates - ilimitado",
+      "Contraste térmico - ilimitado",
+      "Recovery - ilimitado",
+      "Acceso exclusivo a la playa",
+    ],
+  },
+  {
+    id: 2,
+    title: "Recuperación y contraste",
+    imgSrc:
+      "/accordionimage.png",
+    backgroundColorAccordion: "#F7F0E9",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+    features: [
+      "Clases de Lagree - ilimitado",
+      "Clases de Yoga - ilimitado",
+      "Clases de Pilates - ilimitado",
+      "Contraste térmico - ilimitado",
+      "Recovery - ilimitado",
+      "Acceso exclusivo a la playa",
+    ],
+  },
+  {
+    id: 3,
+    title: "Terapias restaurativas",
+    imgSrc:
+      "/accordionimage.png",
+    backgroundColorAccordion: "#6C5751",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+    features: [
+      "Clases de Lagree - ilimitado",
+      "Clases de Yoga - ilimitado",
+      "Clases de Pilates - ilimitado",
+      "Contraste térmico - ilimitado",
+      "Recovery - ilimitado",
+      "Acceso exclusivo a la playa",
+    ],
+  },
+  {
+    id: 4,
+    title: "Wellness integral",
+    imgSrc:
+      "/accordionimage.png",
+    backgroundColorAccordion: "#678881",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+    features: [
+      "Clases de Lagree - ilimitado",
+      "Clases de Yoga - ilimitado",
+      "Clases de Pilates - ilimitado",
+      "Contraste térmico - ilimitado",
+      "Recovery - ilimitado",
+      "Acceso exclusivo a la playa",
+    ],
+  },
+];
