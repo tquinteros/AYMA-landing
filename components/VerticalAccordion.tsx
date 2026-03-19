@@ -4,14 +4,15 @@ import Image from "next/image"
 import { useWindowsSize } from "@/lib/use-windows-size"
 import { useState } from "react"
 import { MoveUp } from "lucide-react"
+import { services } from "@/data/services"
 const VerticalAccordion = () => {
-  const [open, setOpen] = useState(items[0].id);
+  const [open, setOpen] = useState(services[0].id);
 
   return (
     <section className="w-full bg-background-100" id="services">
       {/* <div className="flex flex-col lg:flex-row h-fit lg:h-[580px] w-full overflow-hidden rounded-3xl border border-primary/20 md:border-t-0"> */}
       <div className="flex flex-col lg:flex-row h-fit lg:h-[580px] w-full overflow-hidden rounded-3xl border-none">
-        {items.map((item, index) => {
+        {services.map((item, index) => {
           return (
             <Panel
               key={item.id}
@@ -122,7 +123,7 @@ const Panel = ({
                     fill
                     className="object-cover aspect-1/2!"
                     sizes="(max-width: 1024px) 100vw, 420px"
-                    priority={id === items[0].id}
+                    priority={id === services[0].id}
                   />
                 </div>
 
@@ -185,77 +186,3 @@ const descriptionVariants = {
   closed: { opacity: 0, y: "100%" },
 };
 
-const items = [
-  {
-    id: 1,
-    title: "Servicios: Movimiento y entrenamiento",
-    subtitle: "Prácticas que integran fuerza, movilidad y conexión mente-cuerpo. ",
-    imgSrc:
-      "/services/movement.png",
-    backgroundColorAccordion: "#FFFFFF",
-    description:
-      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
-    features: [
-      "Clases de Lagree - ilimitado",
-      "Clases de Yoga - ilimitado",
-      "Clases de Pilates - ilimitado",
-      "Contraste térmico - ilimitado",
-      "Recovery - ilimitado",
-      "Acceso exclusivo a la playa",
-    ],
-  },
-  {
-    id: 2,
-    title: "Recuperación y contraste",
-    subtitle: "Un circuito de estímulos térmicos pensado para revitalizar el cuerpo y activar los procesos naturales de recuperación.",
-    imgSrc:
-      "/services/recovery.png",
-    backgroundColorAccordion: "#F7F0E9",
-    description:
-      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
-    features: [
-      "Clases de Lagree - ilimitado",
-      "Clases de Yoga - ilimitado",
-      "Clases de Pilates - ilimitado",
-      "Contraste térmico - ilimitado",
-      "Recovery - ilimitado",
-      "Acceso exclusivo a la playa",
-    ],
-  },
-  {
-    id: 3,
-    title: "Terapias restaurativas",
-    subtitle: "Un espacio dedicado a la recuperación profunda y al cuidado físico especializado.",
-    imgSrc:
-      "/services/therapies.png",
-    backgroundColorAccordion: "#6C5751",
-    description:
-      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
-    features: [
-      "Clases de Lagree - ilimitado",
-      "Clases de Yoga - ilimitado",
-      "Clases de Pilates - ilimitado",
-      "Contraste térmico - ilimitado",
-      "Recovery - ilimitado",
-      "Acceso exclusivo a la playa",
-    ],
-  },
-  {
-    id: 4,
-    title: "Wellness integral",
-    subtitle: "Servicios pensados para acompañar el equilibrio físico, energético y nutricional.",
-    imgSrc:
-      "/services/wellness.png",
-    backgroundColorAccordion: "#678881",
-    description:
-      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
-    features: [
-      "Clases de Lagree - ilimitado",
-      "Clases de Yoga - ilimitado",
-      "Clases de Pilates - ilimitado",
-      "Contraste térmico - ilimitado",
-      "Recovery - ilimitado",
-      "Acceso exclusivo a la playa",
-    ],
-  },
-];
