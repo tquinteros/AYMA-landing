@@ -47,7 +47,7 @@ const OurSpace = () => {
                     <CarouselContent className="items-stretch gap-4 px-5 sm:px-8 lg:px-0">
                         {ourSpaceItemsSrcImages.map((ourSpaceItemSrcImage, index) => (
                             <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/5 flex" key={index}>
-                                <Image src={ourSpaceItemSrcImage} alt="Our Space" className="w-full h-full rounded-lg" width={264} height={264} />
+                                <Image src={ourSpaceItemSrcImage} alt="Our Space" className="w-full h-full object-cover rounded-lg" width={264} height={264} />
                             </CarouselItem>
                         ))}
                     </CarouselContent>
