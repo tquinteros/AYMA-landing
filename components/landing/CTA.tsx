@@ -1,8 +1,14 @@
-import React from 'react'
+"use client"
 import Image from 'next/image'
 import { Button } from '../ui/button'
 
 const CTA = () => {
+
+
+  const handleScrollToMemberships = () => {
+    document.getElementById("memberships")?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <section id='cta' className='relative overflow-hidden bg-[#F7F0E9] h-[75vh] min-h-[520px] sm:min-h-[560px]'>
 
@@ -36,10 +42,8 @@ const CTA = () => {
             moverte y recuperarte de una forma integral.
           </p>
 
-          <Button className='bg-[#6C5751] w-fit text-base px-5 py-6 sm:py-7 hover:bg-[#6C5751]/90 text-white'>
-            <a href='#memberships' className=''>
-              Ver Membresías
-            </a>
+          <Button className='bg-[#6C5751] w-fit text-base px-5 py-6 sm:py-7 hover:bg-[#6C5751]/90 text-white' onClick={handleScrollToMemberships}>
+            Ver Membresías
           </Button>
         </div>
 

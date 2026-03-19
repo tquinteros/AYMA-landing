@@ -41,7 +41,7 @@ const Hero = () => {
           <div className="flex items-center">
             <div className="flex flex-col gap-8 sm:gap-10 w-full">
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
-                <h2 className="text-4xl sm:text-5xl lg:text-7xl tracking-wide leading-tight">
+                <h2 className="text-4xl sm:text-5xl lg:text-7xl tracking-wide text-center lg:text-left leading-tight">
                   Donde comienza la revolución <br className="hidden sm:block" /> del bienestar.
                 </h2>
                 <div className="hidden lg:block">
@@ -49,7 +49,7 @@ const Hero = () => {
                 </div>
               </div>
               <Button
-                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-[#678881] text-base sm:text-lg hover:bg-[#678881]/80 rounded-lg"
+                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-[#678881] text-base sm:text-lg hover:bg-[#678881]/80 rounded-lg mx-auto lg:mx-0"
                 size="lg"
                 onClick={handleScrollToMemberships}
               >
@@ -58,11 +58,11 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex justify-between items-center ">
-            <p className="text-base sm:text-lg max-w-md">
+          <div className="flex justify-between items-center flex-col lg:flex-row gap-6 lg:gap-0">
+            <p className="text-base sm:text-lg max-w-md text-center lg:text-left">
               AYMA es un refugio que busca el equilibrio entre la serenidad de la naturaleza y la vanguardia en el cuidado personal.
             </p>
-            <p className="text-base sm:text-lg text-right max-w-md">
+            <p className="text-base sm:text-lg text-center lg:text-left max-w-md">
               Somos un centro a pocos minutos de la ciudad, un espacio diseñado para que puedas pausar el ritmo acelerado y reconectar con tu esencia.
             </p>
           </div>
