@@ -47,15 +47,15 @@ const CTA = () => {
           </Button>
         </div>
 
-        <div className='flex items-end justify-between gap-6 pb-16'>
+        <div className='flex items-center justify-center sm:items-end sm:justify-between gap-6 pb-16'>
           <Image
             src="/ctafloating.svg"
             alt="CTA Floating"
             width={100}
             height={100}
-            className='shrink-0 w-20 h-20 sm:w-24 sm:h-24'
+            className='hidden sm:block shrink-0 w-20 h-20 sm:w-24 sm:h-24'
           />
-          <p className='text-base sm:text-md max-w-sm md:text-lg text-right text-primary-500'>
+          <p className='text-base sm:text-md max-w-sm md:text-lg text-center sm:text-right text-primary-500'>
             Porque el futuro se construye, se entrena, se practica y se habita.
           </p>
         </div>

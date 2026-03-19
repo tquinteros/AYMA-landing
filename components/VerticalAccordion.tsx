@@ -99,16 +99,18 @@ const Panel = ({
               exit="closed"
               className="h-full w-full p-5 sm:p-8 flex flex-col"
             >
-              <div className="flex items-baseline gap-3 mb-6 min-w-0">
-                <span className="text-sm sm:text-xl font-bold tracking-wide text-primary-500">
-                  {numberLabel}
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-primary-500 flex-1 truncate">
-                  {title}
-                </h3>
+              <div className="flex justify-between items-center">
+                <div className="flex items-baseline gap-3 mb-6 min-w-0">
+                  <span className="text-sm sm:text-xl font-bold tracking-wide text-primary-500">
+                    {numberLabel}
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-bold text-primary-500 flex-1 truncate">
+                    {title}
+                  </h3>
+                </div>
+                <Image src="/services/icon.svg" alt="ICON" className="hidden lg:block" width={24} height={24} />
               </div>
 
-              {/* Keep the layout anchored to the top (no vertical centering) */}
               <div className="flex-1 h-full w-full grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6 lg:gap-10 items-start">
                 <div className="relative w-full h-52 sm:h-72 lg:h-[360px] rounded-2xl overflow-hidden">
                   <Image
