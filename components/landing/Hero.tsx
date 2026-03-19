@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Button } from "../ui/button"
 import { Volume2, VolumeOff } from "lucide-react"
+import Image from "next/image"
 
 const Hero = () => {
 
@@ -43,7 +44,9 @@ const Hero = () => {
                 <h2 className="text-4xl sm:text-5xl lg:text-7xl tracking-wide leading-tight">
                   Donde comienza la revolución <br className="hidden sm:block" /> del bienestar.
                 </h2>
-                <div className="hidden lg:block w-12 h-24 bg-red-500"></div>
+                <div className="hidden lg:block">
+                  <Image src="/herofloating.svg" alt="Hero Floating" width={64} height={64} />
+                </div>
               </div>
               <Button
                 className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-[#678881] text-base sm:text-lg hover:bg-[#678881]/80 rounded-lg"
@@ -55,11 +58,11 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16">
-            <p className="text-base sm:text-lg max-w-prose">
+          <div className="flex justify-between items-center ">
+            <p className="text-base sm:text-lg max-w-md">
               AYMA es un refugio que busca el equilibrio entre la serenidad de la naturaleza y la vanguardia en el cuidado personal.
             </p>
-            <p className="text-base sm:text-lg max-w-prose">
+            <p className="text-base sm:text-lg text-right max-w-md">
               Somos un centro a pocos minutos de la ciudad, un espacio diseñado para que puedas pausar el ritmo acelerado y reconectar con tu esencia.
             </p>
           </div>

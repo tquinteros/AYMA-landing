@@ -43,7 +43,7 @@ const OurSpace = () => {
                 </div>
             </div>
             <div className="mt-10 sm:mt-12">
-                <Carousel>
+                <Carousel opts={{ loop: true }}>
                     <CarouselContent className="items-stretch gap-4 px-5 sm:px-8 lg:px-0">
                         {ourSpaceItemsSrcImages.map((ourSpaceItemSrcImage, index) => (
                             <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/6 flex" key={index}>
