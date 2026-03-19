@@ -9,7 +9,7 @@ const VerticalAccordion = () => {
 
   return (
     <section className="w-full px-5 sm:px-8 lg:px-24 py-8 sm:py-12 lg:py-16 bg-white" id="services">
-      <div className="flex flex-col lg:flex-row h-fit lg:h-[480px] w-full overflow-hidden rounded-3xl border border-primary/20">
+      <div className="flex flex-col lg:flex-row h-fit lg:h-[580px] w-full overflow-hidden rounded-3xl border border-primary/20 md:border-t-0">
         {items.map((item, index) => {
           return (
             <Panel
@@ -112,12 +112,12 @@ const Panel = ({
               </div>
 
               <div className="flex-1 h-full w-full grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6 lg:gap-10 items-start">
-                <div className="relative w-full h-52 sm:h-72 lg:h-[360px] rounded-2xl overflow-hidden">
+                <div className="relative w-full h-52 sm:h-72 lg:h-[460px] rounded-2xl overflow-hidden">
                   <Image
                     src={imgSrc}
                     alt={title}
                     fill
-                    className="object-cover"
+                    className="object-cover aspect-[1/2]!"
                     sizes="(max-width: 1024px) 100vw, 420px"
                     priority={id === items[0].id}
                   />

@@ -64,7 +64,7 @@ const Memberships = () => {
                             key={index}
                             onClick={() => api?.scrollTo(index)}
                             className={`h-3 w-3 sm:h-4 sm:w-4 rounded-full cursor-pointer transition-all ${current === index + 1
-                                ? "bg-primary-500 w-5 sm:w-6"
+                                ? "bg-primary-500"
                                 : "bg-primary-500/40"
                                 }`}
                         />

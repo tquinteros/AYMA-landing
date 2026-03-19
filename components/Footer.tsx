@@ -8,7 +8,7 @@ const Footer = () => {
                     © AYMA Wellness Club l Remeros Beach, Rincon de Milberg l Buenos Aires, Argentina.
                 </p>
                 <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6'>
-                    <a href="mailto:info@aymawellness.com.ar" className='text-primary-500 uppercase tracking-[6px] hover:opacity-75 duration-300 transition-all text-sm break-all text-center'>
+                    <a href="mailto:info@aymawellness.com.ar" className='text-primary-500 uppercase tracking-[6px] hover:opacity-75 duration-300 transition-all text-md break-all text-center'>
                         info@aymawellness.com.ar
                     </a>
                     <span className='hidden sm:block text-primary-500'>|</span>
