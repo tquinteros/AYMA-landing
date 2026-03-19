@@ -13,7 +13,7 @@ const ourSpaceItemsSrcImages = [
 
 const OurSpace = () => {
     return (
-        <section id="ourspace" className="relative overflow-hidden py-12 sm:py-16 lg:py-20 bg-[#F7F0E9]">
+        <section id="ourspace" className="relative overflow-hidden py-8 sm:py-12 lg:py-16 bg-[#F7F0E9]">
             <Image
                 src="/ourspace/shape.svg"
                 alt=""

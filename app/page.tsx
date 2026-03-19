@@ -7,7 +7,7 @@ import OurSpace from "@/components/landing/OurSpace"
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="">
       <Hero />
       <CTA />
       <VerticalAccordion />
