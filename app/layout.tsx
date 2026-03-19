@@ -45,7 +45,7 @@ export default function RootLayout({
       className={cn("antialiased", glacialIndifference.variable, "font-sans")}
     >
       <body>
-        <ThemeProvider>
+        <ThemeProvider defaultTheme="light">
           <Header />
           {children}
           <Footer />
