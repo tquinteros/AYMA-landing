@@ -39,10 +39,10 @@ const Memberships = () => {
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
         <section id="memberships" className="py-8 sm:py-12 lg:py-16 bg-white">
             <div className="flex flex-col gap-4 px-5 sm:px-8 lg:px-24 lg:flex-row lg:items-center lg:justify-between">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center italic text-[#6C5751] lg:text-left">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center italic text-primary-500 lg:text-left">
                     Membresías
                 </h2>
-                <p className="max-w-2xl text-base sm:text-lg text-center lg:text-left text-[#6C5751]">
+                <p className="max-w-2xl text-base sm:text-lg text-center lg:text-left text-primary-500">
                     Acá cada práctica se potencia con las demás: no tenés que elegir una sola cosa. Todo coexiste. Todo se amplifica.
                 </p>
             </div>
@@ -55,8 +55,8 @@ const Memberships = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselNext className="hidden md:flex bg-[#A4908B] md:-right-12 lg:-right-16 hover:bg-[#A4908B] text-white w-12 h-12 hover:text-white" />
-                    <CarouselPrevious className="hidden md:flex bg-[#A4908B] hover:bg-[#A4908B] md:-left-12 lg:-left-16 text-white w-12 h-12 hover:text-white" />
+                    <CarouselNext className="hidden md:flex bg-primary-100 md:-right-12 lg:-right-16 hover:bg-primary-100 text-white w-12 h-12 hover:text-white" />
+                    <CarouselPrevious className="hidden md:flex bg-primary-100 hover:bg-primary-100 md:-left-12 lg:-left-16 text-white w-12 h-12 hover:text-white" />
                 </Carousel>
                 <div className="flex justify-center gap-2 mt-6">
                     {Array.from({ length: count }).map((_, index) => (
@@ -64,18 +64,18 @@ const Memberships = () => {
                             key={index}
                             onClick={() => api?.scrollTo(index)}
                             className={`h-3 w-3 sm:h-4 sm:w-4 rounded-full cursor-pointer transition-all ${current === index + 1
-                                ? "bg-[#6C5751] w-5 sm:w-6"
-                                : "bg-[#6C5751]/40"
+                                ? "bg-primary-500 w-5 sm:w-6"
+                                : "bg-primary-500/40"
                                 }`}
                         />
                     ))}
                 </div>
             </div>
             <div className='flex flex-col items-center gap-6 sm:gap-8 mt-8 px-5 sm:px-8'>
-                <p className="text-[#6C5751] text-center text-lg sm:text-2xl max-w-3xl">
+                <p className="text-primary-500 text-center text-lg sm:text-2xl max-w-3xl">
                     Para conocer más detalles y precios, escribinos por WhatsApp y te asesoramos de forma personalizada.
                 </p>
-                <Button className='bg-[#6C5751] w-fit text-base px-5 py-6 sm:py-7 hover:bg-[#6C5751]/80 text-white'>
+                <Button className='bg-primary-500 w-fit text-base px-5 py-6 sm:py-7 hover:bg-primary-500/80 text-white'>
                     Consultar por whatsapp
                 </Button>
             </div>

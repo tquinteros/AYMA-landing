@@ -10,7 +10,7 @@ const CTA = () => {
   }
 
   return (
-    <section id='cta' className='relative overflow-hidden bg-[#F7F0E9] h-[75vh] min-h-[520px] sm:min-h-[560px]'>
+    <section id='cta' className='relative overflow-hidden bg-background-500 h-[75vh] min-h-[520px] sm:min-h-[560px]'>
 
       <Image
         src="/ctashape.svg"
@@ -33,16 +33,16 @@ const CTA = () => {
 
       <div className='relative z-10 flex flex-col h-full px-6 sm:px-8 lg:px-24 py-10'>
         <div className='flex-1 flex flex-col items-center justify-center gap-16'>
-          <h2 className='text-3xl sm:text-4xl lg:text-5xl text-center italic text-[#6C5751]'>
+          <h2 className='text-3xl sm:text-4xl lg:text-5xl text-center italic text-primary-500'>
             Donde comienza la revolución del bienestar.
           </h2>
 
-          <p className='text-base sm:text-lg md:text-2xl text-center max-w-4xl mx-auto text-[#6C5751]'>
+          <p className='text-base sm:text-lg md:text-2xl text-center max-w-4xl mx-auto text-primary-500'>
             Más que un lugar, somos una experiencia que te invita a respirar,
             moverte y recuperarte de una forma integral.
           </p>
 
-          <Button className='bg-[#6C5751] w-fit text-base px-5 py-6 sm:py-7 hover:bg-[#6C5751]/90 text-white' onClick={handleScrollToMemberships}>
+          <Button className='bg-primary-500 w-fit text-base px-5 py-6 sm:py-7 hover:bg-primary-500/90 text-white' onClick={handleScrollToMemberships}>
             Ver Membresías
           </Button>
         </div>
@@ -55,7 +55,7 @@ const CTA = () => {
             height={100}
             className='shrink-0 w-20 h-20 sm:w-24 sm:h-24'
           />
-          <p className='text-base sm:text-md max-w-sm md:text-lg text-right text-[#6C5751]'>
+          <p className='text-base sm:text-md max-w-sm md:text-lg text-right text-primary-500'>
             Porque el futuro se construye, se entrena, se practica y se habita.
           </p>
         </div>

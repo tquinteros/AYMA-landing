@@ -72,7 +72,7 @@ const Header = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-[#F7F0E9]">
+            <SheetContent side="right" className="bg-background-500">
               <SheetTitle className="sr-only">Menú</SheetTitle>
               <div className="flex flex-col gap-4 p-6 mt-8">
                 <a

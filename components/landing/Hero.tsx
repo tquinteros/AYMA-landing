@@ -49,7 +49,7 @@ const Hero = () => {
                 </div>
               </div>
               <Button
-                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-[#678881] text-base sm:text-lg hover:bg-[#678881]/80 rounded-lg mx-auto lg:mx-0"
+                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-surface-500 text-base sm:text-lg hover:bg-surface-500/80 rounded-lg mx-auto lg:mx-0"
                 size="lg"
                 onClick={handleScrollToMemberships}
               >
@@ -69,7 +69,7 @@ const Hero = () => {
         </div>
       </div>
       <button
-        className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 lg:bottom-12 lg:right-12 z-50 cursor-pointer bg-[#6C575190] rounded-full p-3 sm:p-4"
+        className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 lg:bottom-12 lg:right-12 z-50 cursor-pointer bg-primary-500/90 rounded-full p-3 sm:p-4"
         onClick={() => setIsMuted(!isMuted)}
         aria-label={isMuted ? "Activar sonido" : "Silenciar"}
       >

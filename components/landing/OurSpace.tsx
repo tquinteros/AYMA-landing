@@ -13,7 +13,7 @@ const ourSpaceItemsSrcImages = [
 
 const OurSpace = () => {
     return (
-        <section id="ourspace" className="relative overflow-hidden py-8 sm:py-12 lg:py-16 bg-[#F7F0E9]">
+        <section id="ourspace" className="relative overflow-hidden py-8 sm:py-12 lg:py-16 bg-background-500">
             <Image
                 src="/ourspace/shape.svg"
                 alt=""
@@ -28,15 +28,15 @@ const OurSpace = () => {
             />
             <div className="relative z-10 px-5 sm:px-8 lg:px-24">
                 <div className="flex flex-col gap-4  lg:flex-row lg:items-center lg:justify-between">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center italic text-[#6C5751] lg:text-left">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center italic text-primary-500 lg:text-left">
                         Nuestro espacio
                     </h2>
-                    <p className="max-w-2xl text-base font-bold sm:text-lg text-center lg:text-left text-[#6C5751]">
+                    <p className="max-w-2xl text-base font-bold sm:text-lg text-center lg:text-left text-primary-500">
                         Más que un centro, un santuario donde la arquitectura y la naturaleza dialogan para ofrecerte un refugio del mundo exterior.
                     </p>
                 </div>
                 <div className="flex items-end justify-end mt-4">
-                    <p className="max-w-2xl text-base sm:text-lg text-center lg:text-left text-[#6C5751]">
+                    <p className="max-w-2xl text-base sm:text-lg text-center lg:text-left text-primary-500">
                         En AYMA, creemos que el entorno es una parte fundamental de la experiencia de bienestar. Por eso, cada detalle de nuestro diseño
                         arquitectónico ha sido cuidadosamente seleccionado para fomentar la calma y la conexión.
                     </p>
@@ -51,8 +51,8 @@ const OurSpace = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    {/* <CarouselNext className="hidden md:flex bg-[#A4908B] md:-right-12 lg:-right-16 hover:bg-[#A4908B] text-white w-12 h-12 hover:text-white" /> */}
-                    {/* <CarouselPrevious className="hidden md:flex bg-[#A4908B] hover:bg-[#A4908B] md:-left-12 lg:-left-16 text-white w-12 h-12 hover:text-white" /> */}
+                    {/* <CarouselNext className="hidden md:flex bg-primary-100 md:-right-12 lg:-right-16 hover:bg-primary-100 text-white w-12 h-12 hover:text-white" /> */}
+                    {/* <CarouselPrevious className="hidden md:flex bg-primary-100 hover:bg-primary-100 md:-left-12 lg:-left-16 text-white w-12 h-12 hover:text-white" /> */}
                 </Carousel>
             </div>
         </section>
