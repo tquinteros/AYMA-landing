@@ -179,7 +179,7 @@ const items = [
       "/accordionimage.png",
     backgroundColorAccordion: "#FFFFFF",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
     features: [
       "Clases de Lagree - ilimitado",
       "Clases de Yoga - ilimitado",
@@ -196,7 +196,7 @@ const items = [
       "/accordionimage.png",
     backgroundColorAccordion: "#F7F0E9",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
     features: [
       "Clases de Lagree - ilimitado",
       "Clases de Yoga - ilimitado",
@@ -213,7 +213,7 @@ const items = [
       "/accordionimage.png",
     backgroundColorAccordion: "#6C5751",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
     features: [
       "Clases de Lagree - ilimitado",
       "Clases de Yoga - ilimitado",
@@ -230,7 +230,7 @@ const items = [
       "/accordionimage.png",
     backgroundColorAccordion: "#678881",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius deserunt quia consectetur aliquid obcaecati voluptatibus quos distinctio natus! Tenetur.",
+      "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
     features: [
       "Clases de Lagree - ilimitado",
       "Clases de Yoga - ilimitado",
