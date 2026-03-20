@@ -84,21 +84,21 @@ const Header = () => {
               <div className="flex flex-col gap-4 p-6 mt-8">
                 <a
                   href="#hero"
-                  className="text-lg font-medium hover:opacity-75 transition-opacity"
+                  className="text-lg font-medium text-primary-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Home
                 </a>
                 <a
                   href="#services"
-                  className="text-lg font-medium hover:opacity-75 transition-opacity"
+                  className="text-lg font-medium text-primary-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Servicios
                 </a>
                 <a
                   href="#memberships"
-                  className="text-lg font-medium hover:opacity-75 transition-opacity"
+                  className="text-lg font-medium text-primary-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Membresías
