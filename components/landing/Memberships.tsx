@@ -50,13 +50,13 @@ const Memberships = () => {
                 <Carousel setApi={setApi}>
                     <CarouselContent className="items-stretch">
                         {memberships.map((membership) => (
-                            <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/3 flex" key={membership.id}>
+                            <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
                                 <MemberShipCard membership={membership} />
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselNext className="hidden md:flex bg-primary-100 md:-right-12 lg:-right-16 hover:bg-primary-100 text-white w-12 h-12 hover:text-white" />
-                    <CarouselPrevious className="hidden md:flex bg-primary-100 hover:bg-primary-100 md:-left-12 lg:-left-16 text-white w-12 h-12 hover:text-white" />
+                    <CarouselNext className="hidden xl:flex bg-primary-100 md:-right-12 lg:-right-16 hover:bg-primary-100 text-white w-12 h-12 hover:text-white" />
+                    <CarouselPrevious className="hidden xl:flex bg-primary-100 hover:bg-primary-100 md:-left-12 lg:-left-16 text-white w-12 h-12 hover:text-white" />
                 </Carousel>
                 <div className="flex justify-center gap-2 mt-6">
                     {Array.from({ length: count }).map((_, index) => (

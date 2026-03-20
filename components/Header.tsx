@@ -25,7 +25,14 @@ const Header = () => {
     return () => observer.disconnect()
   }, [])
 
-  const navTextColor = scrolledPastHero ? "text-black" : "text-white"
+  const navTextColor = scrolledPastHero ? "text-primary-500" : "text-white"
+
+  const logoImageSrc = scrolledPastHero
+    ? "/header-logo-image-pass.svg"
+    : "/header-logo-image.svg"
+  const logoTextSrc = scrolledPastHero
+    ? "/header-logo-text-pass.svg"
+    : "/header-logo-text.svg"
 
   return (
     <header
@@ -37,20 +44,20 @@ const Header = () => {
       <div className="flex h-[80px] items-center justify-between px-5 sm:px-8 lg:px-24">
         <a href="#hero" className="flex items-center gap-3">
           <Image
-            src="/header-logo-image.svg"
+            key={logoImageSrc}
+            src={logoImageSrc}
             alt="AYMA"
             width={100}
             height={100}
-            className={`w-12 h-12 transition-all duration-300 ${scrolledPastHero ? "invert" : ""
-              }`}
+            className="w-12 h-12 transition-opacity duration-300"
           />
           <Image
-            src="/header-logo-text.svg"
+            key={logoTextSrc}
+            src={logoTextSrc}
             alt="AYMAText"
             width={250}
             height={250}
-            className={`w-48 sm:w-56 md:w-64 transition-all duration-300 ${scrolledPastHero ? "invert" : ""
-              }`}
+            className="w-48 sm:w-56 md:w-64 transition-opacity duration-300"
           />
         </a>
 
