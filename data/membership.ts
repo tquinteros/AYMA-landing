@@ -5,6 +5,7 @@ export const memberships = [
     description: "Ideal para quienes buscan la experiencia completa sin límites. Máxima flexibilidad para explorar todas las prácticas y encontrar tu ritmo personal.",
     price: 10,
     features: ["Clases de Lagree - ilimitado", "Clases de Yoga - ilimitado", "Contraste térmico - ilimitado", "Recovery - ilimitado", "Acceso exclusivo a la playa"],
+    tag: "Pase Libre",
   },
   {
     id: 2,
