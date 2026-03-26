@@ -42,7 +42,7 @@ const Memberships = () => {
 
     return (
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
-        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-roca-500 lg:my-12 bg-[url('/membershipbg.png')] bg-size-[110%] bg-center bg-no-repeat">
+        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[110%] bg-center bg-no-repeat">
             <div className="flex flex-col gap-1 px-5 sm:px-8 lg:px-24">
                 <div className="flex items-center justify-between">
                     <h2 className="text-3xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
