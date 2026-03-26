@@ -44,18 +44,18 @@ const Header = () => {
             alt="AYMA"
             width={126}
             height={36}
-            className="h-8 w-auto sm:h-9 md:h-10 transition-opacity duration-300"
+            className="h-8 w-auto sm:h-9 md:h-13 transition-opacity duration-300"
           />
         </a>
 
         <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
-          <a href="#hero" className="text-lg hover:opacity-75 duration-300 transition-all tracking-[6px]">Home</a>
+          <a href="#hero" className="text-lg hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="#services" className="text-lg hover:opacity-75 duration-300 transition-all tracking-[6px]">Servicios</a>
+          <a href="#services" className="text-lg hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="#memberships" className="text-lg hover:opacity-75 duration-300 transition-all tracking-[6px]">Membresías</a>
+          <a href="#memberships" className="text-lg hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="https://api.whatsapp.com/" target="_blank" className="text-lg hover:opacity-75 duration-300 tracking-[6px] transition-all">Contacto</a>
+          <a href="https://api.whatsapp.com/" target="_blank" className="text-lg hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
         </nav>
 
         <div className="md:hidden">

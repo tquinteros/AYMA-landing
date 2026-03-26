@@ -84,9 +84,9 @@ const Panel = ({
 
           <span
             style={{ writingMode: "vertical-rl" }}
-            className="hidden lg:flex text-sm font-medium rotate-180 text-center leading-none"
+            className="hidden lg:flex text-sm tracking-[3px] font-bold uppercase rotate-180 text-center"
           >
-            {title}
+            {serviceTitle}
           </span>
           <span className="flex lg:hidden text-base font-medium text-center flex-1 justify-center">
             {title}
@@ -117,7 +117,7 @@ const Panel = ({
                   <span className="text-md sm:text-2xl font-bold tracking-wide text-surface-500">
                     {numberLabel}
                   </span>
-                  <h3 className="text-md sm:text-lg tracking-widest font-bold text-surface-500 flex-1 truncate">
+                  <h3 className="text-md sm:text-lg tracking-[4px] font-bold text-surface-500 flex-1 truncate">
                     SERVICIOS
                   </h3>
                 </div>

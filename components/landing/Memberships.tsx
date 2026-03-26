@@ -42,24 +42,23 @@ const Memberships = () => {
 
     return (
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
-        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[105%] bg-center bg-no-repeat">
-            <div className="flex flex-col gap-4 px-5 sm:px-8 lg:px-24">
-                <div className="flex items-center justify-between">
-                    <h2 className="text-3xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
+        <section id="memberships" className="bg-roca-500 bg-none py-10 sm:py-12 lg:bg-[url('/membershipbg.png')] lg:bg-center lg:bg-no-repeat lg:bg-size-[110%] lg:py-20">
+            <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-5 sm:gap-4 sm:px-8 lg:px-24">
+                <div className="flex items-center justify-center lg:justify-between">
+                    <h2 className="text-center text-3xl uppercase text-background-500 sm:text-4xl lg:text-left lg:text-5xl">
                         Membresías
                     </h2>
                     <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden md:block" width={52} height={52} />
-
                 </div>
-                <p className="max-w-xl text-base sm:text-lg text-center lg:text-left text-background-500">
+                <p className="max-w-xl text-center text-sm text-background-500 sm:text-base lg:text-left lg:text-lg">
                     Cada práctica se complementa con las demás para potenciar la experiencia y acompañar un proceso más completo y consciente.
                 </p>
             </div>
-            <div className="flex flex-col gap-4 mt-10 sm:mt-12 max-w-7xl mx-auto px-5 sm:px-8 lg:px-0">
+            <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-4 px-4 sm:mt-12 sm:px-8 lg:px-0">
                 <Carousel setApi={setApi} className="relative">
                     <CarouselContent className="items-stretch pt-5 sm:pt-7">
                         {memberships.map((membership) => (
-                            <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
+                            <CarouselItem className="flex basis-full md:basis-1/2 xl:basis-1/3" key={membership.id}>
                                 <MemberShipCard membership={membership} />
                             </CarouselItem>
                         ))}
@@ -80,12 +79,12 @@ const Memberships = () => {
                     ))}
                 </div>
             </div>
-            <div className='flex flex-col items-center gap-6 sm:gap-8 mt-8 px-5 sm:px-8'>
-                <p className="text-background-500 text-center text-lg max-w-3xl">
+            <div className='mt-8 flex flex-col items-center gap-6 px-5 sm:gap-8 sm:px-8'>
+                <p className="max-w-3xl text-center text-base text-background-500 sm:text-lg">
                     Si querés más información sobre las experiencias y valores, escribinos por WhatsApp. <br className="hidden sm:block" />
                     Estamos para ayudarte a encontrar tu forma de vivir AYMA.
                 </p>
-                <Button className='bg-roca-900 w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-roca-900/80 text-background-100' onClick={handleWhatsApp}>
+                <Button className='flex w-full max-w-[260px] items-center justify-center gap-2 bg-roca-900 px-8 py-6 text-base text-background-100 hover:bg-roca-900/80 sm:w-fit sm:max-w-none sm:py-7' onClick={handleWhatsApp}>
                     <Image src="/whatsappwhite.svg" alt="Whatsapp" width={20} height={20} />
                     WhatsApp
                 </Button>

@@ -13,24 +13,24 @@ const Future = () => {
     return (
         <section
             id="future"
-            className="bg-roca-500 h-[80vh] min-h-[520px] sm:min-h-[560px]"
+            className="bg-roca-500"
         >
-            <div className="relative z-10 flex flex-col gap-32 justify-center h-full  py-10">
-                <div className='flex items-center justify-center max-w-7xl mx-auto gap-32'>
+            <div className="relative z-10 mx-auto flex min-h-[520px] w-full max-w-7xl flex-col justify-center gap-12 px-5 py-12 sm:min-h-[560px] sm:px-8 sm:py-14 lg:min-h-[80vh] lg:gap-24 lg:px-24 lg:py-16">
+                <div className='grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 md:grid-cols-4 md:gap-12 lg:gap-16'>
                     {futureItems.map((item) => (
-                        <div key={item.label} className="flex w-[160px] gap-6 flex-col items-center">
-                            <div className="flex h-[120px] items-center justify-center">
-                                <Image src={item.src} alt={item.label} width={100} height={100} />
+                        <div key={item.label} className="flex flex-col items-center gap-4 sm:gap-5">
+                            <div className="flex h-[84px] w-full items-center justify-center sm:h-[100px] lg:h-[120px]">
+                                <Image src={item.src} alt={item.label} width={100} height={100} className="h-auto w-[70px] sm:w-[85px] lg:w-[100px]" />
                             </div>
-                            <span className='mt-6 tracking-[4px] text-background-500 text-sm sm:text-base'>{item.label}</span>
+                            <span className='text-center text-[11px] tracking-[2px] text-background-500 sm:text-sm sm:tracking-[3px] lg:text-base lg:tracking-[5px]'>{item.label}</span>
                         </div>
                     ))}
                 </div>
-                <div className='flex flex-col px-5 sm:px-8 lg:px-24 items-end gap-4'>
-                    <p className='text-background-500 text-4xl'>
+                <div className='flex flex-col items-center gap-2 text-center lg:items-end lg:text-right'>
+                    <p className='text-background-500 text-xl sm:text-3xl lg:text-4xl'>
                         PORQUE EL FUTURO SE CONSTRUYE,
                     </p>
-                    <p className='text-background-500 text-4xl'>
+                    <p className='text-background-500 text-xl sm:text-3xl lg:text-4xl'>
                         SE ENTRENA, SE PRACTICA Y SE HABITA.
                     </p>
                 </div>

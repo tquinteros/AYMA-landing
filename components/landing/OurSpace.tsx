@@ -41,7 +41,7 @@ const OurSpace = () => {
                 </Carousel>
             </div>
             <div className="relative z-10 my-10 sm:my-32 px-5 sm:px-8 lg:px-24">
-                <div className="flex flex-col gap-4  lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex flex-col gap-4  lg:flex-row lg:items-end lg:justify-between">
                     <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden md:block" width={64} height={64} />
                     <div className="flex flex-col gap-4">
                         <p className="max-w-2xl text-base font-bold sm:text-lg text-center lg:text-right text-surface-500">
