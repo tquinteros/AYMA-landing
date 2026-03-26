@@ -26,7 +26,7 @@ const Future = () => {
                         </div>
                     ))}
                 </div>
-                <div className='flex flex-col container mx-auto items-center gap-1 text-center lg:items-end lg:text-right'>
+                <div className='flex flex-col items-center gap-1 text-center lg:items-end lg:text-right'>
                     <p className='text-surface-500 text-xl sm:text-3xl lg:text-[42px]'>
                         PORQUE EL FUTURO SE CONSTRUYE,
                     </p>
