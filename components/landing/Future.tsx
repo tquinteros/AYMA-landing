@@ -15,8 +15,8 @@ const Future = () => {
             id="future"
             className="bg-roca-500"
         >
-            <div className="relative z-10 mx-auto flex min-h-[520px] w-full max-w-7xl flex-col justify-center gap-12 px-5 py-12 sm:min-h-[560px] sm:px-8 sm:py-14 lg:min-h-[80vh] lg:gap-24 lg:px-24 lg:py-16">
-                <div className='grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 md:grid-cols-4 md:gap-12 lg:gap-16'>
+            <div className="relative z-10 flex min-h-[520px] w-full flex-col justify-center gap-12 px-5 py-12 sm:min-h-[560px] sm:px-8 sm:py-14 lg:min-h-[80vh] lg:gap-24 lg:px-24 lg:py-16">
+                <div className='grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 max-w-7xl mx-auto md:grid-cols-4 md:gap-12 lg:gap-16'>
                     {futureItems.map((item) => (
                         <div key={item.label} className="flex flex-col items-center gap-4 sm:gap-5">
                             <div className="flex h-[84px] w-full items-center justify-center sm:h-[100px] lg:h-[120px]">
@@ -26,11 +26,11 @@ const Future = () => {
                         </div>
                     ))}
                 </div>
-                <div className='flex flex-col items-center gap-2 text-center lg:items-end lg:text-right'>
+                <div className='flex flex-col container mx-auto items-center gap-2 text-center lg:items-end lg:text-right'>
                     <p className='text-background-500 text-xl sm:text-3xl lg:text-4xl'>
                         PORQUE EL FUTURO SE CONSTRUYE,
                     </p>
-                    <p className='text-background-500 text-xl sm:text-3xl lg:text-4xl'>
+                    <p className='text-background-500 mt-4 text-xl sm:text-3xl lg:text-4xl'>
                         SE ENTRENA, SE PRACTICA Y SE HABITA.
                     </p>
                 </div>
