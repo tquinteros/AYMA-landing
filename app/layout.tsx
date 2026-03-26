@@ -8,8 +8,26 @@ import localFont from "next/font/local"
 import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
-  title: "AYMA",
-  description: "AYMA",
+  title: "AYMA | Wellness Club",
+  description: "Donde comienza la revolución del bienestar. Un espacio donde dejás de dividirte en partes - cuerpo, mente, alma - y empezás a habitarte por completo.",
+  openGraph: {
+    title: "AYMA | Wellness Club",
+    description:
+      "Donde comienza la revolución del bienestar. Un espacio donde dejás de dividirte en partes - cuerpo, mente, alma - y empezás a habitarte por completo.",
+    images: [
+      {
+        url: "/ogimage.png",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AYMA | Wellness Club",
+    description:
+      "Donde comienza la revolución del bienestar. Un espacio donde dejás de dividirte en partes - cuerpo, mente, alma - y empezás a habitarte por completo.",
+    images: ["/ogimage.png"],
+  },
 }
 
 const satoshi = localFont({
