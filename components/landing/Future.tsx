@@ -26,11 +26,11 @@ const Future = () => {
                         </div>
                     ))}
                 </div>
-                <div className='flex flex-col container mx-auto items-center gap-2 text-center lg:items-end lg:text-right'>
+                <div className='flex flex-col container mx-auto items-center gap-1 text-center lg:items-end lg:text-right'>
                     <p className='text-surface-500 text-xl sm:text-3xl lg:text-[42px]'>
                         PORQUE EL FUTURO SE CONSTRUYE,
                     </p>
-                    <p className='text-surface-500 mt-4 text-xl sm:text-3xl lg:text-[42px]'>
+                    <p className='text-surface-500 mt-3 text-xl sm:text-3xl lg:text-[42px]'>
                         SE ENTRENA, SE PRACTICA Y SE HABITA.
                     </p>
                 </div>
