@@ -25,14 +25,14 @@ const Header = () => {
     return () => observer.disconnect()
   }, [])
 
-  const navTextColor = scrolledPastHero ? "text-black" : "text-background-900"
+  const navTextColor = scrolledPastHero ? "text-roca-500" : "text-background-900"
 
   const logoSrc = scrolledPastHero ? "/header-new-pass.svg" : "/header-new.svg"
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolledPastHero
-        ? "bg-background-500 backdrop-blur-md shadow-sm"
+        ? "bg-surface-500 backdrop-blur-md shadow-sm"
         : "bg-transparent"
         }`}
     >
