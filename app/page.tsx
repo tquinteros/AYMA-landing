@@ -3,6 +3,7 @@ import Hero from "@/components/landing/Hero"
 import Memberships from "@/components/landing/Memberships"
 import VerticalAccordion from "@/components/VerticalAccordion"
 import OurSpace from "@/components/landing/OurSpace"
+import Future from "@/components/landing/Future"
 
 
 export default function Page() {
@@ -10,9 +11,10 @@ export default function Page() {
     <div className="">
       <Hero />
       <CTA />
-      <VerticalAccordion />
       <OurSpace />
+      <VerticalAccordion />
       <Memberships />
+      <Future />
     </div>
   )
 }

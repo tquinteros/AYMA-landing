@@ -2,22 +2,22 @@ import Image from 'next/image'
 
 const Footer = () => {
     return (
-        <footer className="bg-background-500">
+        <footer className="bg-roca-500 border-t border-primary-500">
             <div className='flex flex-col gap-6 px-6 sm:px-8 lg:px-24 py-8 lg:flex-row lg:items-center lg:justify-between'>
-                <p className='text-primary-500 text-sm sm:text-base text-center lg:text-left'>
-                    © AYMA Wellness Club l Remeros Beach, Rincon de Milberg l Buenos Aires, Argentina.
+                <p className='text-background-500 text-sm sm:text-base text-center lg:text-left'>
+                    © AYMA Wellness Club l Camino de los Remeros 1585, Tigre l Remeros Beach
                 </p>
                 <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6'>
-                    <a href="mailto:info@aymawellness.com.ar" className='text-primary-500 uppercase tracking-[3px] md:tracking-[6px] hover:opacity-75 duration-300 transition-all text-sm md:text-md break-all text-center'>
-                        info@aymawellness.com.ar
+                    <a href="mailto:aymawellness@gmail.com" className='text-background-500 hover:opacity-75 duration-300 transition-all text-sm md:text-md break-all text-center'>
+                        aymawellness@gmail.com
                     </a>
-                    <span className='hidden sm:block text-primary-500'>|</span>
-                    <div className='flex items-center gap-6'>
-                        <a href="https://wa.me/3333333333" target="_blank" rel="noreferrer">
-                            <Image src="/whatsapp.svg" alt="facebook" width={18} height={18} />
+                    <span className='hidden sm:block text-background-500'>|</span>
+                    <div className='flex items-center gap-2'>
+                        <a href="https://wa.me/5491162632894" target="_blank" rel="noreferrer">
+                            <Image src="/whatsapp.svg" alt="facebook" width={28} height={28} />
                         </a>
                         <a href="https://www.instagram.com/aymawellness/" target="_blank" rel="noreferrer">
-                            <Image src="/instagram.svg" alt="instagram" width={18} height={18} />
+                            <Image src="/instagram.svg" alt="instagram" width={28} height={28} />
                         </a>
                     </div>
                 </div>

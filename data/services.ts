@@ -7,7 +7,7 @@ export const services = [
             "/services/movement.png",
         backgroundColorAccordion: "#FFFFFF",
         description:
-            "A través de distintas disciplinas, el movimiento se convierte en una herramienta para fortalecer el cuerpo, liberar tensiones y cultivar mayor conciencia física y mental.",
+            "Fuerza, movilidad y consciencia se integran en prácticas que activan el cuerpo, liberan tensiones y ordenan la mente.",
         features: [
             "Yoga",
             "Hot Yoga",
@@ -17,16 +17,17 @@ export const services = [
             "Entrenamiento Funcional",
             "Pilates Mat",
         ],
+        iconSrc: "/services/movementicon.svg",
     },
     {
         id: 2,
         title: "Servicios: Recuperación y contraste",
-        subtitle: "Un circuito de estímulos térmicos pensado para revitalizar el cuerpo y activar los procesos naturales de recuperación.",
+        subtitle: "Un circuito de estímulos térmicos diseñado para activar los procesos naturales de recuperación del cuerpo",
         imgSrc:
             "/services/recovery.png",
         backgroundColorAccordion: "#F7F0E9",
         description:
-            "La combinación de calor y frío ayuda a mejorar la circulación, reducir la inflamación y generar un profundo estado de renovación física y mental.",
+            "Calor y frío se combinan para mejorar la circulación, reducir la inflamación y llevar el cuerpo a un estado profundo de regeneración física y mental.",
         features: [
             "Sauna Seco",
             "Sauna Húmedo",
@@ -35,23 +36,25 @@ export const services = [
             "Cold Plunge",
             "Cabina de Frío",
         ],
+        iconSrc: "/services/recoveryicon.svg",
     },
     {
         id: 3,
         title: "Servicios: Terapias restaurativas",
-        subtitle: "Un espacio dedicado a la recuperación profunda y al cuidado físico especializado.",
+        subtitle: "Un espacio dedicado al cuidado físico especializado y a la recuperación profunda.",
         imgSrc:
             "/services/therapies.png",
         backgroundColorAccordion: "#6C5751",
         description:
-            "Tratamientos terapéuticos enfocados en aliviar tensiones, restaurar el equilibrio corporal y acompañar los procesos de rehabilitación y descanso del cuerpo. ",
+            "Tratamientos que alivian tensiones y acompañan los procesos de recuperación desde un abordaje integral.",
         features: [
-            "Sala de Recovery",
+            "Recovery",
             "Osteopatía",
             "Masajes",
             "Kinesiología",
             "Acupuntura",
         ],
+        iconSrc: "/services/therapyicon.svg",
     },
     {
         id: 4,
@@ -59,14 +62,16 @@ export const services = [
         subtitle: "Servicios pensados para acompañar el equilibrio físico, energético y nutricional.",
         imgSrc:
             "/services/wellness.png",
-        backgroundColorAccordion: "#678881",
+        backgroundColorAccordion: "#181919",
         description:
-            "Un enfoque holístico del bienestar que combina salud, estética y terapias complementarias para nutrir el cuerpo desde distintas dimensiones.",
+            "Un enfoque integral del bienestar que combina salud, estética y terapias complementarias para acompañar el cuerpo desde distintas dimensiones.",
         features: [
-            "Nutricionista",
-            "Faciales",
+            "Nutrición",
+            "Longevidad",
+            "Terapia del dolor",
             "Dripping",
             "PMF Therapy",
         ],
+        iconSrc: "/services/wellnessicon.svg",
     },
 ];

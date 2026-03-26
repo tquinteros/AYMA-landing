@@ -36,7 +36,7 @@ const Hero = () => {
 
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10 flex h-full items-center text-white">
+      {/* <div className="relative z-10 flex h-full items-center text-white">
         <div className="w-full flex flex-col gap-12 sm:gap-16 lg:gap-28 px-5 sm:px-8 lg:px-24">
           <div className="flex items-center">
             <div className="flex flex-col gap-8 sm:gap-10 w-full">
@@ -49,7 +49,7 @@ const Hero = () => {
                 </div>
               </div>
               <Button
-                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-water-500 text-base sm:text-lg hover:bg-water-500/80 rounded-lg mx-auto lg:mx-0"
+                className="w-fit px-8 sm:px-10 h-12 sm:h-14 bg-roca-500 text-base sm:text-lg hover:bg-roca-500/80 rounded-lg mx-auto lg:mx-0"
                 size="lg"
                 onClick={handleScrollToMemberships}
               >
@@ -67,7 +67,7 @@ const Hero = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       <button
         className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 lg:bottom-12 lg:right-12 z-50 cursor-pointer bg-primary-500/90 rounded-full p-3 sm:p-4"
         onClick={() => setIsMuted(!isMuted)}

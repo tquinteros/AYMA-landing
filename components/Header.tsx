@@ -25,46 +25,37 @@ const Header = () => {
     return () => observer.disconnect()
   }, [])
 
-  const navTextColor = scrolledPastHero ? "text-primary-500" : "text-white"
+  const navTextColor = scrolledPastHero ? "text-roca-500" : "text-background-900"
 
-  const logoImageSrc = scrolledPastHero
-    ? "/header-logo-image-pass.svg"
-    : "/header-logo-image.svg"
-  const logoTextSrc = scrolledPastHero
-    ? "/header-logo-text-pass.svg"
-    : "/header-logo-text.svg"
+  const logoSrc = scrolledPastHero ? "/header-new-pass.svg" : "/header-new.svg"
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolledPastHero
-        ? "bg-background-500 backdrop-blur-md shadow-sm"
+        ? "bg-surface-500 backdrop-blur-md shadow-sm"
         : "bg-transparent"
         }`}
     >
       <div className="flex h-[80px] items-center justify-between px-5 sm:px-8 lg:px-24">
-        <a href="#hero" className="flex items-center gap-3">
+        <a href="#hero" className="flex items-center">
           <Image
-            key={logoImageSrc}
-            src={logoImageSrc}
+            key={logoSrc}
+            src={logoSrc}
             alt="AYMA"
-            width={100}
-            height={100}
-            className="w-12 h-12 transition-opacity duration-300"
-          />
-          <Image
-            key={logoTextSrc}
-            src={logoTextSrc}
-            alt="AYMAText"
-            width={250}
-            height={250}
-            className="w-48 sm:w-56 md:w-64 transition-opacity duration-300"
+            width={126}
+            height={36}
+            className="h-8 w-auto sm:h-9 md:h-13 transition-opacity duration-300"
           />
         </a>
 
-        <nav className={`hidden md:flex items-center gap-10 ${navTextColor}`}>
-          <a href="#hero" className="text-lg hover:opacity-75 duration-300 transition-all">Home</a>
-          <a href="#services" className="text-lg hover:opacity-75 duration-300 transition-all">Servicios</a>
-          <a href="#memberships" className="text-lg hover:opacity-75 duration-300 transition-all">Membresías</a>
+        <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
+          <a href="#hero" className="text-lg hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a>
+          <span className="mx-5 select-none" aria-hidden>|</span>
+          <a href="#services" className="text-lg hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
+          <span className="mx-5 select-none" aria-hidden>|</span>
+          <a href="#memberships" className="text-lg hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
+          <span className="mx-5 select-none" aria-hidden>|</span>
+          <a href="https://wa.me/5491162632894" target="_blank" className="text-lg hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
         </nav>
 
         <div className="md:hidden">
