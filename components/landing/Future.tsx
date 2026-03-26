@@ -30,7 +30,7 @@ const Future = () => {
                     <p className='text-surface-500 text-xl sm:text-3xl lg:text-[42px]'>
                         PORQUE EL FUTURO SE CONSTRUYE,
                     </p>
-                    <p className='text-surface-500 lg:mt-3 text-xl sm:text-3xl lg:text-[42px]'>
+                    <p className='text-surface-500 lg:mt-2 text-xl sm:text-3xl lg:text-[42px]'>
                         SE ENTRENA, SE PRACTICA Y SE HABITA.
                     </p>
                 </div>
