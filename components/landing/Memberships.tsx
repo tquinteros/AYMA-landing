@@ -42,7 +42,7 @@ const Memberships = () => {
 
     return (
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
-        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[110%] bg-center bg-no-repeat">
+        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-roca-500 md:bg-[url('/membershipbg.png')] bg-size-[110%] bg-center bg-no-repeat">
             <div className="flex flex-col gap-1 px-5 sm:px-8 lg:px-24">
                 <div className="flex items-center justify-between">
                     <h2 className="text-3xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
@@ -55,7 +55,7 @@ const Memberships = () => {
                 </p>
             </div>
             <div className="flex flex-col gap-4 mt-10 sm:mt-12 max-w-7xl mx-auto px-5 sm:px-8 lg:px-0">
-                <Carousel setApi={setApi} className="relative">
+                <Carousel setApi={setApi} className="relative ">
                     <CarouselContent className="items-stretch pt-5 sm:pt-7">
                         {memberships.map((membership) => (
                             <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
@@ -80,11 +80,11 @@ const Memberships = () => {
                 </div>
             </div>
             <div className='flex flex-col items-center gap-6 sm:gap-8 mt-8 px-5 sm:px-8'>
-                <p className="text-background-500 text-center text-lg max-w-3xl">
+                <p className="text-background-500 text-left lg:text-center text-lg max-w-3xl">
                     Si querés más información sobre las experiencias y valores, escribinos por WhatsApp. <br className="hidden sm:block" />
                     Estamos para ayudarte a encontrar tu forma de vivir AYMA.
                 </p>
-                <Button className='bg-roca-900 w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-roca-900/80 text-background-100' onClick={handleWhatsApp}>
+                <Button className='bg-roca-900 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-roca-900/80 text-background-100' onClick={handleWhatsApp}>
                     <Image src="/whatsappwhite.svg" alt="Whatsapp" width={20} height={20} />
                     WhatsApp
                 </Button>
