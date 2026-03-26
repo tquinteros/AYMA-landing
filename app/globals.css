@@ -117,12 +117,12 @@
 
 
 @theme {
-  --font-sans: var(--font-glacialIndifference);
+  --font-sans: var(--font-satoshi);
 /* arena */
   --color-background-100: #FFFCF8;
   --color-background-500: #F7F0E9;
   --color-background-900: #DFD5CA;
-  /* arcilla */
+  /* CALIZA */
   --color-surface-100: #FFE2CC;
   --color-surface-500: #EDC8AD;
   --color-surface-900: #C4A893;
@@ -130,10 +130,10 @@
   --color-primary-100: #A4908B;
   --color-primary-500: #6C5751;
   --color-primary-900: #3C312E;
-  /* AGUA */
-  --color-water-100: #A1BCB6;
-  --color-water-500: #678881;
-  --color-water-900: #44635C;
+  /* ROCA VOLCANICA */
+  --color-roca-100: #373737;
+  --color-roca-500: #252727;
+  --color-roca-900: #181919;
 }
 
 @layer base {

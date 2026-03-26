@@ -10,8 +10,8 @@ export default function Page() {
     <div className="">
       <Hero />
       <CTA />
-      <VerticalAccordion />
       <OurSpace />
+      <VerticalAccordion />
       <Memberships />
     </div>
   )
