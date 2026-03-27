@@ -27,7 +27,7 @@ function MembershipCardTitle({ name }: { name: string }) {
 
 const MemberShipCard = ({ membership }: { membership: Membership }) => {
     return (
-        <Card className="w-full border border-surface-100 lg:border-none lg:border-transparent relative flex flex-col overflow-visible rounded-3xl! bg-roca-500 p-6 sm:p-8 lg:py-10 lg:px-6">
+        <Card className="w-full relative border-none! border-transparent! flex flex-col overflow-visible rounded-3xl! bg-roca-500 p-6 sm:p-8 lg:py-10 lg:px-6">
             {membership.tag && (
                 <Badge
                     className="pointer-events-none absolute top-0 right-6 z-20 h-auto -translate-y-1/2 rounded-full border-0 bg-primary-500 px-4 py-1.5 text-xs tracking-wide text-background-500 uppercase backdrop-blur-[2px] sm:right-8 sm:text-sm"

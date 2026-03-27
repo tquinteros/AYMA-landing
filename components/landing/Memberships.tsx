@@ -8,16 +8,17 @@ import {
     CarouselApi,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Button } from '../ui/button'
 import Image from "next/image"
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 const Memberships = () => {
 
     const [api, setApi] = useState<CarouselApi | null>(null)
     const [current, setCurrent] = useState(0)
     const [count, setCount] = useState(0)
+    const canScrollPrev = current > 1
+    const canScrollNext = current < count
 
     useEffect(() => {
         if (!api) return
@@ -42,7 +43,7 @@ const Memberships = () => {
 
     return (
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
-        <section id="memberships" className="py-8 sm:py-12 lg:py-21 bg-roca-500 md:bg-[url('/membershipbg.png')] bg-size-[110%] bg-center bg-no-repeat">
+        <section id="memberships" className="py-12 sm:py-16 lg:py-20 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[auto_100%] md:bg-size-[auto_150%] bg-center bg-no-repeat">
             <div className="flex flex-col gap-1 px-5 sm:px-8 lg:px-24">
                 <div className="flex items-center justify-between">
                     <h2 className="text-3xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
@@ -54,7 +55,7 @@ const Memberships = () => {
                     Cada práctica se complementa con las demás para potenciar la experiencia y acompañar un proceso más completo y consciente.
                 </p>
             </div>
-            <div className="flex flex-col gap-4 mt-10 sm:mt-12 max-w-7xl mx-auto px-5 sm:px-8 lg:px-0">
+            <div className="relative flex flex-col gap-4 mt-10 sm:mt-6 max-w-7xl mx-auto px-5 sm:px-16 xl:px-0">
                 <Carousel setApi={setApi} className="relative ">
                     <CarouselContent className="items-stretch pt-5 sm:pt-7">
                         {memberships.map((membership) => (
@@ -63,9 +64,29 @@ const Memberships = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselNext className="hidden xl:flex bg-primary-500! md:-right-12 lg:-right-16 hover:bg-primary-100 text-background-100 w-12 h-12 hover:text-background-100" />
-                    <CarouselPrevious className="hidden xl:flex bg-primary-500! hover:bg-primary-100 md:-left-12 lg:-left-16 text-background-100 w-12 h-12 hover:text-background-100" />
                 </Carousel>
+                <div className="hidden xl:flex pointer-events-none justify-between absolute inset-y-0 left-0 right-0 items-center">
+                    <Button
+                        type="button"
+                        size="icon-sm"
+                        className="pointer-events-auto bg-primary-500 md:-translate-x-12 border-none border-transparent lg:-translate-x-16 hover:bg-primary-100 text-background-100 w-11 h-11 hover:text-background-100 rounded-full"
+                        disabled={!canScrollPrev}
+                        onClick={() => api?.scrollPrev()}
+                    >
+                        <ChevronLeftIcon />
+                        <span className="sr-only">Previous slide</span>
+                    </Button>
+                    <Button
+                        type="button"
+                        size="icon-sm"
+                        className="pointer-events-auto bg-primary-500 md:translate-x-12 border-none border-transparent lg:translate-x-16 hover:bg-primary-100 text-background-100 w-11 h-11 hover:text-background-100 rounded-full"
+                        disabled={!canScrollNext}
+                        onClick={() => api?.scrollNext()}
+                    >
+                        <ChevronRightIcon />
+                        <span className="sr-only">Next slide</span>
+                    </Button>
+                </div>
                 <div className="flex justify-center gap-2 mt-6">
                     {Array.from({ length: count }).map((_, index) => (
                         <button
@@ -84,7 +105,7 @@ const Memberships = () => {
                     Si querés más información sobre las experiencias y valores, escribinos por WhatsApp. <br className="hidden sm:block" />
                     Estamos para ayudarte a encontrar tu forma de vivir AYMA.
                 </p>
-                <Button className='bg-roca-900 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-roca-900/80 text-background-100' onClick={handleWhatsApp}>
+                <Button className='bg-primary-500 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-primary-500/80 text-background-100' onClick={handleWhatsApp}>
                     <Image src="/whatsappwhite.svg" alt="Whatsapp" width={20} height={20} />
                     WhatsApp
                 </Button>
