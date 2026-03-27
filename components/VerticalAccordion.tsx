@@ -77,10 +77,10 @@ const Panel = ({
       {!isOpen && (
         <button
           style={index === 0 ? undefined : { backgroundColor: backgroundColorAccordion }}
-          className={`${triggerTextClass} ${index === 0 ? "bg-surface-100" : ""} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
+          className={`${triggerTextClass} ${index === 0 ? "bg-surface-500" : ""} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
           onClick={() => setOpen(id)}
         >
-          <span className="text-sm font-medium tracking-wide">{numberLabel}</span>
+          <span className=" font-bold text-2xl tracking-wide">{numberLabel}</span>
 
           <span
             style={{ writingMode: "vertical-rl" }}
@@ -88,8 +88,8 @@ const Panel = ({
           >
             {serviceTitle}
           </span>
-          <span className="flex lg:hidden text-base font-medium text-center flex-1 justify-center">
-            {title}
+          <span className="flex lg:hidden text-base font-bold uppercase text-center flex-1 justify-center">
+            {serviceTitle}
           </span>
           <MoveUp className="h-4 w-4 lg:rotate-90" />
         </button>
@@ -112,8 +112,8 @@ const Panel = ({
               exit="closed"
               className="h-full w-full p-5 sm:p-8 flex flex-col"
             >
-              <div className="flex justify-between items-center">
-                <div className="flex items-start gap-3 mb-6 min-w-0">
+              <div className="flex justify-between items-center mb-6">
+                <div className="flex items-center gap-3  min-w-0">
                   <span className="text-md sm:text-2xl font-bold tracking-wide text-surface-500">
                     {numberLabel}
                   </span>
@@ -124,14 +124,14 @@ const Panel = ({
                 <Image src={iconSrc} alt={title} className="hidden lg:block" width={40} height={40} />
               </div>
 
-              <div className="flex-1 h-full w-full grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-6 lg:gap-10 items-start">
+              <div className="flex-1 h-full w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
                 <div className="relative w-full h-52 sm:h-72 lg:h-[520px] rounded-xl overflow-hidden">
                   <Image
                     src={imgSrc}
                     alt={title}
                     fill
-                    className="object-cover aspect-1/2!"
-                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={id === services[0].id}
                   />
                 </div>
@@ -151,7 +151,7 @@ const Panel = ({
                     {features.map((feature) => (
                       <li key={feature} className="flex items-center gap-2">
                         <span className="h-1.5 w-1.5 rounded-full bg-surface-500" />
-                        <span className="leading-relaxed font-bold">{feature}</span>
+                        <span className="leading-relaxed">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -171,10 +171,18 @@ const panelVariants = {
   open: {
     width: "100%",
     height: "100%",
+    transition: {
+      duration: 0.28,
+      ease: "easeOut" as const,
+    },
   },
   closed: {
     width: "0%",
     height: "100%",
+    transition: {
+      duration: 0.22,
+      ease: "easeInOut" as const,
+    },
   },
 };
 
@@ -182,10 +190,18 @@ const panelVariantsSm = {
   open: {
     width: "100%",
     height: "auto",
+    transition: {
+      duration: 0.24,
+      ease: "easeOut" as const,
+    },
   },
   closed: {
     width: "100%",
     height: "0px",
+    transition: {
+      duration: 0.2,
+      ease: "easeInOut" as const,
+    },
   },
 };
 
@@ -194,9 +210,18 @@ const descriptionVariants = {
     opacity: 1,
     y: "0%",
     transition: {
-      delay: 0.125,
+      delay: 0.05,
+      duration: 0.18,
+      ease: "easeOut" as const,
     },
   },
-  closed: { opacity: 0, y: "100%" },
+  closed: {
+    opacity: 0,
+    y: "16%",
+    transition: {
+      duration: 0.14,
+      ease: "easeInOut" as const,
+    },
+  },
 };
 

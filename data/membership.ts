@@ -9,7 +9,7 @@ export const memberships = [
   },
   {
     id: 2,
-    name: "AYMA | Balance",
+    name: "AYMA | BALANCE",
     description: "El punto justo entre activación y descanso. Ideal para quienes buscan equilibrio entre movimiento, recuperación y bienestar.",
     price: 20,
     features: ["Clases de Lagree - 4 x mes", "Clases de yoga - 8 x mes", "Contraste térmico - 4 x mes", "Recovery - 8 x mes", "Acceso a la playa"],
@@ -17,14 +17,14 @@ export const memberships = [
   },
   {
     id: 3,
-    name: "AYMA | Reset",
+    name: "AYMA | RESET",
     description: "Ideal para dar los primeros pasos en tu bienestar. Un acceso equilibrado a las practicas esenciales de movimiento y recuperación.",
     price: 30,
     features: ["Clases de yoga - 4 x mes", "Contraste térmico - 4 x mes", "Recovery - 4 x mes",],
   },
   {
     id: 4,
-    name: "AYMA | Ritual",
+    name: "AYMA | RITUAL",
     description: "Un día para pausar, reconectar y experimentar AYMA en su totalidad.",
     price: 30,
     features: ["Clases de movimiento", "Contraste térmico", "Recovery", "Acceso a la playa", "Guía durante la experiencia"],
@@ -33,7 +33,7 @@ export const memberships = [
   },
   {
     id: 5,
-    name: "AYMA | Recovery",
+    name: "AYMA | RECOVERY",
     description: "Un plan enfocado en el descanso y el cuidado del cuerpo. Un espacio para bajar el ritmo, liberar tensiones y acelerar la recuperación física y mental. ",
     price: 30,
     features: ["Sauna seco - ilimitado", "Cold plunge - ilimitado", "Cabina de frío - ilimitado", "Contraste térmico - ilimitado", "Recovery - ilimitado", "Acceso a la playa"],
@@ -42,7 +42,7 @@ export const memberships = [
   },
   {
     id: 6,
-    name: "AYMA  | Yoga Pass",
+    name: "AYMA  | YOGA PASS",
     description: "Ideal para quienes buscan profundizar en el movimiento consciente, la respiración y la conexión cuerpo-mente.",
     price: 30,
     features: ["Clases de yoga - ilimitado", "Clases de hot yoga - ilimitado", "Prácticas conscientes y guíadas", "Acceso a la playa"],

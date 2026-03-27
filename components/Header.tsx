@@ -2,9 +2,9 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { Menu } from "lucide-react"
+import { Menu, XIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 
 const Header = () => {
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
@@ -36,7 +36,7 @@ const Header = () => {
         : "bg-transparent"
         }`}
     >
-      <div className="flex h-[80px] items-center justify-between px-5 sm:px-8 lg:px-24">
+      <div className="flex h-[64px] items-center justify-between px-5 sm:px-8 lg:px-24">
         <a href="#hero" className="flex items-center">
           <Image
             key={logoSrc}
@@ -44,18 +44,18 @@ const Header = () => {
             alt="AYMA"
             width={126}
             height={36}
-            className="h-8 w-auto sm:h-9 md:h-13 transition-opacity duration-300"
+            className="h-8 w-auto sm:h-9 md:h-9 transition-opacity duration-300"
           />
         </a>
 
         <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
-          <a href="#hero" className="text-lg hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a>
+          <a href="#hero" className="text-md hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="#services" className="text-lg hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
+          <a href="#services" className="text-md hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="#memberships" className="text-lg hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
+          <a href="#memberships" className="text-md hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="https://wa.me/5491162632894" target="_blank" className="text-lg hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
+          <a href="https://wa.me/5491162632894" target="_blank" className="text-md hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
         </nav>
 
         <div className="md:hidden">
@@ -70,29 +70,37 @@ const Header = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background-500">
+            <SheetContent side="right" className="bg-surface-500">
               <SheetTitle className="sr-only">Menú</SheetTitle>
-              <div className="flex flex-col gap-4 p-6 mt-8">
+              <div className="flex flex-col gap-8 py-16 px-12 mt-8">
                 <a
                   href="#hero"
-                  className="text-lg font-medium text-primary-500 hover:opacity-75 transition-opacity"
+                  className="text-md font-light uppercase tracking-[3px] text-roca-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Home
                 </a>
                 <a
                   href="#services"
-                  className="text-lg font-medium text-primary-500 hover:opacity-75 transition-opacity"
+                  className="text-md font-light uppercase tracking-[3px] text-roca-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Servicios
                 </a>
                 <a
                   href="#memberships"
-                  className="text-lg font-medium text-primary-500 hover:opacity-75 transition-opacity"
+                  className="text-md font-light uppercase tracking-[3px] text-roca-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Membresías
+                </a>
+                <a
+                  href="https://wa.me/5491162632894"
+                  target="_blank"
+                  className="text-md uppercase tracking-[3px] text-roca-500 hover:opacity-75 transition-opacity"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Contacto
                 </a>
               </div>
             </SheetContent>
