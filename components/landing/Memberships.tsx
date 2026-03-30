@@ -1,8 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import { memberships } from '@/data/membership'
 import MemberShipCard from './MemberShipCard'
-
+import type { Plan } from "@/lib/actions/plans"
 import {
     Carousel,
     CarouselApi,
@@ -12,7 +11,7 @@ import {
 import { Button } from '../ui/button'
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-const Memberships = () => {
+const Memberships = ({ plans }: { plans: Plan[] }) => {
 
     const [api, setApi] = useState<CarouselApi | null>(null)
     const [current, setCurrent] = useState(0)
@@ -58,9 +57,9 @@ const Memberships = () => {
             <div className="relative flex flex-col gap-4 mt-10 sm:mt-6 max-w-7xl mx-auto px-5 sm:px-16 xl:px-0">
                 <Carousel setApi={setApi} className="relative ">
                     <CarouselContent className="items-stretch pt-5 sm:pt-7">
-                        {memberships.map((membership) => (
-                            <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
-                                <MemberShipCard membership={membership} />
+                        {plans.map((plan) => (
+                            <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={plan.id}>
+                                <MemberShipCard membership={plan} />
                             </CarouselItem>
                         ))}
                     </CarouselContent>

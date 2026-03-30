@@ -5,11 +5,12 @@ import { useEffect, useState } from "react"
 import { Menu, XIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { authClient } from "@/lib/auth/client"
+import Link from "next/link"
 
 const Header = () => {
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-
   useEffect(() => {
     const hero = document.getElementById("hero")
 
@@ -24,7 +25,6 @@ const Header = () => {
 
     return () => observer.disconnect()
   }, [])
-
   const navTextColor = scrolledPastHero ? "text-background-500" : "text-background-900"
 
   const logoSrc = scrolledPastHero ? "/header-new-pass.svg" : "/header-new.svg"
@@ -47,9 +47,14 @@ const Header = () => {
             className="h-8 w-auto sm:h-9 md:h-9 transition-opacity duration-300"
           />
         </a>
-
+        <div>
+          <button onClick={() => authClient.signOut()}>logout</button>
+          <h1>{authClient.useSession()?.data?.user?.email}</h1>
+        </div>
         <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
           <a href="#hero" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a>
+          <span className="mx-5 select-none" aria-hidden>|</span>
+          <Link href="/admin" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Admin</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="#services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
