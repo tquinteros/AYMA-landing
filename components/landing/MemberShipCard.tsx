@@ -4,13 +4,13 @@ import { Badge } from '../ui/badge'
 
 
 interface Membership {
-    id: number
+    id: number | string
     name: string
     description: string
     price: number
     features: string[]
-    tag?: string
-    bottomText?: string
+    tag?: string | null
+    bottomText?: string | null
 }
 
 function MembershipCardTitle({ name }: { name: string }) {
