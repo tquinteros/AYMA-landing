@@ -21,7 +21,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative h-screen overflow-hidden"
+      className="relative h-[100svh] overflow-hidden"
     >
       <video
         ref={videoRef}
