@@ -45,15 +45,15 @@ const Memberships = () => {
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
         <section id="memberships" className="py-12 sm:py-16 lg:py-20 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[auto_100%] md:bg-size-[auto_150%] bg-center bg-no-repeat">
             <div className="flex flex-col gap-1 px-5 sm:px-8 lg:px-24">
-                <div className="flex items-center justify-between">
-                    <h2 className="text-3xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
+                <div className="flex flex-col gap-4 lg:flex-row items-start lg:justify-between">
+                    <h2 className="text-4xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
                         Membresías
                     </h2>
-                    <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden md:block" width={52} height={52} />
+                    {/* <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden md:block" width={52} height={52} /> */}
+                    <p className="max-w-xl text-base sm:text-xl lg:text-left text-background-500">
+                        Cada práctica se complementa con las demás para potenciar la experiencia y acompañar un proceso más completo y consciente.
+                    </p>
                 </div>
-                <p className="max-w-xl text-base sm:text-xl lg:text-left text-background-500">
-                    Cada práctica se complementa con las demás para potenciar la experiencia y acompañar un proceso más completo y consciente.
-                </p>
             </div>
             <div className="relative flex flex-col gap-4 mt-10 sm:mt-6 max-w-7xl mx-auto px-5 sm:px-16 xl:px-0">
                 <Carousel setApi={setApi} className="relative ">
