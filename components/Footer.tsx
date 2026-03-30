@@ -1,6 +1,12 @@
+"use client"
+
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+    const pathname = usePathname()
+    if (pathname.startsWith("/admin")) return null
+
     return (
         <footer className="bg-roca-500 border-t border-primary-500">
             <div className='flex flex-col gap-6 px-6 sm:px-8 lg:px-24 py-8 lg:flex-row lg:items-center lg:justify-between'>

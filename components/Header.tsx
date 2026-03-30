@@ -2,11 +2,14 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { Menu, XIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import Link from "next/link"
 
 const Header = () => {
+  const pathname = usePathname()
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,6 +31,8 @@ const Header = () => {
   const navTextColor = scrolledPastHero ? "text-background-500" : "text-background-900"
 
   const logoSrc = scrolledPastHero ? "/header-new-pass.svg" : "/header-new.svg"
+
+  if (pathname.startsWith("/admin")) return null
 
   return (
     <header
@@ -54,6 +59,8 @@ const Header = () => {
           <a href="#services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
+          <span className="mx-5 select-none" aria-hidden>|</span>
+          <Link href="/admin" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Admin</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="https://wa.me/5491162632894" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
         </nav>
