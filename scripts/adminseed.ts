@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const { Schema, model, models } = mongoose;
 
 // Inline connection
-await mongoose.connect(process.env.MONGODB_URI!);
+await mongoose.connect(process.env.MONGO_URI!);
 
 // Inline model
 interface IUser { email: string; password: string; }
