@@ -7,6 +7,7 @@ export interface Membership {
     features: string[];
     tag?: string;
     bottomText?: string;
+    order: number;
 }
 
 const MembershipSchema = new Schema<Membership>(
@@ -17,6 +18,7 @@ const MembershipSchema = new Schema<Membership>(
         features: { type: [String], required: true },
         tag: { type: String },
         bottomText: { type: String },
+        order: { type: Number, default: 0 },
     },
     {
         timestamps: true,

@@ -18,14 +18,14 @@ export interface MembershipData {
   features: string[];
   tag?: string;
   bottomText?: string;
+  order: number;
   createdAt: string;
   updatedAt: string;
 }
 
 export async function getMemberships(): Promise<MembershipData[]> {
   await connectDB();
-  const memberships = await MembershipModel.find().sort({ createdAt: -1 }).lean();
-  console.log(memberships, "memberships");
+  const memberships = await MembershipModel.find().sort({ order: 1, createdAt: 1 }).lean();
   return JSON.parse(JSON.stringify(memberships));
 }
 
@@ -52,6 +52,10 @@ export async function createMembership(
       return { error: "Completá todos los campos obligatorios." };
     }
 
+    // Place new membership at the end of the list
+    const last = await MembershipModel.findOne().sort({ order: -1 }).lean();
+    const nextOrder = last ? (last.order ?? 0) + 1 : 0;
+
     await MembershipModel.create({
       name,
       description,
@@ -59,9 +63,11 @@ export async function createMembership(
       features,
       tag: tag || undefined,
       bottomText: bottomText || undefined,
+      order: nextOrder,
     });
 
     revalidatePath("/admin/memberships");
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -103,6 +109,7 @@ export async function updateMembership(
     });
 
     revalidatePath("/admin/memberships");
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -116,9 +123,32 @@ export async function deleteMembership(id: string) {
     await connectDB();
     await MembershipModel.findByIdAndDelete(id);
     revalidatePath("/admin/memberships");
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error(error);
     return { error: "Error al eliminar la membresía." };
+  }
+}
+
+export async function updateMembershipsOrder(
+  orderedIds: string[]
+): Promise<{ success?: boolean; error?: string }> {
+  try {
+    await requireAdmin();
+    await connectDB();
+
+    await Promise.all(
+      orderedIds.map((id, index) =>
+        MembershipModel.findByIdAndUpdate(id, { order: index })
+      )
+    );
+
+    revalidatePath("/admin/memberships");
+    revalidatePath("/");
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { error: "Error al guardar el orden." };
   }
 }
