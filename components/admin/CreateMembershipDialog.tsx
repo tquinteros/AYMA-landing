@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
 import { createMembership } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,29 +18,52 @@ import { Textarea } from "@/components/ui/textarea";
 import { PlusIcon } from "lucide-react";
 import { toast } from "sonner";
 
-const initialState = { error: "", success: false };
+interface FormValues {
+  name: string;
+  price: string;
+  description: string;
+  features: string;
+  tag: string;
+  bottomText: string;
+}
 
 export function CreateMembershipDialog() {
   const [open, setOpen] = useState(false);
-  const [state, formAction, isPending] = useActionState(
-    createMembership,
-    initialState
-  );
-  const formRef = useRef<HTMLFormElement>(null);
+  const [isPending, startTransition] = useTransition();
 
-  useEffect(() => {
-    if (state?.success) {
-      toast.success("Membresía creada exitosamente.");
-      setOpen(false);
-      formRef.current?.reset();
-    }
-    if (state?.error) {
-      toast.error(state.error);
-    }
-  }, [state]);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  function handleOpenChange(next: boolean) {
+    if (isPending) return;
+    setOpen(next);
+    if (!next) reset();
+  }
+
+  function onSubmit(values: FormValues) {
+    const formData = new FormData();
+    (Object.keys(values) as (keyof FormValues)[]).forEach((key) =>
+      formData.append(key, values[key])
+    );
+
+    startTransition(async () => {
+      const result = await createMembership(undefined, formData);
+      if (result?.error) {
+        toast.error(result.error);
+      } else {
+        toast.success("Membresía creada exitosamente.");
+        reset();
+        setOpen(false);
+      }
+    });
+  }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button>
           <PlusIcon />
@@ -50,28 +74,40 @@ export function CreateMembershipDialog() {
         <DialogHeader>
           <DialogTitle>Crear membresía</DialogTitle>
         </DialogHeader>
-        <form ref={formRef} action={formAction} className="flex flex-col gap-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-4"
+        >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="create-name">Nombre *</Label>
               <Input
                 id="create-name"
-                name="name"
                 placeholder="Plan Premium"
-                required
+                aria-invalid={!!errors.name}
+                {...register("name", { required: "El nombre es obligatorio." })}
               />
+              {errors.name && (
+                <p className="text-xs text-destructive">{errors.name.message}</p>
+              )}
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="create-price">Precio (ARS) *</Label>
               <Input
                 id="create-price"
-                name="price"
                 type="number"
                 min="0"
                 step="0.01"
                 placeholder="15000"
-                required
+                aria-invalid={!!errors.price}
+                {...register("price", {
+                  required: "El precio es obligatorio.",
+                  min: { value: 0, message: "El precio no puede ser negativo." },
+                })}
               />
+              {errors.price && (
+                <p className="text-xs text-destructive">{errors.price.message}</p>
+              )}
             </div>
           </div>
 
@@ -79,11 +115,18 @@ export function CreateMembershipDialog() {
             <Label htmlFor="create-description">Descripción *</Label>
             <Textarea
               id="create-description"
-              name="description"
               placeholder="Describí los beneficios principales..."
               rows={2}
-              required
+              aria-invalid={!!errors.description}
+              {...register("description", {
+                required: "La descripción es obligatoria.",
+              })}
             />
+            {errors.description && (
+              <p className="text-xs text-destructive">
+                {errors.description.message}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-1.5">
@@ -95,11 +138,21 @@ export function CreateMembershipDialog() {
             </Label>
             <Textarea
               id="create-features"
-              name="features"
               placeholder={"Acceso ilimitado\nClases grupales\nVestuarios"}
               rows={4}
-              required
+              aria-invalid={!!errors.features}
+              {...register("features", {
+                required: "Agregá al menos un beneficio.",
+                validate: (v) =>
+                  v.split("\n").some((l) => l.trim()) ||
+                  "Agregá al menos un beneficio.",
+              })}
             />
+            {errors.features && (
+              <p className="text-xs text-destructive">
+                {errors.features.message}
+              </p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -112,8 +165,8 @@ export function CreateMembershipDialog() {
               </Label>
               <Input
                 id="create-tag"
-                name="tag"
                 placeholder="Más popular"
+                {...register("tag")}
               />
             </div>
             <div className="flex flex-col gap-1.5">
@@ -125,8 +178,8 @@ export function CreateMembershipDialog() {
               </Label>
               <Input
                 id="create-bottomText"
-                name="bottomText"
                 placeholder="*Consultar condiciones"
+                {...register("bottomText")}
               />
             </div>
           </div>
