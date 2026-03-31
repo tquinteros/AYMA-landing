@@ -75,26 +75,26 @@ const Header = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-surface-500">
+            <SheetContent side="right" className="bg-roca-500">
               <SheetTitle className="sr-only">Menú</SheetTitle>
               <div className="flex flex-col gap-10 py-24 px-12 mt-8">
                 <a
                   href="#hero"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Home
                 </a>
                 <a
                   href="#services"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Servicios
                 </a>
                 <a
                   href="#memberships"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Membresías
@@ -102,7 +102,7 @@ const Header = () => {
                 <a
                   href="https://wa.me/5491162632894"
                   target="_blank"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Contacto

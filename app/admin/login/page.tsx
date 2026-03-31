@@ -19,7 +19,7 @@ export default function AdminLoginPage() {
   const [state, formAction, isPending] = useActionState(login, initialState);
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background-500 px-4 py-10">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-10">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,color-mix(in_oklab,var(--color-primary-500)_12%,transparent),transparent)]"
@@ -36,13 +36,13 @@ export default function AdminLoginPage() {
       <Card className="relative w-full max-w-md border-primary-500/20 shadow-2xl shadow-roca-500/10 ring-1 ring-roca-500/10">
         <CardHeader className="space-y-1 pb-2 text-center sm:text-left">
           <CardTitle className="text-xl font-semibold tracking-tight text-roca-500 sm:text-2xl">
-            <span className="font-bold">AYMA</span>
+            <span className="font-bold text-surface-500">AYMA</span>
             <span className="font-normal text-muted-foreground">
               {" "}
               · administración
             </span>
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-surface-500 hidden" hidden={true}>
             Ingresá con tu cuenta para gestionar el sitio.
           </CardDescription>
         </CardHeader>

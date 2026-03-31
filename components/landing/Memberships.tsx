@@ -60,7 +60,7 @@ const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
                         Membresías
                     </h2>
                     {/* <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden md:block" width={52} height={52} /> */}
-                    <p className="max-w-xl text-base sm:text-xl lg:text-left text-background-500">
+                    <p className="max-w-xl text-base sm:text-lg lg:text-left text-background-500">
                         Cada práctica se complementa con las demás para potenciar la experiencia y acompañar un proceso más completo y consciente.
                     </p>
                 </div>
