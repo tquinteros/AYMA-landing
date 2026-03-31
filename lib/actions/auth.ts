@@ -33,5 +33,5 @@ export async function login(_prevState: unknown, formData: FormData) {
 
 export async function logout() {
     await clearSessionCookie();
-    redirect("/login");
+    redirect("/admin/login");
 }
