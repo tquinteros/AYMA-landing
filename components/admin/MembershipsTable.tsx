@@ -1,7 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
-import { type MembershipData, updateMembershipsOrder } from "@/lib/actions/membership";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  getMemberships,
+  type MembershipData,
+  updateMembershipsOrder,
+} from "@/lib/actions/membership";
+import { membershipsQueryKey } from "@/lib/queries/memberships";
 import {
   Table,
   TableBody,
@@ -30,13 +36,18 @@ function formatPrice(price: number) {
 }
 
 export function MembershipsTable({ memberships }: MembershipsTableProps) {
-  const [items, setItems] = useState(memberships);
+  const queryClient = useQueryClient();
+  const { data: queriedMemberships = memberships } = useQuery({
+    queryKey: membershipsQueryKey,
+    queryFn: async (): Promise<MembershipData[]> => getMemberships(),
+    initialData: memberships,
+  });
+
+  const [items, setItems] = useState(queriedMemberships);
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, startSaving] = useTransition();
   const tbodyRef = useRef<HTMLTableSectionElement>(null);
 
-  // Stable handler: reads DOM order after SortableJS moves nodes, then syncs state.
-  // No closure over `items` needed — uses functional setItems updater + DOM read.
   const handleSortEnd = useCallback(() => {
     if (!tbodyRef.current) return;
     const rows = tbodyRef.current.querySelectorAll<HTMLTableRowElement>("tr[data-id]");
@@ -54,14 +65,10 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
     let instance: { destroy: () => void } | null = null;
     let cancelled = false;
 
-    // Dynamic import avoids SSR issues with this CJS package.
-    // The `|| mod` fallback handles CJS interop (module.exports = Sortable).
     import("sortablejs").then((mod) => {
       if (cancelled) return;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const SortableClass = (mod as any).default ?? mod;
-      // Mobile: native HTML5 DnD does not work on touch browsers — forceFallback
-      // uses Sortable’s pointer/touch path. delayOnTouchOnly avoids fighting scroll.
       instance = SortableClass.create(el, {
         animation: 150,
         handle: "[data-drag-handle]",
@@ -83,6 +90,10 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
     };
   }, [handleSortEnd]);
 
+  useEffect(() => {
+    setItems(queriedMemberships);
+  }, [queriedMemberships]);
+
   function handleSave() {
     startSaving(async () => {
       const result = await updateMembershipsOrder(items.map((m) => m._id));
@@ -91,6 +102,7 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
       } else {
         toast.success("Orden guardado.");
         setIsDirty(false);
+        await queryClient.invalidateQueries({ queryKey: membershipsQueryKey });
       }
     });
   }
@@ -107,7 +119,6 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Save bar — only visible when order has changed */}
       <div
         className={`flex items-center justify-between rounded-lg border border-primary/30 bg-primary/5 px-4 py-2.5 text-sm transition-all duration-200 ${
           isDirty ? "opacity-100" : "pointer-events-none opacity-0"
@@ -138,7 +149,6 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
           <TableBody ref={tbodyRef}>
             {items.map((membership) => (
               <TableRow key={membership._id} data-id={membership._id}>
-                {/* Drag handle */}
                 <TableCell className="w-8 pr-0 align-middle">
                   <span
                     data-drag-handle

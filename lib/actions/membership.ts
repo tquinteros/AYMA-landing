@@ -66,7 +66,6 @@ export async function createMembership(
       order: nextOrder,
     });
 
-    revalidatePath("/admin/memberships");
     revalidatePath("/");
     return { success: true };
   } catch (error) {
@@ -108,7 +107,6 @@ export async function updateMembership(
       bottomText: bottomText || undefined,
     });
 
-    revalidatePath("/admin/memberships");
     revalidatePath("/");
     return { success: true };
   } catch (error) {
@@ -122,7 +120,6 @@ export async function deleteMembership(id: string) {
     await requireAdmin();
     await connectDB();
     await MembershipModel.findByIdAndDelete(id);
-    revalidatePath("/admin/memberships");
     revalidatePath("/");
     return { success: true };
   } catch (error) {
@@ -144,7 +141,6 @@ export async function updateMembershipsOrder(
       )
     );
 
-    revalidatePath("/admin/memberships");
     revalidatePath("/");
     return { success: true };
   } catch (error) {

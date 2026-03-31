@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
+import { useQueryClient } from "@tanstack/react-query";
 import { createMembership } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +18,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PlusIcon } from "lucide-react";
 import { toast } from "sonner";
-
+import { useRouter } from "next/navigation";
+import { membershipsQueryKey } from "@/lib/queries/memberships";
 interface FormValues {
   name: string;
   price: string;
@@ -30,7 +32,8 @@ interface FormValues {
 export function CreateMembershipDialog() {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
-
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -58,6 +61,8 @@ export function CreateMembershipDialog() {
         toast.success("Membresía creada exitosamente.");
         reset();
         setOpen(false);
+        await queryClient.invalidateQueries({ queryKey: membershipsQueryKey });
+        router.refresh();
       }
     });
   }

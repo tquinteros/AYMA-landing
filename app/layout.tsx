@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { QueryProvider } from "@/components/query-client-provider";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import localFont from "next/font/local"
@@ -76,10 +77,12 @@ export default function RootLayout({
       className={cn("antialiased", satoshi.variable, "font-sans")}
     >
       <body>
-        <ThemeProvider defaultTheme="light">
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider defaultTheme="light">
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   )

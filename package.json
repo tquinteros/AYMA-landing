@@ -13,6 +13,7 @@
     "seed": "node --loader ts-node/esm scripts/adminseed.ts"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.96.0",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.2.1",
+    "@tanstack/eslint-plugin-query": "^5.96.0",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

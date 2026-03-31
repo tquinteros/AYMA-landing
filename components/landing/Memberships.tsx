@@ -72,11 +72,11 @@ const Memberships = ({ memberships: _memberships }: { memberships: LandingMember
                     <Button
                         type="button"
                         size="icon-sm"
-                        className="inline-flex bg-primary-500 border-none border-transparent hover:bg-primary-100 text-background-100 h-[22px] w-[22px] sm:h-7 sm:w-7 lg:w-11 lg:h-11 hover:text-background-100 rounded-full shadow-sm p-0"
+                        className="inline-flex bg-primary-500 border-none border-transparent hover:bg-primary-100 text-background-100 h-[22px] w-[22px] sm:h-7 sm:w-7 lg:w-7 lg:h-7 hover:text-background-100 rounded-full shadow-sm p-0"
                         disabled={!canScrollPrev}
                         onClick={() => api?.scrollPrev()}
                     >
-                        <ChevronLeftIcon className="size-2.5 sm:size-3.5 lg:size-5" />
+                        <ChevronLeftIcon className="size-2.5 sm:size-3.5 lg:size-3.5" />
                         <span className="sr-only">Previous slide</span>
                     </Button>
 
@@ -92,11 +92,11 @@ const Memberships = ({ memberships: _memberships }: { memberships: LandingMember
                     <Button
                         type="button"
                         size="icon-sm"
-                        className="inline-flex bg-primary-500 border-none border-transparent hover:bg-primary-100 text-background-100 h-[22px] w-[22px] sm:h-7 sm:w-7 lg:w-11 lg:h-11 hover:text-background-100 rounded-full shadow-sm p-0"
+                        className="inline-flex bg-primary-500 border-none border-transparent hover:bg-primary-100 text-background-100 h-[22px] w-[22px] sm:h-7 sm:w-7 lg:w-7 lg:h-7 hover:text-background-100 rounded-full shadow-sm p-0"
                         disabled={!canScrollNext}
                         onClick={() => api?.scrollNext()}
                     >
-                        <ChevronRightIcon className="size-2.5 sm:size-3.5 lg:size-5" />
+                        <ChevronRightIcon className="size-2.5 sm:size-3.5 lg:size-3.5" />
                         <span className="sr-only">Next slide</span>
                     </Button>
                 </div>

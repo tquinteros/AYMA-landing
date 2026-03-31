@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { deleteMembership } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +17,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Trash2Icon } from "lucide-react";
 import { toast } from "sonner";
+import { membershipsQueryKey } from "@/lib/queries/memberships";
 
 interface DeleteMembershipButtonProps {
   id: string;
@@ -24,6 +26,7 @@ interface DeleteMembershipButtonProps {
 
 export function DeleteMembershipButton({ id, name }: DeleteMembershipButtonProps) {
   const [isPending, startTransition] = useTransition();
+  const queryClient = useQueryClient();
 
   function handleDelete() {
     startTransition(async () => {
@@ -32,6 +35,7 @@ export function DeleteMembershipButton({ id, name }: DeleteMembershipButtonProps
         toast.error(result.error);
       } else {
         toast.success("Membresía eliminada.");
+        await queryClient.invalidateQueries({ queryKey: membershipsQueryKey });
       }
     });
   }
