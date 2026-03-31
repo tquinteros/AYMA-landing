@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import { memberships } from '@/data/membership'
 import MemberShipCard from './MemberShipCard'
 
 import {
@@ -12,7 +11,18 @@ import {
 import { Button } from '../ui/button'
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-const Memberships = () => {
+
+interface LandingMembership {
+    id: string
+    name: string
+    description: string
+    price: number
+    features: string[]
+    tag?: string
+    bottomText?: string
+}
+
+const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
 
     const [api, setApi] = useState<CarouselApi | null>(null)
     const [current, setCurrent] = useState(0)

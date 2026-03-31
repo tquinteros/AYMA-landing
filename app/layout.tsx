@@ -3,9 +3,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import Header from "@/components/Header";
 import localFont from "next/font/local"
-import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
   title: "AYMA | Wellness Club",
@@ -79,9 +77,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider defaultTheme="light">
-          <Header />
           {children}
-          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>
