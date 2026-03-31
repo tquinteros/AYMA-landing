@@ -4,7 +4,7 @@ import { Badge } from '../ui/badge'
 
 
 interface Membership {
-    id: number
+    id: string | number
     name: string
     description: string
     price: number
@@ -36,17 +36,17 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                 </Badge>
             )}
             <CardHeader className="p-0">
-                <CardTitle className="text-2xl sm:text-3xl font-normal text-background-500">
+                <CardTitle className="text-xl sm:text-2xl font-normal text-background-500">
                     <MembershipCardTitle name={membership.name} />
                 </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4 flex-1 p-0 pt-4">
-                <p className="text-background-500 text-sm sm:text-[16px] leading-snug">{membership.description}</p>
+                <p className="text-background-500 text-sm sm:text-md leading-snug">{membership.description}</p>
                 {/* <p>{membership.price}</p> */}
-                <span className="text-background-500 text-base sm:text-lg font-bold">INCLUYE</span>
-                <ul className="flex flex-col ml-2 gap-1.5">
+                <span className="text-background-500 text-base sm:text-[16px] font-bold">INCLUYE</span>
+                <ul className="flex flex-col ml-2">
                     {membership.features.map((feature: string) => (
-                        <li key={feature} className="flex text-base sm:text-lg items-center text-background-500 gap-2">
+                        <li key={feature} className="flex text-base sm:text-[16px] items-center text-background-500 gap-2">
                             <div className="w-1 h-1 bg-background-500 rounded-full"></div>
                             {feature}
                         </li>

@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import { memberships } from '@/data/membership'
 import MemberShipCard from './MemberShipCard'
 
 import {
@@ -12,7 +11,20 @@ import {
 import { Button } from '../ui/button'
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-const Memberships = () => {
+import { memberships as localmemberships } from "@/data/membership"
+
+interface LandingMembership {
+    id: string
+    name: string
+    description: string
+    price: number
+    features: string[]
+    tag?: string
+    bottomText?: string
+}
+
+const Memberships = ({ memberships: _memberships }: { memberships: LandingMembership[] }) => {
+    void _memberships
 
     const [api, setApi] = useState<CarouselApi | null>(null)
     const [current, setCurrent] = useState(0)
@@ -50,40 +62,41 @@ const Memberships = () => {
                         Membresías
                     </h2>
                     {/* <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden md:block" width={52} height={52} /> */}
-                    <p className="max-w-xl text-base sm:text-xl lg:text-left text-background-500">
+                    <p className="max-w-xl text-base sm:text-lg lg:text-left text-background-500">
                         Cada práctica se complementa con las demás para potenciar la experiencia y acompañar un proceso más completo y consciente.
                     </p>
                 </div>
             </div>
-            <div className="relative flex flex-col gap-4 mt-10 sm:mt-6 max-w-7xl mx-auto px-5 sm:px-16 xl:px-0">
-                <Carousel setApi={setApi} className="relative ">
-                    <CarouselContent className="items-stretch pt-5 sm:pt-7">
-                        {memberships.map((membership) => (
-                            <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
-                                <MemberShipCard membership={membership} />
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </Carousel>
-                <div className="hidden xl:flex pointer-events-none justify-between absolute inset-y-0 left-0 right-0 items-center">
+            <div className="mt-10 sm:mt-6 px-5 sm:px-8 lg:px-24">
+                <div className="grid grid-cols-[22px_minmax(0,1fr)_22px] items-center gap-2 sm:grid-cols-[28px_minmax(0,1fr)_28px] sm:gap-3 lg:grid-cols-[44px_minmax(0,1fr)_44px] lg:gap-6">
                     <Button
                         type="button"
                         size="icon-sm"
-                        className="pointer-events-auto bg-primary-500 md:-translate-x-12 border-none border-transparent lg:-translate-x-16 hover:bg-primary-100 text-background-100 w-11 h-11 hover:text-background-100 rounded-full"
+                        className="inline-flex bg-primary-500 border-none border-transparent hover:bg-primary-100 text-background-100 h-[22px] w-[22px] sm:h-7 sm:w-7 lg:w-11 lg:h-11 hover:text-background-100 rounded-full shadow-sm p-0"
                         disabled={!canScrollPrev}
                         onClick={() => api?.scrollPrev()}
                     >
-                        <ChevronLeftIcon />
+                        <ChevronLeftIcon className="size-2.5 sm:size-3.5 lg:size-5" />
                         <span className="sr-only">Previous slide</span>
                     </Button>
+
+                    <Carousel setApi={setApi} className="relative min-w-0">
+                        <CarouselContent className="items-stretch pt-5 sm:pt-7">
+                            {localmemberships.map((membership) => (
+                                <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
+                                    <MemberShipCard membership={membership} />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                    </Carousel>
                     <Button
                         type="button"
                         size="icon-sm"
-                        className="pointer-events-auto bg-primary-500 md:translate-x-12 border-none border-transparent lg:translate-x-16 hover:bg-primary-100 text-background-100 w-11 h-11 hover:text-background-100 rounded-full"
+                        className="inline-flex bg-primary-500 border-none border-transparent hover:bg-primary-100 text-background-100 h-[22px] w-[22px] sm:h-7 sm:w-7 lg:w-11 lg:h-11 hover:text-background-100 rounded-full shadow-sm p-0"
                         disabled={!canScrollNext}
                         onClick={() => api?.scrollNext()}
                     >
-                        <ChevronRightIcon />
+                        <ChevronRightIcon className="size-2.5 sm:size-3.5 lg:size-5" />
                         <span className="sr-only">Next slide</span>
                     </Button>
                 </div>
@@ -101,7 +114,7 @@ const Memberships = () => {
                 </div>
             </div>
             <div className='flex flex-col items-center gap-6 sm:gap-8 mt-8 px-5 sm:px-8'>
-                <p className="text-background-500 text-left lg:text-center text-lg max-w-3xl">
+                <p className="text-background-500 text-center lg:text-center text-lg max-w-3xl">
                     Si querés más información sobre las experiencias y valores, escribinos por WhatsApp. <br className="hidden sm:block" />
                     Estamos para ayudarte a encontrar tu forma de vivir AYMA.
                 </p>

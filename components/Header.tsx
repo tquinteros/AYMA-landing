@@ -2,11 +2,14 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { Menu, XIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import Link from "next/link"
 
 const Header = () => {
+  const pathname = usePathname()
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,6 +31,8 @@ const Header = () => {
   const navTextColor = scrolledPastHero ? "text-background-500" : "text-background-900"
 
   const logoSrc = scrolledPastHero ? "/header-new-pass.svg" : "/header-new.svg"
+
+  if (pathname.startsWith("/admin")) return null
 
   return (
     <header
@@ -70,26 +75,26 @@ const Header = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-surface-500">
+            <SheetContent side="right" className="bg-roca-500">
               <SheetTitle className="sr-only">Menú</SheetTitle>
               <div className="flex flex-col gap-10 py-24 px-12 mt-8">
                 <a
                   href="#hero"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Home
                 </a>
                 <a
                   href="#services"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Servicios
                 </a>
                 <a
                   href="#memberships"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Membresías
@@ -97,7 +102,7 @@ const Header = () => {
                 <a
                   href="https://wa.me/5491162632894"
                   target="_blank"
-                  className="text-lg font-light uppercase tracking-[4px] text-roca-500 hover:opacity-75 transition-opacity"
+                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Contacto
