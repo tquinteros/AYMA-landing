@@ -10,11 +10,11 @@ import { logout } from "@/lib/actions/auth";
 import { useState } from "react";
 
 const navItems = [
-  {
-    label: "Dashboard",
-    href: "/admin",
-    icon: LayoutDashboard,
-  },
+  // {
+  //   label: "Dashboard",
+  //   href: "/admin",
+  //   icon: LayoutDashboard,
+  // },
   {
     label: "Membresías",
     href: "/admin/memberships",
@@ -59,11 +59,11 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col h-full py-6 px-4">
       <div className="mb-8 px-3">
-        <span className="text-lg font-bold tracking-tight">AYMA</span>
-        <span className="text-muted-foreground text-sm font-normal">
+        <Link href="/" className="text-lg font-bold tracking-tight">AYMA</Link>
+        <Link href="/admin" className="text-muted-foreground text-sm font-normal">
           {" "}
           · admin
-        </span>
+        </Link>
       </div>
       <NavLinks onNavigate={onNavigate} />
       <div className="mt-auto pt-4 border-t">

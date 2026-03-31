@@ -11,7 +11,7 @@ import {
 import { Button } from '../ui/button'
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { memberships as localmemberships } from "@/data/membership"
+// import { memberships as localmemberships } from "@/data/membership"
 
 interface LandingMembership {
     id: string
@@ -23,8 +23,8 @@ interface LandingMembership {
     bottomText?: string
 }
 
-const Memberships = ({ memberships: _memberships }: { memberships: LandingMembership[] }) => {
-    void _memberships
+const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
+    // void _memberships
 
     const [api, setApi] = useState<CarouselApi | null>(null)
     const [current, setCurrent] = useState(0)
@@ -82,7 +82,7 @@ const Memberships = ({ memberships: _memberships }: { memberships: LandingMember
 
                     <Carousel setApi={setApi} className="relative min-w-0">
                         <CarouselContent className="items-stretch pt-5 sm:pt-7">
-                            {localmemberships.map((membership) => (
+                            {memberships.map((membership) => (
                                 <CarouselItem className="basis-full sm:basis-1/2 xl:basis-1/3 flex" key={membership.id}>
                                     <MemberShipCard membership={membership} />
                                 </CarouselItem>
