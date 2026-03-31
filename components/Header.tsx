@@ -60,8 +60,6 @@ const Header = () => {
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <Link href="/admin" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Admin</Link>
-          <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="https://wa.me/5491162632894" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
         </nav>
 
