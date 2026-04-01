@@ -103,14 +103,14 @@ const Panel = ({
             initial="closed"
             animate="open"
             exit="closed"
-            className="w-full h-full overflow-hidden lg:overflow-hidden relative bg-roca-500 max-lg:max-h-[75vh] max-lg:overflow-y-auto"
+            className="relative w-full bg-roca-500 lg:h-full lg:overflow-hidden"
           >
             <motion.div
               variants={descriptionVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="h-full w-full p-5 sm:p-8 flex flex-col"
+              className="w-full p-5 sm:p-8 lg:h-full flex flex-col"
             >
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3  min-w-0">
