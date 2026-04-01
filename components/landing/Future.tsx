@@ -12,22 +12,22 @@ const Future = () => {
   return (
     <section
       id="future"
-      className="relative min-h-[560px] w-full bg-roca-500 sm:min-h-[620px] lg:min-h-[83vh]"
+      className="w-full bg-roca-500"
     >
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 px-5 sm:px-8 lg:px-24">
-        <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 md:grid-cols-4 md:gap-12 lg:gap-16">
+      <div className="px-5 pt-16 sm:px-8 sm:pt-24 lg:px-24 lg:pt-[268px]">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-8 sm:gap-y-9 md:grid-cols-4 md:gap-10 lg:gap-12">
           {futureItems.map((item) => (
             <div
               key={item.label}
-              className="flex flex-col items-center gap-6 sm:gap-12"
+              className="flex flex-col items-center gap-4 sm:gap-8"
             >
-              <div className="flex h-[84px] w-full items-center justify-center sm:h-[100px] lg:h-[120px]">
+              <div className="flex h-[72px] w-full items-center justify-center sm:h-[86px] lg:h-[96px]">
                 <Image
                   src={item.src}
                   alt={item.label}
                   width={100}
                   height={100}
-                  className="h-auto w-[70px] sm:w-[85px] lg:w-[100px]"
+                  className="h-auto w-[58px] sm:w-[70px] lg:w-[82px]"
                 />
               </div>
               <span className="text-center text-[13px] tracking-[2px] text-surface-500 sm:text-sm sm:tracking-[3px] lg:text-base lg:tracking-[5px]">
@@ -38,7 +38,7 @@ const Future = () => {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col items-center gap-1 px-5 pb-14 text-center sm:px-8 lg:items-end lg:px-24 lg:pb-20 lg:text-right">
+      <div className="pointer-events-none z-10 mt-12 flex flex-col items-center gap-1 px-5 pb-16 text-center sm:mt-16 sm:px-8 sm:pb-20 lg:mt-[114px] lg:items-end lg:px-24 lg:pb-[100px] lg:text-right">
         <p className="text-surface-500 text-xl sm:text-3xl lg:text-[39px]">
           PORQUE EL FUTURO SE CONSTRUYE,
         </p>
