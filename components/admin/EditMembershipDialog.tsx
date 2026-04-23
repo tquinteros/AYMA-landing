@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { updateMembership, type MembershipData } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
 import { FeatureTagInput } from "./FeatureTagInput";
+import MemberShipCard from "@/components/landing/MemberShipCard";
 interface FormValues {
   name: string;
   price: string;
@@ -36,6 +37,7 @@ interface EditMembershipDialogProps {
 
 export function EditMembershipDialog({ membership }: EditMembershipDialogProps) {
   const [open, setOpen] = useState(false);
+  const [showPreview, setShowPreview] = useState(true);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -55,11 +57,20 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
       bottomText: membership.bottomText ?? "",
     },
   });
+  const watchedName = useWatch({ control, name: "name" });
+  const watchedDescription = useWatch({ control, name: "description" });
+  const watchedPrice = useWatch({ control, name: "price" });
+  const watchedFeatures = useWatch({ control, name: "features" });
+  const watchedTag = useWatch({ control, name: "tag" });
+  const watchedBottomText = useWatch({ control, name: "bottomText" });
 
   function handleOpenChange(next: boolean) {
     if (isPending) return;
     setOpen(next);
-    if (!next) reset();
+    if (!next) {
+      reset();
+      setShowPreview(true);
+    }
   }
 
   function onSubmit(values: FormValues) {
@@ -172,6 +183,38 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
                 {...register("bottomText")}
               />
             </div>
+          </div>
+
+          <div className="flex flex-col gap-2 pt-2">
+            <div className="flex items-center mb-2 justify-between gap-2">
+              <p className="text-sm font-medium">Vista previa</p>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => setShowPreview((prev) => !prev)}
+              >
+                {showPreview ? "Ocultar" : "Mostrar"}
+              </Button>
+            </div>
+            {showPreview && (
+              <MemberShipCard
+                membership={{
+                  id: `${membership._id}-preview`,
+                  name: watchedName?.trim() || "AYMA Plan",
+                  description:
+                    watchedDescription?.trim() ||
+                    "Describí los beneficios principales...",
+                  price: Number(watchedPrice || 0),
+                  features:
+                    Array.isArray(watchedFeatures) && watchedFeatures.length > 0
+                      ? watchedFeatures
+                      : ["Acceso ilimitado"],
+                  tag: watchedTag?.trim() || undefined,
+                  bottomText: watchedBottomText?.trim() || undefined,
+                }}
+              />
+            )}
           </div>
 
           <DialogFooter showCloseButton>

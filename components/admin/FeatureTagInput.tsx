@@ -3,7 +3,6 @@
 import { useState, KeyboardEvent } from "react";
 import { Controller, Control, FieldErrors } from "react-hook-form";
 import { X } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 
@@ -69,7 +68,7 @@ export function FeatureTagInput({ control, errors }: FeatureInputProps) {
 
                         <div
                             className={`
-                flex flex-wrap gap-1.5 min-h-[80px] w-full rounded-md border
+                flex flex-wrap items-start content-start gap-1.5 min-h-11 w-full rounded-md border
                 bg-background px-3 py-2 text-sm cursor-text
                 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2
                 ${errors.features ? "border-destructive" : "border-input"}
