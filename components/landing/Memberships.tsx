@@ -50,7 +50,7 @@ const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
     }, [api])
 
     const handleWhatsApp = () => {
-        window.open("https://wa.me/5491162632894", "_blank")
+        window.open("https://wa.me/5491131003023", "_blank")
     }
 
     return (

@@ -19,7 +19,7 @@ const Footer = () => {
                     </a>
                     <span className='hidden sm:block text-background-500'>|</span>
                     <div className='flex items-center gap-2'>
-                        <a href="https://wa.me/5491162632894" target="_blank" rel="noreferrer">
+                        <a href="https://wa.me/5491131003023" target="_blank" rel="noreferrer">
                             <Image src="/whatsapp.svg" alt="facebook" width={28} height={28} />
                         </a>
                         <a href="https://www.instagram.com/aymawellness/" target="_blank" rel="noreferrer">
