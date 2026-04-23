@@ -1,10 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { login } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -17,6 +18,20 @@ const initialState = { error: "" };
 
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(login, initialState);
+  const [loadingStep, setLoadingStep] = useState<0 | 1>(0);
+
+  useEffect(() => {
+    if (!isPending) return;
+
+    const timer = setTimeout(() => {
+      setLoadingStep(1);
+    }, 1400);
+
+    return () => clearTimeout(timer);
+  }, [isPending]);
+
+  const loadingMessage =
+    loadingStep === 0 ? "Verificando credenciales..." : "Validando acceso de administrador...";
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-10">
@@ -48,7 +63,11 @@ export default function LoginPage() {
         </CardHeader>
 
         <CardContent>
-          <form action={formAction} className="flex flex-col gap-5">
+          <form
+            action={formAction}
+            onSubmit={() => setLoadingStep(0)}
+            className="flex flex-col gap-5"
+          >
             <div className="space-y-2">
               <Label htmlFor="admin-email">Email</Label>
               <Input
@@ -92,7 +111,14 @@ export default function LoginPage() {
               disabled={isPending}
               className="h-11 w-full border-0 bg-primary-500 text-background-500 shadow-md hover:bg-primary-500/90 focus-visible:ring-primary-500/40"
             >
-              {isPending ? "Ingresando…" : "Ingresar"}
+              {isPending ? (
+                <span className="inline-flex items-center gap-2">
+                  <Loader2 className="size-4 animate-spin" />
+                  {loadingMessage}
+                </span>
+              ) : (
+                "Ingresar"
+              )}
             </Button>
           </form>
         </CardContent>
