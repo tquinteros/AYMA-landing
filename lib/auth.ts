@@ -3,7 +3,8 @@ import { cookies } from "next/headers";
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET!);
 const COOKIE_NAME = "admin_token";
-const MAX_AGE = 60 * 60 * 8; // 8 horas
+// const MAX_AGE = 60 * 60 * 8;
+const MAX_AGE = 60 * 60 * 24 * 3;
 
 export interface JWTPayload {
   userId: string;

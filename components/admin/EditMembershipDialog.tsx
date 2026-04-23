@@ -18,13 +18,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PencilIcon } from "lucide-react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";  
+import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
+import { FeatureTagInput } from "./FeatureTagInput";
 interface FormValues {
   name: string;
   price: string;
   description: string;
-  features: string;
+  features: string[];
   tag: string;
   bottomText: string;
 }
@@ -42,13 +43,14 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
       name: membership.name,
       price: String(membership.price),
       description: membership.description,
-      features: membership.features.join("\n"),
+      features: membership.features,
       tag: membership.tag ?? "",
       bottomText: membership.bottomText ?? "",
     },
@@ -64,7 +66,7 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
     const formData = new FormData();
     formData.append("id", membership._id);
     (Object.keys(values) as (keyof FormValues)[]).forEach((key) =>
-      formData.append(key, values[key])
+      formData.append(key, Array.isArray(values[key]) ? values[key].join("\n") : values[key])
     );
 
     startTransition(async () => {
@@ -146,30 +148,7 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
             )}
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <Label htmlFor={`edit-features-${id}`}>
-              Beneficios *{" "}
-              <span className="text-muted-foreground font-normal">
-                (uno por línea)
-              </span>
-            </Label>
-            <Textarea
-              id={`edit-features-${id}`}
-              rows={4}
-              aria-invalid={!!errors.features}
-              {...register("features", {
-                required: "Agregá al menos un beneficio.",
-                validate: (v) =>
-                  v.split("\n").some((l) => l.trim()) ||
-                  "Agregá al menos un beneficio.",
-              })}
-            />
-            {errors.features && (
-              <p className="text-xs text-destructive">
-                {errors.features.message}
-              </p>
-            )}
-          </div>
+          <FeatureTagInput control={control} errors={errors} />
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
@@ -196,7 +175,7 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
           </div>
 
           <DialogFooter showCloseButton>
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={isPending} className="bg-primary-500 hover:bg-primary-500/90 text-background-500">
               {isPending ? "Guardando..." : "Guardar cambios"}
             </Button>
           </DialogFooter>

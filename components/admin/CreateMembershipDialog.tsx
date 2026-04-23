@@ -20,11 +20,12 @@ import { PlusIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
+import { FeatureTagInput } from "./FeatureTagInput";
 interface FormValues {
   name: string;
   price: string;
   description: string;
-  features: string;
+  features: string[];
   tag: string;
   bottomText: string;
 }
@@ -38,6 +39,7 @@ export function CreateMembershipDialog() {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -50,7 +52,7 @@ export function CreateMembershipDialog() {
   function onSubmit(values: FormValues) {
     const formData = new FormData();
     (Object.keys(values) as (keyof FormValues)[]).forEach((key) =>
-      formData.append(key, values[key])
+      formData.append(key, Array.isArray(values[key]) ? values[key].join("\n") : values[key])
     );
 
     startTransition(async () => {
@@ -70,7 +72,7 @@ export function CreateMembershipDialog() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button>
+        <Button className="bg-primary-500 hover:bg-primary-500/90 text-background-500">
           <PlusIcon />
           Nueva membresía
         </Button>
@@ -134,6 +136,8 @@ export function CreateMembershipDialog() {
             )}
           </div>
 
+          <FeatureTagInput control={control} errors={errors} />
+
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="create-features">
               Beneficios *{" "}
@@ -149,7 +153,7 @@ export function CreateMembershipDialog() {
               {...register("features", {
                 required: "Agregá al menos un beneficio.",
                 validate: (v) =>
-                  v.split("\n").some((l) => l.trim()) ||
+                  Array.isArray(v) && v.some((l) => l.trim()) ||
                   "Agregá al menos un beneficio.",
               })}
             />
@@ -190,7 +194,7 @@ export function CreateMembershipDialog() {
           </div>
 
           <DialogFooter showCloseButton>
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={isPending} className="bg-primary-500 hover:bg-primary-500/90 text-background-500">
               {isPending ? "Creando..." : "Crear membresía"}
             </Button>
           </DialogFooter>
