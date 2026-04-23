@@ -28,10 +28,10 @@ export async function login(_prevState: unknown, formData: FormData) {
         return { error: "Error del servidor. Intentá de nuevo." };
     }
 
-    redirect("/admin");
+    redirect("/admin/memberships");
 }
 
 export async function logout() {
     await clearSessionCookie();
-    redirect("/admin/login");
+    redirect("/login");
 }

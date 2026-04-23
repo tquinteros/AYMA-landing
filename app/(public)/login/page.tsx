@@ -15,7 +15,7 @@ import {
 
 const initialState = { error: "" };
 
-export default function AdminLoginPage() {
+export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(login, initialState);
 
   return (
