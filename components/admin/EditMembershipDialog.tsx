@@ -37,7 +37,7 @@ interface EditMembershipDialogProps {
 
 export function EditMembershipDialog({ membership }: EditMembershipDialogProps) {
   const [open, setOpen] = useState(false);
-  const [showPreview, setShowPreview] = useState(true);
+  const [showPreview, setShowPreview] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -185,7 +185,7 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 pt-2">
+          {/* <div className="flex flex-col gap-2 pt-2">
             <div className="flex items-center mb-2 justify-between gap-2">
               <p className="text-sm font-medium">Vista previa</p>
               <Button
@@ -215,7 +215,7 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
                 }}
               />
             )}
-          </div>
+          </div> */}
 
           <DialogFooter showCloseButton>
             <Button type="submit" disabled={isPending} className="bg-primary-500 hover:bg-primary-500/90 text-background-500">

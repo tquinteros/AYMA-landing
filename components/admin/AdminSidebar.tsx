@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, CreditCard, LogOut, Menu } from "lucide-react";
+import { CreditCard, LogOut, Menu } from "lucide-react";
+import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { logout } from "@/lib/actions/auth";
 import { useState } from "react";
 
+const ThemeSwitcher = dynamic(
+  () => import("@/components/theme-switcher").then((mod) => mod.ThemeSwitcher),
+  { ssr: false }
+);
 const navItems = [
   // {
   //   label: "Dashboard",
@@ -58,12 +63,11 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
 function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col h-full py-6 px-4">
-      <div className="mb-8 px-3">
-        <Link href="/" className="text-lg font-bold tracking-tight">AYMA</Link>
-        <Link href="/admin" className="text-muted-foreground text-sm font-normal">
-          {" "}
-          · admin
-        </Link>
+      <div className="mb-8 px-3 flex items-center justify-between">
+        <div>
+          <Link href="/" className="text-lg font-bold tracking-tight">AYMA </Link>
+        </div>
+        <ThemeSwitcher />
       </div>
       <NavLinks onNavigate={onNavigate} />
       <div className="mt-auto pt-4 border-t">
