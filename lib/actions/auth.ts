@@ -3,7 +3,12 @@
 import { redirect } from "next/navigation";
 import { connectDB } from "@/lib/db";
 import { UserModel } from "@/lib/models/User";
-import { signToken, setSessionCookie, clearSessionCookie } from "@/lib/auth";
+import {
+    signToken,
+    setSessionCookie,
+    clearSessionCookie,
+    getSession,
+} from "@/lib/auth";
 import bcrypt from "bcryptjs";
 export async function login(_prevState: unknown, formData: FormData) {
     const email = formData.get("email") as string;
@@ -34,4 +39,9 @@ export async function login(_prevState: unknown, formData: FormData) {
 export async function logout() {
     await clearSessionCookie();
     redirect("/login");
+}
+
+export async function getSessionAction() {
+    const session = await getSession();
+    return Boolean(session);
 }

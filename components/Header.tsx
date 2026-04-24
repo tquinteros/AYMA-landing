@@ -4,14 +4,21 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
+import { useQuery } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import Link from "next/link"
+import { getSessionAction } from "@/lib/actions/auth"
 
 const Header = () => {
   const pathname = usePathname()
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const { data: isAuthenticated } = useQuery<boolean>({
+    queryKey: ["session"],
+    queryFn: getSessionAction,
+  })
+  const hasSession = Boolean(isAuthenticated)
 
   useEffect(() => {
     const hero = document.getElementById("hero")
@@ -61,6 +68,14 @@ const Header = () => {
           <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="https://wa.me/5491131003023" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
+          {hasSession && (
+            <>
+              <span className="mx-5 select-none" aria-hidden>|</span>
+              <Link href="/admin/memberships" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">
+                Admin
+              </Link>
+            </>
+          )}
         </nav>
 
         <div className="md:hidden">
@@ -107,6 +122,15 @@ const Header = () => {
                 >
                   Contacto
                 </a>
+                {hasSession && (
+                  <Link
+                    href="/admin/memberships"
+                    className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Admin
+                  </Link>
+                )}
               </div>
             </SheetContent>
           </Sheet>
