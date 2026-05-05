@@ -57,7 +57,7 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                 </ul>
             </CardContent>
             <div className='mt-8'>
-                <p className="text-md sm:text-lg font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
+                <p className="text-md sm:text-[16px] font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
                 {membership.bottomText && (
                     <p className="text-background-500 text-sm ml-2 leading-snug">{membership.bottomText}</p>
                 )}
