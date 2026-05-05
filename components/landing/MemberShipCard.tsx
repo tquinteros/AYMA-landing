@@ -44,7 +44,7 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                     <MembershipCardTitle name={membership.name} />
                 </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col gap-4 flex-1 p-0 pt-4">
+            <CardContent className="flex flex-col gap-4 flex-1 p-0 pt-3">
                 <p className="text-background-500 text-sm sm:text-md leading-snug">{membership.description}</p>
                 <span className="text-background-500 text-base sm:text-[16px] font-bold">INCLUYE</span>
                 <ul className="flex flex-col ml-2">
@@ -57,10 +57,10 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                 </ul>
             </CardContent>
             <div className='mt-8'>
-                <p className="text-md sm:text-[16px] font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
                 {membership.bottomText && (
-                    <p className="text-background-500 text-sm ml-2 leading-snug">{membership.bottomText}</p>
+                    <p className="text-background-500 text-sm leading-snug">{membership.bottomText}</p>
                 )}
+                <p className="text-md sm:text-[16px] font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
             </div>
         </Card>
     )
