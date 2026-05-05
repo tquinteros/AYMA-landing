@@ -13,6 +13,10 @@ interface Membership {
     bottomText?: string
 }
 
+const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('es-AR').format(price)
+}
+
 function MembershipCardTitle({ name }: { name: string }) {
     if (name.startsWith("AYMA")) {
         return (
@@ -42,7 +46,6 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
             </CardHeader>
             <CardContent className="flex flex-col gap-4 flex-1 p-0 pt-4">
                 <p className="text-background-500 text-sm sm:text-md leading-snug">{membership.description}</p>
-                {/* <p>{membership.price}</p> */}
                 <span className="text-background-500 text-base sm:text-[16px] font-bold">INCLUYE</span>
                 <ul className="flex flex-col ml-2">
                     {membership.features.map((feature: string) => (
@@ -53,9 +56,12 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                     ))}
                 </ul>
             </CardContent>
-            {membership.bottomText && (
-                <p className="text-background-500 mt-8 text-sm leading-snug">{membership.bottomText}</p>
-            )}
+            <div className='mt-8'>
+                <p className="text-md sm:text-lg font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
+                {membership.bottomText && (
+                    <p className="text-background-500 text-sm ml-2 leading-snug">{membership.bottomText}</p>
+                )}
+            </div>
         </Card>
     )
 }
