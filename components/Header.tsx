@@ -67,7 +67,7 @@ const Header = () => {
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="https://wa.me/5491131003023" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
+          <a href="https://wa.me/5491124868493" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
           {hasSession && (
             <>
               <span className="mx-5 select-none" aria-hidden>|</span>
@@ -115,7 +115,7 @@ const Header = () => {
                   Membresías
                 </a>
                 <a
-                  href="https://wa.me/5491131003023"
+                  href="https://wa.me/5491124868493"
                   target="_blank"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
