@@ -17,7 +17,7 @@ const HeroLongevity = () => {
 
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <h1 className="text-[64px] text-surface-500">LONGEVIDAD</h1>
+        <h1 className="lg:text-[64px] text-5xl text-surface-500">LONGEVIDAD</h1>
       </div>
     </section>
   )
