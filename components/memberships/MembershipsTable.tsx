@@ -12,6 +12,7 @@ interface Membership {
   id: string
   name: string
   price: number
+  anualPrice?: number
   features: string[]
 }
 
@@ -77,7 +78,13 @@ const parseFeature = (feature: string): ParsedFeature => {
   return { label: rawLabel }
 }
 
-const MembershipsTable = ({ memberships }: { memberships: Membership[] }) => {
+const MembershipsTable = ({
+  memberships,
+  isAnnual = false,
+}: {
+  memberships: Membership[]
+  isAnnual?: boolean
+}) => {
   const featureRows = Array.from(
     memberships.reduce<Map<string, string>>((features, membership) => {
       membership.features.forEach((feature) => {
@@ -119,24 +126,34 @@ const MembershipsTable = ({ memberships }: { memberships: Membership[] }) => {
         <TableHeader>
           <TableRow className="border-roca-500/20 hover:bg-transparent">
             <TableHead className="sticky left-0 z-20 w-[220px] border-r border-roca-500/20 bg-surface-500 text-roca-500 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-roca-500 after:content-['']" />
-            {memberships.map((membership) => (
-              <TableHead
-                key={membership.id}
-                className="min-w-36 border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-center text-roca-500 last:border-r-0"
-              >
-                <div className="flex flex-col items-center gap-1">
-                  <span className="text-sm font-bold uppercase tracking-wide">
-                    {membership.name}
-                  </span>
-                  <span className="text-base font-bold">
-                    ${formatPrice(membership.price)}
-                    <span className="ml-1 text-xs font-normal">/Mes</span>
-                  </span>
-                </div>
-              </TableHead>
-            ))}
+            {memberships.map((membership) => {
+              const selectedPrice = isAnnual ? membership.anualPrice : membership.price
+              const periodLabel = isAnnual ? "/Año" : "/Mes"
+              const hasSelectedPrice = selectedPrice !== undefined
+
+              return (
+                <TableHead
+                  key={membership.id}
+                  className="min-w-36 border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-center text-roca-500 last:border-r-0"
+                >
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="text-sm font-bold uppercase tracking-wide">
+                      {membership.name}
+                    </span>
+                    <span className="text-base font-bold">
+                      {hasSelectedPrice ? `$${formatPrice(selectedPrice)}` : "---"}
+                      {hasSelectedPrice && (
+                        <span className="ml-1 text-xs font-normal">
+                          {periodLabel}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                </TableHead>
+              )
+            })}
           </TableRow>
-          
+
         </TableHeader>
         <TableBody>
           {featureRows.map(([featureKey, featureLabel]) => (
@@ -161,7 +178,11 @@ const MembershipsTable = ({ memberships }: { memberships: Membership[] }) => {
                         <CheckIcon />
                       )
                     ) : (
-                      <span className="text-roca-500/60">---</span>
+                      <div className="flex items-center justify-center">
+                        <svg width="21" height="1" viewBox="0 0 21 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <line y1="0.5" x2="20.291" y2="0.5" stroke="#252727" />
+                        </svg>
+                      </div>
                     )}
                   </TableCell>
                 )

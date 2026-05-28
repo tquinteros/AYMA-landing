@@ -15,6 +15,7 @@ export interface MembershipData {
   name: string;
   description: string;
   price: number;
+  anualPrice?: number;
   features: string[];
   tag?: string;
   bottomText?: string;
@@ -40,6 +41,8 @@ export async function createMembership(
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
+    const anualPriceRaw = formData.get("anualPrice") as string | null;
+    const anualPrice = anualPriceRaw ? parseFloat(anualPriceRaw) : undefined;
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -48,7 +51,13 @@ export async function createMembership(
     const tag = (formData.get("tag") as string) || undefined;
     const bottomText = (formData.get("bottomText") as string) || undefined;
 
-    if (!name || !description || isNaN(price) || features.length === 0) {
+    if (
+      !name ||
+      !description ||
+      isNaN(price) ||
+      (anualPrice !== undefined && isNaN(anualPrice)) ||
+      features.length === 0
+    ) {
       return { error: "Completá todos los campos obligatorios." };
     }
 
@@ -60,6 +69,7 @@ export async function createMembership(
       name,
       description,
       price,
+      anualPrice,
       features,
       tag: tag || undefined,
       bottomText: bottomText || undefined,
@@ -67,6 +77,7 @@ export async function createMembership(
     });
 
     revalidatePath("/");
+    revalidatePath("/memberships");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -86,6 +97,8 @@ export async function updateMembership(
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
+    const anualPriceRaw = formData.get("anualPrice") as string | null;
+    const anualPrice = anualPriceRaw ? parseFloat(anualPriceRaw) : undefined;
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -94,20 +107,32 @@ export async function updateMembership(
     const tag = (formData.get("tag") as string) || undefined;
     const bottomText = (formData.get("bottomText") as string) || undefined;
 
-    if (!id || !name || !description || isNaN(price) || features.length === 0) {
+    if (
+      !id ||
+      !name ||
+      !description ||
+      isNaN(price) ||
+      (anualPrice !== undefined && isNaN(anualPrice)) ||
+      features.length === 0
+    ) {
       return { error: "Completá todos los campos obligatorios." };
     }
 
     await MembershipModel.findByIdAndUpdate(id, {
-      name,
-      description,
-      price,
-      features,
-      tag: tag || undefined,
-      bottomText: bottomText || undefined,
+      $set: {
+        name,
+        description,
+        price,
+        features,
+        tag: tag || undefined,
+        bottomText: bottomText || undefined,
+        ...(anualPrice !== undefined ? { anualPrice } : {}),
+      },
+      ...(anualPrice === undefined ? { $unset: { anualPrice: "" } } : {}),
     });
 
     revalidatePath("/");
+    revalidatePath("/memberships");
     return { success: true };
   } catch (error) {
     console.error(error);

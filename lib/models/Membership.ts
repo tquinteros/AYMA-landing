@@ -4,6 +4,7 @@ export interface Membership {
     name: string;
     description: string;
     price: number;
+    anualPrice?: number;
     features: string[];
     tag?: string;
     bottomText?: string;
@@ -15,6 +16,7 @@ const MembershipSchema = new Schema<Membership>(
         name: { type: String, required: true },
         description: { type: String, required: true },
         price: { type: Number, required: true },
+        anualPrice: { type: Number },
         features: { type: [String], required: true },
         tag: { type: String },
         bottomText: { type: String },

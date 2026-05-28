@@ -8,6 +8,7 @@ interface Membership {
     name: string
     description: string
     price: number
+    anualPrice?: number
     features: string[]
     tag?: string
     bottomText?: string
@@ -29,7 +30,17 @@ function MembershipCardTitle({ name }: { name: string }) {
     return <>{name}</>
 }
 
-const MemberShipCardList = ({ membership }: { membership: Membership }) => {
+const MemberShipCardList = ({
+    membership,
+    isAnnual = false,
+}: {
+    membership: Membership
+    isAnnual?: boolean
+}) => {
+    const selectedPrice = isAnnual ? membership.anualPrice : membership.price
+    const periodLabel = isAnnual ? "/Año" : "/Mes"
+    const hasSelectedPrice = selectedPrice !== undefined
+
     return (
         <Card className={`w-full relative flex flex-col overflow-visible rounded-3xl! bg-roca-100 p-6 sm:p-8 lg:py-10 lg:px-6 ${membership.tag ? "border border-primary-500" : "border-none! border-transparent!"}`}>
             {membership.tag && (
@@ -60,7 +71,9 @@ const MemberShipCardList = ({ membership }: { membership: Membership }) => {
                 {membership.bottomText && (
                     <p className="text-background-500 text-sm leading-snug">{membership.bottomText}</p>
                 )}
-                <p className="text-md sm:text-[16px] font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
+                <p className="text-md sm:text-[16px] font-semibold text-background-500">
+                    {hasSelectedPrice ? `$ ${formatPrice(selectedPrice)} ${periodLabel}` : "---"}
+                </p>
             </div>
         </Card>
     )

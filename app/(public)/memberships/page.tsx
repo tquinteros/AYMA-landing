@@ -2,7 +2,6 @@ import React from 'react'
 import HeroMemberships from '@/components/memberships/HeroMemberships'
 import MembershipsList from '@/components/memberships/MembershipsList'
 import { getMemberships } from '@/lib/actions/membership';
-import MembershipsTable from '@/components/memberships/MembershipsTable';
 import MembershipInfo from '@/components/memberships/MembershipInfo';
 
 const MembershipsPages = async () => {
@@ -13,6 +12,7 @@ const MembershipsPages = async () => {
         name: membership.name,
         description: membership.description,
         price: membership.price,
+        anualPrice: membership.anualPrice,
         features: membership.features,
         tag: membership.tag,
         bottomText: membership.bottomText,

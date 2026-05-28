@@ -86,7 +86,7 @@ const Header = () => {
         }`}
     >
       <div className="flex h-[64px] items-center justify-between px-5 sm:px-8 lg:px-24">
-        <a href="#hero" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             key={logoSrc}
             src={logoSrc}
@@ -95,7 +95,7 @@ const Header = () => {
             height={36}
             className="h-8 w-auto sm:h-9 md:h-9 transition-opacity duration-300"
           />
-        </a>
+        </Link>
 
         <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
           {/* <a href="#hero" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a> */}
@@ -137,13 +137,13 @@ const Header = () => {
             <SheetContent side="right" className="bg-roca-500">
               <SheetTitle className="sr-only">Menú</SheetTitle>
               <div className="flex flex-col gap-10 py-24 px-12 mt-8">
-                <a
-                  href="#hero"
+                <Link
+                  href="/"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Home
-                </a>
+                </Link>
                 <Link href="/services" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Servicios</Link>
                 <Link href="/longevity" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Longevidad</Link>
                 {/* <a

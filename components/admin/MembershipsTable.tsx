@@ -141,6 +141,7 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
               <TableHead>Nombre</TableHead>
               <TableHead className="hidden sm:table-cell">Descripción</TableHead>
               <TableHead>Precio</TableHead>
+              <TableHead className="hidden lg:table-cell">Precio anual</TableHead>
               <TableHead className="hidden md:table-cell">Beneficios</TableHead>
               <TableHead className="hidden lg:table-cell">Etiqueta</TableHead>
               <TableHead className="text-right">Acciones</TableHead>
@@ -167,6 +168,13 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
                 </TableCell>
                 <TableCell className="font-medium tabular-nums">
                   {formatPrice(membership.price)}
+                </TableCell>
+                <TableCell className="hidden lg:table-cell font-medium tabular-nums">
+                  {membership.anualPrice ? (
+                    formatPrice(membership.anualPrice)
+                  ) : (
+                    <span className="text-muted-foreground text-xs">—</span>
+                  )}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <span className="text-muted-foreground text-xs">

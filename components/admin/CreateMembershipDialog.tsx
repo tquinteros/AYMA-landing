@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { createMembership } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
@@ -21,10 +21,10 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
 import { FeatureTagInput } from "./FeatureTagInput";
-import MemberShipCard from "@/components/landing/MemberShipCard";
 interface FormValues {
   name: string;
   price: string;
+  anualPrice: string;
   description: string;
   features: string[];
   tag: string;
@@ -33,7 +33,6 @@ interface FormValues {
 
 export function CreateMembershipDialog() {
   const [open, setOpen] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -44,19 +43,11 @@ export function CreateMembershipDialog() {
     control,
     formState: { errors },
   } = useForm<FormValues>();
-  const watchedName = useWatch({ control, name: "name" });
-  const watchedDescription = useWatch({ control, name: "description" });
-  const watchedPrice = useWatch({ control, name: "price" });
-  const watchedFeatures = useWatch({ control, name: "features" });
-  const watchedTag = useWatch({ control, name: "tag" });
-  const watchedBottomText = useWatch({ control, name: "bottomText" });
-
   function handleOpenChange(next: boolean) {
     if (isPending) return;
     setOpen(next);
     if (!next) {
       reset();
-      setShowPreview(true);
     }
   }
 
@@ -125,6 +116,28 @@ export function CreateMembershipDialog() {
               />
               {errors.price && (
                 <p className="text-xs text-destructive">{errors.price.message}</p>
+              )}
+            </div>
+            <div className="flex flex-col gap-1.5 sm:col-start-2">
+              <Label htmlFor="create-anual-price">
+                Precio anual (ARS){" "}
+                <span className="text-muted-foreground font-normal">
+                  (opcional)
+                </span>
+              </Label>
+              <Input
+                id="create-anual-price"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="120000"
+                aria-invalid={!!errors.anualPrice}
+                {...register("anualPrice", {
+                  min: { value: 0, message: "El precio anual no puede ser negativo." },
+                })}
+              />
+              {errors.anualPrice && (
+                <p className="text-xs text-destructive">{errors.anualPrice.message}</p>
               )}
             </div>
           </div>
