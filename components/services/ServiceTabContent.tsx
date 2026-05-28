@@ -93,7 +93,7 @@ const ServiceTabContent = ({
           {images.map((image) => (
             <div
               key={image.src}
-              className="relative aspect-3/2 w-full overflow-hidden rounded-2xl sm:rounded-3xl"
+              className="relative aspect-4/2 w-full overflow-hidden rounded-2xl sm:rounded-3xl"
             >
               <Image
                 src={image.src}
