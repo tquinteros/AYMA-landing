@@ -137,13 +137,13 @@ const MembershipsTable = ({
                   className="min-w-36 border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-center text-roca-500 last:border-r-0"
                 >
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-sm font-bold uppercase tracking-wide">
+                    <span className="text-lg font-bold uppercase tracking-wide">
                       {membership.name}
                     </span>
-                    <span className="text-base font-bold">
+                    <span className="text-lg font-bold">
                       {hasSelectedPrice ? `$${formatPrice(selectedPrice)}` : "---"}
                       {hasSelectedPrice && (
-                        <span className="ml-1 text-xs font-normal">
+                        <span className="ml-1 text-[14px] font-normal">
                           {periodLabel}
                         </span>
                       )}
@@ -161,7 +161,7 @@ const MembershipsTable = ({
               key={featureKey}
               className="border-roca-500/20 hover:bg-roca-500/5"
             >
-              <TableCell className="sticky left-0 z-10 border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-roca-500 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-roca-500 after:content-['']">
+              <TableCell className="sticky text-[16px] left-0 z-10 border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-roca-500 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-roca-500 after:content-['']">
                 {featureLabel}
               </TableCell>
               {membershipFeatureValues.map((features, index) => {
@@ -169,7 +169,7 @@ const MembershipsTable = ({
                 return (
                   <TableCell
                     key={`${memberships[index].id}-${featureKey}`}
-                    className="border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-center text-sm text-roca-500 last:border-r-0"
+                    className="border-r border-roca-500/20 bg-surface-500 px-4 py-5 text-center text-[16px] text-roca-500 last:border-r-0"
                   >
                     {feature ? (
                       feature.value ? (

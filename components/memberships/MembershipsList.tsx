@@ -32,7 +32,7 @@ const MembershipsList = ({ memberships }: { memberships: MembershipsListMembersh
                 <Switch size="lg" checked={isAnnual} onCheckedChange={setIsAnnual} />
                 <span className={isAnnual ? "opacity-100" : "opacity-70"}>Anual</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-8 lg:gap-y-16">
                 {
                     memberships.map((membership) => (
                         <MemberShipCardList key={membership.id} membership={membership} isAnnual={isAnnual} />
