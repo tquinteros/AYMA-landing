@@ -15,6 +15,7 @@ const getHeroIdForPath = (pathname: string) => {
   if (pathname.startsWith("/services")) return "hero-services"
   if (pathname.startsWith("/longevity")) return "hero-longevity"
   if (pathname.startsWith("/contact")) return "hero-contact"
+  if (pathname.startsWith("/memberships")) return "hero-memberships"
   return null
 }
 
@@ -106,7 +107,7 @@ const Header = () => {
           <Link href="/longevity" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Longevidad</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
           {/* <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a> */}
-          <Link href="/memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</Link>
+          <Link href="/memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Membresías</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
           {/* <a href="https://wa.me/5491124868493" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a> */}
           <Link href="/contact" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Contacto</Link>
@@ -152,13 +153,13 @@ const Header = () => {
                 >
                   Servicios
                 </a> */}
-                <a
-                  href="#memberships"
+                <Link
+                  href="/memberships"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Membresías
-                </a>
+                </Link>
                 {/* <a
                   href="https://wa.me/5491124868493"
                   target="_blank"
