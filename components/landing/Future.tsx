@@ -36,15 +36,17 @@ const Future = () => {
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-12">
+          <p className="text-center text-base sm:text-xl md:text-2xl text-surface-500 max-w-xl lg:max-w-2xl sm:pr-4">
+            Porque entendemos que no se puede transformar aquello
+            que no se registra, ni mejorar aquello que no se gestiona.
+          </p>
+        </div>
       </div>
 
       <div className="pointer-events-none z-10 mt-12 flex flex-col items-center gap-1 px-5 pb-16 text-center sm:mt-16 sm:px-8 sm:pb-20 lg:mt-[114px] lg:items-end lg:px-24 lg:pb-[100px] lg:text-right">
-        <p className="text-surface-500 text-xl sm:text-3xl lg:text-[39px]">
-          PORQUE EL FUTURO SE CONSTRUYE,
-        </p>
-        <p className="text-surface-500 text-xl sm:text-3xl lg:mt-2 lg:text-[39px]">
-          SE ENTRENA, SE PRACTICA Y SE
-          <span className="font-medium italic"> HABITA.</span>
+        <p className="text-surface-500 text-xl sm:text-3xl">
+          EL FUTURO SE CONSTRUYE, SE ENTRENA,  <span className="font-medium italic"> SE PRACTICA.</span>
         </p>
       </div>
     </section>

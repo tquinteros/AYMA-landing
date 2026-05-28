@@ -29,7 +29,12 @@ const MembershipsList = ({ memberships }: { memberships: MembershipsListMembersh
         <div className="pt-12 pb-25 bg-roca-500 px-5 sm:px-8 lg:px-24">
             <div className="mb-12 flex items-center justify-center gap-4 text-surface-500">
                 <span className={isAnnual ? "opacity-70" : "opacity-100"}>Mensual</span>
-                <Switch size="lg" checked={isAnnual} onCheckedChange={setIsAnnual} />
+                <Switch
+                    size="lg"
+                    checked={isAnnual}
+                    onCheckedChange={setIsAnnual}
+                    className="dark:data-unchecked:bg-input **:data-[slot=switch-thumb]:dark:bg-background **:data-[slot=switch-thumb]:dark:data-checked:bg-background **:data-[slot=switch-thumb]:dark:data-unchecked:bg-background"
+                />
                 <span className={isAnnual ? "opacity-100" : "opacity-70"}>Anual</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-8 lg:gap-y-16">

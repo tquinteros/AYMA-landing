@@ -116,8 +116,17 @@
 }
 
 
+@font-face {
+  font-family: "Bodoni 72";
+  src: url("/fonts/Bodoni72-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: var(--font-satoshi);
+  --font-bodoni: "Bodoni 72", "Bodoni Moda", Georgia, "Times New Roman", serif;
 /* arena */
   --color-background-100: #FFFCF8; /* ARENA -100 */
   --color-background-500: #F7F0E9; /* ARENA 0 */
