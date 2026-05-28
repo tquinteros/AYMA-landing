@@ -5,7 +5,7 @@ const LongevityContent = () => {
     <div className="flex flex-col gap-10 bg-roca-500 px-5 py-12 sm:gap-12 sm:px-8 sm:py-16 lg:gap-12 lg:px-24 lg:py-25">
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="flex flex-col gap-4 sm:gap-6">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div className="flex flex-wrap items-center gap-5 sm:gap-7">
             <Image
               src="/longevity/eralongevity.svg"
               alt="ERA Longevity"
