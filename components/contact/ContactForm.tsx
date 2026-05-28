@@ -183,7 +183,7 @@ const ContactForm = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full shrink-0 self-start bg-primary-500 px-7 py-6 text-base uppercase tracking-[5px] text-background-500 hover:bg-primary-500/90 sm:self-auto sm:py-7 lg:w-fit"
+            className="w-fit shrink-0 self-start bg-primary-500 px-7 py-6 text-base uppercase tracking-[5px] text-background-500 hover:bg-primary-500/90 sm:self-auto sm:py-7 lg:w-fit"
           >
             Enviar
           </Button>
