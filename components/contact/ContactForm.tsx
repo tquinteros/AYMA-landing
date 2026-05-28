@@ -56,7 +56,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-roca-500 px-5 py-25 sm:px-8 lg:px-24">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-roca-500 px-5 py-25 lg:pb-50 sm:px-8 lg:px-24">
       <div className="flex flex-col justify-between">
         <h3 className="max-w-2xl text-4xl font-normal leading-tight text-surface-500">
           PORQUE CUANDO EL{" "}
