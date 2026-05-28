@@ -33,7 +33,7 @@ const MembershipsList = ({ memberships }: { memberships: MembershipsListMembersh
                     size="lg"
                     checked={isAnnual}
                     onCheckedChange={setIsAnnual}
-                    className="dark:data-unchecked:bg-input **:data-[slot=switch-thumb]:dark:bg-background **:data-[slot=switch-thumb]:dark:data-checked:bg-background **:data-[slot=switch-thumb]:dark:data-unchecked:bg-background"
+                    className="bg-[#4F4F4F] data-checked:bg-[#4F4F4F] data-unchecked:bg-[#4F4F4F] dark:bg-[#4F4F4F] dark:data-checked:bg-[#4F4F4F] dark:data-unchecked:bg-[#4F4F4F] **:data-[slot=switch-thumb]:bg-white **:data-[slot=switch-thumb]:data-checked:bg-white **:data-[slot=switch-thumb]:data-unchecked:bg-white **:data-[slot=switch-thumb]:dark:bg-white **:data-[slot=switch-thumb]:dark:data-checked:bg-white **:data-[slot=switch-thumb]:dark:data-unchecked:bg-white"
                 />
                 <span className={isAnnual ? "opacity-100" : "opacity-70"}>Anual</span>
             </div>
