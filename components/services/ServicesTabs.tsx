@@ -10,7 +10,7 @@ import TerapiasRestaurativasTab from "@/components/services/TerapiasRestaurativa
 import WellnessIntegralTab from "@/components/services/WellnessIntegralTab"
 
 const tabTriggerClassName =
-  "text-surface-100 hover:text-surface-100 dark:text-surface-100 dark:hover:text-surface-100 max-lg:whitespace-normal max-lg:text-xs data-[state=active]:rounded! data-[state=active]:bg-roca-500! data-[state=active]:py-3! data-[state=active]:font-bold data-[state=active]:text-surface-100! dark:data-[state=active]:border-transparent! dark:data-[state=active]:bg-roca-500! dark:data-[state=active]:text-surface-100! dark:data-active:border-transparent! dark:data-active:bg-roca-500! dark:data-active:text-surface-100!"
+  "font-normal text-[#E0D5CD] hover:text-[#E0D5CD] max-lg:whitespace-normal max-lg:text-xs data-[state=active]:rounded! data-[state=active]:bg-roca-500! data-[state=active]:py-3! data-[state=active]:font-bold data-[state=active]:text-[#E0D5CD]! dark:data-[state=active]:border-transparent! dark:data-[state=active]:bg-roca-500! dark:data-[state=active]:text-[#E0D5CD]! dark:data-active:border-transparent! dark:data-active:bg-roca-500! dark:data-active:text-[#E0D5CD]!"
 
 const ServicesTabs = () => {
   return (

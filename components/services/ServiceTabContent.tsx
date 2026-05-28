@@ -53,7 +53,7 @@ const ServiceTabContent = ({
 }: ServiceTabContentProps) => {
   return (
     <div className="w-full bg-roca-500">
-      <h3 className="text-3xl uppercase text-surface-500 sm:text-4xl lg:text-[40px]">
+      <h3 className="text-[32px] uppercase text-surface-500 sm:text-4xl lg:text-[40px]">
         {title}
       </h3>
 
@@ -71,8 +71,8 @@ const ServiceTabContent = ({
         )}
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-0 xl:gap-x-16">
-        <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
+      <div className="mt-12 grid grid-cols-1 gap-10 lg:mt-25 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-0 xl:gap-x-16">
+        <div className="flex flex-col gap-8">
           {services.map((service) => (
             <article key={service.number} className="flex flex-col gap-1">
               <span className="text-sm font-bold text-surface-500">{service.number}</span>

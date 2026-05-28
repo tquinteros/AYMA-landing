@@ -5,15 +5,15 @@ const LongevityContent = () => {
     <div className="flex flex-col gap-10 bg-roca-500 px-5 py-12 sm:gap-12 sm:px-8 sm:py-16 lg:gap-12 lg:px-24 lg:py-25">
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="flex flex-col gap-4 sm:gap-6">
-          <div className="flex flex-wrap items-center gap-5 sm:gap-7">
+          <div className="flex w-full items-center justify-between sm:w-auto sm:flex-wrap sm:justify-start sm:gap-7">
             <Image
               src="/longevity/eralongevity.svg"
               alt="ERA Longevity"
               width={127}
               height={53}
-              className="h-auto w-[88px] sm:w-[110px] lg:w-[127px]"
+              className="h-auto w-[88px] shrink-0 sm:w-[110px] lg:w-[127px]"
             />
-            <span className="text-2xl text-surface-500 sm:text-3xl lg:text-[39px]">
+            <span className="shrink-0 text-2xl text-surface-500 sm:text-3xl lg:text-[39px]">
               ×
             </span>
             <Image
@@ -21,7 +21,7 @@ const LongevityContent = () => {
               alt="AYMA"
               width={127}
               height={53}
-              className="h-auto w-[88px] sm:w-[110px] lg:w-[127px]"
+              className="h-auto w-[88px] shrink-0 sm:w-[110px] lg:w-[127px]"
             />
           </div>
           <p className="max-w-2xl text-lg text-background-500 sm:text-xl lg:text-2xl">

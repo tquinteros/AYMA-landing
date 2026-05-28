@@ -21,7 +21,7 @@ const ServicesCta = () => {
         <div className="flex w-full flex-row items-center justify-between gap-4">
           <Button
             asChild
-            className="bg-primary-500 w-full shrink-0 tracking-[5px] uppercase text-base px-7 py-6 text-background-500 hover:bg-primary-500/90! sm:w-fit sm:py-7 lg:w-fit"
+            className="bg-primary-500 text-[14px] font-normal w-full shrink-0 tracking-[6px] uppercase text-base px-7 py-6 text-background-500 hover:bg-primary-500/90! sm:w-fit sm:py-7 lg:w-fit"
           >
             <Link href="/memberships">Ver Membresías</Link>
           </Button>
