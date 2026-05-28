@@ -23,6 +23,8 @@ const Header = () => {
   useEffect(() => {
     const hero = document.getElementById("hero")
     const heroServices = document.getElementById("hero-services")
+    const heroLongevity = document.getElementById("hero-longevity")
+    const heroContact = document.getElementById("hero-contact")
     const observer = new IntersectionObserver(
       ([entry]) => {
         setScrolledPastHero(!entry.isIntersecting)
@@ -32,6 +34,8 @@ const Header = () => {
 
     if (hero) observer.observe(hero)
     if (heroServices) observer.observe(heroServices)
+    if (heroLongevity) observer.observe(heroLongevity)
+    if (heroContact) observer.observe(heroContact)
     return () => observer.disconnect()
   }, [])
 
@@ -72,7 +76,9 @@ const Header = () => {
           {/* <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a> */}
           <Link href="/memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="https://wa.me/5491124868493" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
+          {/* <a href="https://wa.me/5491124868493" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a> */}
+          <Link href="/contact" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Contacto</Link>
+
           {hasSession && (
             <>
               <span className="mx-5 select-none" aria-hidden>|</span>
@@ -121,14 +127,15 @@ const Header = () => {
                 >
                   Membresías
                 </a>
-                <a
+                {/* <a
                   href="https://wa.me/5491124868493"
                   target="_blank"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Contacto
-                </a>
+                </a> */}
+                <Link href="/contact" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Contacto</Link>
                 {hasSession && (
                   <Link
                     href="/admin/memberships"
