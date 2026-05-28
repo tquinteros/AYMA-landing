@@ -58,7 +58,7 @@ const ContactForm = () => {
           </Label>
           <Input
             id="name"
-            className="border border-[#CBD5E1] bg-white! py-5 text-[16px] placeholder:text-[16px] placeholder:text-surface-900"
+            className="border border-[#CBD5E1] bg-white! text-surface-900 py-5 text-[16px] placeholder:text-[16px] placeholder:text-surface-900"
             placeholder="Nombre"
             {...register("name", { required: true })}
           />
