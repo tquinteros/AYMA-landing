@@ -22,7 +22,7 @@ const Header = () => {
 
   useEffect(() => {
     const hero = document.getElementById("hero")
-
+    const heroServices = document.getElementById("hero-services")
     const observer = new IntersectionObserver(
       ([entry]) => {
         setScrolledPastHero(!entry.isIntersecting)
@@ -31,7 +31,7 @@ const Header = () => {
     )
 
     if (hero) observer.observe(hero)
-
+    if (heroServices) observer.observe(heroServices)
     return () => observer.disconnect()
   }, [])
 
@@ -61,11 +61,16 @@ const Header = () => {
         </a>
 
         <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
-          <a href="#hero" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a>
+          {/* <a href="#hero" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a> */}
+          <Link href="/" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="#services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a>
+          {/* <a href="#services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a> */}
+          <Link href="/services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Servicios</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a>
+          <Link href="/longevity" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Longevidad</Link>
+          <span className="mx-5 select-none" aria-hidden>|</span>
+          {/* <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a> */}
+          <Link href="/memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
           <a href="https://wa.me/5491124868493" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a>
           {hasSession && (
@@ -100,13 +105,15 @@ const Header = () => {
                 >
                   Home
                 </a>
-                <a
+                <Link href="/services" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Servicios</Link>
+                <Link href="/longevity" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Longevidad</Link>
+                {/* <a
                   href="#services"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
                   Servicios
-                </a>
+                </a> */}
                 <a
                   href="#memberships"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
