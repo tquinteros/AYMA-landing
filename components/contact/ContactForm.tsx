@@ -1,11 +1,27 @@
 "use client"
 
-import { useForm } from "react-hook-form"
+import { ChevronDownIcon } from "lucide-react"
+import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { Button } from "../ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Textarea } from "../ui/textarea"
+
+const areaInteresOptions = [
+  "Movimiento y entrenamiento",
+  "Recuperación y contraste",
+  "Terapias restaurativas",
+  "Wellness integral",
+  "Otra",
+] as const
 
 interface ContactFormValues {
   name: string
@@ -15,9 +31,19 @@ interface ContactFormValues {
   mensaje: string
 }
 
+const inputFieldClassName =
+  "h-14 rounded-lg border border-[#CBD5E1] bg-white! px-3 py-0 text-[16px] text-surface-900 placeholder:text-[16px] placeholder:text-surface-500 dark:bg-white!"
+
+const areaInteresTriggerClassName =
+  "flex h-14 w-full items-center justify-between rounded-lg border border-[#CBD5E1] bg-white! px-3 text-[16px] font-normal text-surface-900 outline-none transition-colors hover:bg-white! focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-white! dark:hover:bg-white!"
+
+const textareaFieldClassName =
+  "block h-28 min-h-28 max-h-28 resize-none rounded-lg border border-[#CBD5E1] bg-white! px-3 py-3 text-[16px] leading-6 text-surface-900 [field-sizing:fixed] placeholder:text-[16px] placeholder:text-surface-500 dark:bg-white!"
+
 const ContactForm = () => {
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { isSubmitting },
@@ -58,7 +84,7 @@ const ContactForm = () => {
           </Label>
           <Input
             id="name"
-            className="border border-[#CBD5E1] bg-white! text-surface-900 py-5 text-[16px] placeholder:text-[16px] placeholder:text-surface-900"
+            className={inputFieldClassName}
             placeholder="Nombre"
             {...register("name", { required: true })}
           />
@@ -73,7 +99,7 @@ const ContactForm = () => {
           </Label>
           <Input
             id="apellido"
-            className="border border-[#CBD5E1] bg-white! py-5 text-[16px] text-surface-900 placeholder:text-[16px] placeholder:text-surface-500"
+            className={inputFieldClassName}
             placeholder="Apellido"
             {...register("apellido", { required: true })}
           />
@@ -89,7 +115,7 @@ const ContactForm = () => {
           <Input
             id="email"
             type="email"
-            className="border border-[#CBD5E1] bg-white! py-5 text-[16px] text-surface-900 placeholder:text-[16px] placeholder:text-surface-500"
+            className={inputFieldClassName}
             placeholder="Email"
             {...register("email", { required: true })}
           />
@@ -102,11 +128,39 @@ const ContactForm = () => {
           >
             Área de interes (opcional)
           </Label>
-          <Input
-            id="area-interes"
-            className="border border-[#CBD5E1] bg-white! py-5 text-[16px] text-surface-900 placeholder:text-[16px] placeholder:text-surface-500"
-            placeholder="Área de interes (opcional)"
-            {...register("areaInteres")}
+          <Controller
+            name="areaInteres"
+            control={control}
+            render={({ field }) => (
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  id="area-interes"
+                  type="button"
+                  className={areaInteresTriggerClassName}
+                >
+                  <span
+                    className={
+                      field.value ? "text-surface-900" : "text-surface-500"
+                    }
+                  >
+                    {field.value || "Área de interes (opcional)"}
+                  </span>
+                  <ChevronDownIcon className="size-4 shrink-0 text-surface-500" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-(--radix-dropdown-menu-trigger-width)">
+                  <DropdownMenuRadioGroup
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  >
+                    {areaInteresOptions.map((option) => (
+                      <DropdownMenuRadioItem key={option} value={option}>
+                        {option}
+                      </DropdownMenuRadioItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           />
         </div>
 
@@ -119,7 +173,7 @@ const ContactForm = () => {
           </Label>
           <Textarea
             id="mensaje"
-            className="border border-[#CBD5E1] bg-white! py-5 text-[16px] text-surface-900 placeholder:text-[16px] placeholder:text-surface-500"
+            className={textareaFieldClassName}
             placeholder="Tu mensaje"
             {...register("mensaje", { required: true })}
           />
