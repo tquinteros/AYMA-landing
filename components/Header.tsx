@@ -10,9 +10,21 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 import Link from "next/link"
 import { getSessionAction } from "@/lib/actions/auth"
 
+const getHeroIdForPath = (pathname: string) => {
+  if (pathname === "/") return "hero"
+  if (pathname.startsWith("/services")) return "hero-services"
+  if (pathname.startsWith("/longevity")) return "hero-longevity"
+  if (pathname.startsWith("/contact")) return "hero-contact"
+  return null
+}
+
 const Header = () => {
   const pathname = usePathname()
-  const [scrolledPastHero, setScrolledPastHero] = useState(false)
+  const heroId = getHeroIdForPath(pathname)
+  const [heroState, setHeroState] = useState<{
+    path: string
+    intersecting: boolean
+  } | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const { data: isAuthenticated } = useQuery<boolean>({
     queryKey: ["session"],
@@ -21,23 +33,43 @@ const Header = () => {
   const hasSession = Boolean(isAuthenticated)
 
   useEffect(() => {
-    const hero = document.getElementById("hero")
-    const heroServices = document.getElementById("hero-services")
-    const heroLongevity = document.getElementById("hero-longevity")
-    const heroContact = document.getElementById("hero-contact")
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setScrolledPastHero(!entry.isIntersecting)
-      },
-      { threshold: 0 }
-    )
+    if (!heroId) return
 
-    if (hero) observer.observe(hero)
-    if (heroServices) observer.observe(heroServices)
-    if (heroLongevity) observer.observe(heroLongevity)
-    if (heroContact) observer.observe(heroContact)
-    return () => observer.disconnect()
-  }, [])
+    let observer: IntersectionObserver | undefined
+
+    const timeoutId = window.setTimeout(() => {
+      const hero = document.getElementById(heroId)
+
+      if (!hero) {
+        setHeroState({ path: pathname, intersecting: false })
+        return
+      }
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setHeroState({
+            path: pathname,
+            intersecting: entry.isIntersecting,
+          })
+        },
+        { threshold: 0 }
+      )
+
+      observer.observe(hero)
+      setHeroState({ path: pathname, intersecting: true })
+    }, 0)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+      observer?.disconnect()
+    }
+  }, [pathname, heroId])
+
+  const scrolledPastHero = heroId
+    ? heroState?.path === pathname
+      ? !heroState.intersecting
+      : false
+    : true
 
   const navTextColor = scrolledPastHero ? "text-background-500" : "text-background-900"
 

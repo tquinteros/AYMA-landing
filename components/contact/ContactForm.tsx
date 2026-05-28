@@ -30,7 +30,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-10 bg-roca-500 px-5 py-25 sm:px-8 lg:px-24">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-roca-500 px-5 py-25 sm:px-8 lg:px-24">
       <div className="flex flex-col justify-between">
         <h3 className="max-w-2xl text-4xl font-normal leading-tight text-surface-500">
           PORQUE CUANDO EL{" "}
@@ -39,7 +39,7 @@ const ContactForm = () => {
           </i>{" "}
           SE VUELVE HÁBITO, TODO CAMBIA, ESTO ES LA REVOLUCIÓN.
         </h3>
-        <p className="max-w-xl text-2xl font-normal text-surface-500">
+        <p className="max-w-xl mt-6 lg:mt-0 text-2xl font-normal text-surface-500">
           Conectá con nosotros por consultas o asesoramiento personalizado.
         </p>
       </div>
