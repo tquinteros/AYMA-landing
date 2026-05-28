@@ -26,7 +26,7 @@ const MembershipsList = ({ memberships }: { memberships: MembershipsListMembersh
     }
 
     return (
-        <div className="py-12 bg-roca-500 px-5 sm:px-8 lg:px-24">
+        <div className="pt-12 pb-25 bg-roca-500 px-5 sm:px-8 lg:px-24">
             <div className="mb-12 flex items-center justify-center gap-4 text-surface-500">
                 <span className={isAnnual ? "opacity-70" : "opacity-100"}>Mensual</span>
                 <Switch size="lg" checked={isAnnual} onCheckedChange={setIsAnnual} />
