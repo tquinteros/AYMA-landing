@@ -144,6 +144,7 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
               <TableHead className="hidden lg:table-cell">Precio anual</TableHead>
               <TableHead className="hidden md:table-cell">Beneficios</TableHead>
               <TableHead className="hidden lg:table-cell">Etiqueta</TableHead>
+              <TableHead className="hidden md:table-cell">Destacada</TableHead>
               <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
           </TableHeader>
@@ -187,6 +188,13 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
                     <Badge variant="secondary">{membership.tag}</Badge>
                   ) : (
                     <span className="text-muted-foreground text-xs">—</span>
+                  )}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {membership.featured ? (
+                    <Badge variant="secondary">Sí</Badge>
+                  ) : (
+                    <span className="text-muted-foreground text-xs">No</span>
                   )}
                 </TableCell>
                 <TableCell>

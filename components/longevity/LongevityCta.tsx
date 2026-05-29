@@ -6,11 +6,12 @@ const LongevityCta = () => {
   return (
     <section className="relative min-h-[280px] h-auto sm:min-h-[320px] lg:h-[425px] overflow-hidden">
       <Image
-        src="/membershipbg.png"
+        src="/longevity/longevitycta.JPEG"
         alt=""
         fill
         className="absolute inset-0 h-full w-full object-cover"
       />
+      <div className="absolute inset-0 bg-roca-900/55" aria-hidden="true" />
 
       <div className="relative z-10 flex h-full min-h-[280px] sm:min-h-[320px] lg:min-h-[425px] flex-col justify-between gap-8 px-5 py-10 sm:px-8 sm:py-12 lg:px-24 lg:py-[84px]">
         <h2 className="max-w-6xl text-left text-2xl uppercase leading-tight text-background-500 sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">

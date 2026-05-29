@@ -16,8 +16,9 @@ const MembershipFaqs = ({ faqs }: { faqs: MembershipFaq[] }) => {
   if (faqs.length === 0) return null
 
   return (
-    <section className="bg-roca-500 bg-[url('/membershipbg.png')] bg-cover bg-center bg-no-repeat px-5 py-16 sm:px-8 sm:py-20 lg:px-24 lg:py-28">
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+    <section className="relative overflow-hidden bg-roca-500 bg-[url('/memberships/Q&A.png')] bg-cover bg-center bg-no-repeat px-5 py-16 sm:px-8 sm:py-20 lg:px-24 lg:py-28">
+      <div className="absolute inset-0 bg-roca-900/55" aria-hidden="true" />
+      <div className="relative z-10 grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
         <div>
           <h2 className="text-5xl text-background-500">Q&amp;A</h2>
         </div>

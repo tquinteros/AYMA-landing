@@ -14,6 +14,7 @@ interface FormValues {
     features: string[];
     tag: string;
     bottomText: string;
+    featured: boolean;
 }
 
 interface FeatureInputProps {

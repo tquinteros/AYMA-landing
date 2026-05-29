@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { createMembership } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
 import { FeatureTagInput } from "./FeatureTagInput";
+import { Switch } from "@/components/ui/switch";
 interface FormValues {
   name: string;
   price: string;
@@ -29,6 +30,7 @@ interface FormValues {
   features: string[];
   tag: string;
   bottomText: string;
+  featured: boolean;
 }
 
 export function CreateMembershipDialog() {
@@ -42,7 +44,12 @@ export function CreateMembershipDialog() {
     reset,
     control,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      featured: false,
+      features: [],
+    },
+  });
   function handleOpenChange(next: boolean) {
     if (isPending) return;
     setOpen(next);
@@ -53,9 +60,16 @@ export function CreateMembershipDialog() {
 
   function onSubmit(values: FormValues) {
     const formData = new FormData();
-    (Object.keys(values) as (keyof FormValues)[]).forEach((key) =>
-      formData.append(key, Array.isArray(values[key]) ? values[key].join("\n") : values[key])
-    );
+    (Object.keys(values) as (keyof FormValues)[]).forEach((key) => {
+      const value = values[key];
+      if (typeof value === "boolean") {
+        formData.append(key, value ? "true" : "false");
+      } else if (Array.isArray(value)) {
+        formData.append(key, value.join("\n"));
+      } else {
+        formData.append(key, value);
+      }
+    });
 
     startTransition(async () => {
       const result = await createMembership(undefined, formData);
@@ -215,6 +229,26 @@ export function CreateMembershipDialog() {
                 {...register("bottomText")}
               />
             </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 rounded-lg border px-4 py-3">
+            <div className="flex flex-col gap-0.5">
+              <Label htmlFor="create-featured">Destacada en home</Label>
+              <p className="text-muted-foreground text-xs">
+                Mostrar esta membresía en la página principal.
+              </p>
+            </div>
+            <Controller
+              name="featured"
+              control={control}
+              render={({ field }) => (
+                <Switch
+                  id="create-featured"
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              )}
+            />
           </div>
 
           {/* <div className="flex flex-col gap-2 pt-2">

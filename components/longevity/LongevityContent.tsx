@@ -48,13 +48,16 @@ const LongevityContent = () => {
         </div>
       </div>
 
-      <Image
-        className="h-auto w-full"
-        src="/longevity/longevityseparator1.png"
-        alt="Longevity separator"
-        width={2000}
-        height={1000}
-      />
+      <div className="relative h-[400px] w-full overflow-hidden rounded-[16px]">
+        <Image
+          src="/longevity/longevityseparator1.png"
+          alt="Longevity separator"
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_25%]"
+          unoptimized
+        />
+      </div>
 
       <div className="flex flex-col gap-4 sm:gap-6">
         <h5 className="text-xl text-background-500 sm:text-2xl">
@@ -76,11 +79,12 @@ const LongevityContent = () => {
       </div>
 
       <Image
-        className="h-[220px] w-full object-cover sm:h-[360px] md:h-[500px] lg:h-[714px]"
         src="/longevity/longevityseparator2.png"
         alt="Longevity experience"
         width={2000}
         height={1000}
+        className="object-cover rounded-[16px] h-auto"
+        unoptimized
       />
 
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">

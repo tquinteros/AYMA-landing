@@ -19,6 +19,7 @@ export interface MembershipData {
   features: string[];
   tag?: string;
   bottomText?: string;
+  featured: boolean;
   order: number;
   createdAt: string;
   updatedAt: string;
@@ -27,6 +28,14 @@ export interface MembershipData {
 export async function getMemberships(): Promise<MembershipData[]> {
   await connectDB();
   const memberships = await MembershipModel.find().sort({ order: 1, createdAt: 1 }).lean();
+  return JSON.parse(JSON.stringify(memberships));
+}
+
+export async function getFeaturedMemberships(): Promise<MembershipData[]> {
+  await connectDB();
+  const memberships = await MembershipModel.find({ featured: true })
+    .sort({ order: 1, createdAt: 1 })
+    .lean();
   return JSON.parse(JSON.stringify(memberships));
 }
 
@@ -50,6 +59,7 @@ export async function createMembership(
       .filter(Boolean);
     const tag = (formData.get("tag") as string) || undefined;
     const bottomText = (formData.get("bottomText") as string) || undefined;
+    const featured = formData.get("featured") === "true";
 
     if (
       !name ||
@@ -73,6 +83,7 @@ export async function createMembership(
       features,
       tag: tag || undefined,
       bottomText: bottomText || undefined,
+      featured,
       order: nextOrder,
     });
 
@@ -106,6 +117,7 @@ export async function updateMembership(
       .filter(Boolean);
     const tag = (formData.get("tag") as string) || undefined;
     const bottomText = (formData.get("bottomText") as string) || undefined;
+    const featured = formData.get("featured") === "true";
 
     if (
       !id ||
@@ -126,6 +138,7 @@ export async function updateMembership(
         features,
         tag: tag || undefined,
         bottomText: bottomText || undefined,
+        featured,
         ...(anualPrice !== undefined ? { anualPrice } : {}),
       },
       ...(anualPrice === undefined ? { $unset: { anualPrice: "" } } : {}),

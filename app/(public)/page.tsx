@@ -4,11 +4,11 @@ import Memberships from "@/components/landing/Memberships"
 import VerticalAccordion from "@/components/VerticalAccordion"
 import OurSpace from "@/components/landing/OurSpace"
 import Future from "@/components/landing/Future"
- import { getMemberships } from "@/lib/actions/membership";
+import { getFeaturedMemberships } from "@/lib/actions/membership";
 
 
 export default async function Page() {
-  const memberships = await getMemberships();
+  const memberships = await getFeaturedMemberships();
   const landingMemberships = memberships.map((membership) => ({
     id: membership._id,
     name: membership.name,

@@ -43,6 +43,9 @@ interface ServiceTabContentProps {
   showDownloadButton?: boolean
 }
 
+const CRONOGRAMA_PDF_URL =
+  "https://drive.google.com/uc?export=download&id=1zZ8_LyS0oFwh-m9JWbFyiARnAX89Gjbb"
+
 const ServiceTabContent = ({
   title,
   intro,
@@ -65,8 +68,17 @@ const ServiceTabContent = ({
           <i>{introItalic}</i>
         </p>
         {showDownloadButton && (
-          <Button className="h-auto shrink-0 rounded-[8px] bg-primary-500 px-5 py-4 text-background-500 hover:bg-primary-500/90">
-            Descargar cronograma
+          <Button
+            asChild
+            className="h-auto shrink-0 rounded-[8px] bg-primary-500 px-5 py-4 text-background-500 hover:bg-primary-500/90"
+          >
+            <a
+              href={CRONOGRAMA_PDF_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Descargar cronograma
+            </a>
           </Button>
         )}
       </div>
