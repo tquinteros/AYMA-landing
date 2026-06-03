@@ -1,4 +1,3 @@
-"use client"
 import Image from "next/image"
 
 const HeroLongevity = () => {
@@ -9,9 +8,11 @@ const HeroLongevity = () => {
     >
       <Image
         src="/longevity/longevitybg.jpg"
-        alt="Membership background"
+        alt="Longevidad background"
         fill
         priority
+        sizes="100vw"
+        quality={80}
         className="absolute inset-0 h-full w-full object-cover"
       />
 
