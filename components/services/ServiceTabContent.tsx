@@ -110,9 +110,12 @@ const ServiceTabContent = ({
               <Image
                 src={image.src}
                 alt={image.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                width={3000}
+                height={2000}
+                className={`object-cover w-full h-full ${image.src === "/servicesTabs/servicesTabs3.png" && "object-[center_80%]"}
+                  ${image.src === "/servicesTabs/servicesTabs4.png" && "object-top"}
+                  ${image.src === "/servicesTabs/servicesTabs5.png" && "object-[center_20%]"}
+                  `}
               />
             </div>
           ))}

@@ -43,10 +43,10 @@ const OurSpace = () => {
             <div className="relative z-10 my-10 sm:my-32 px-5 sm:px-8 lg:px-24">
                 <div className="flex flex-col gap-4  lg:flex-row lg:items-end lg:justify-between">
                     <div>
-                        <span className="text-5xl text-surface-500">&quot;La disciplina personal crea libertad&quot;</span>
+                        <span className="text-4xl lg:text-5xl text-surface-500">&quot;La disciplina personal crea libertad&quot;</span>
                     </div>
                     <div>
-                        <span className="text-lg text-surface-500">- Brianna Wiest</span>
+                        <span className="text-base lg:text-lg text-surface-500">- Brianna Wiest</span>
                     </div>
                 </div>
                 {/* <div className="flex flex-col gap-4  lg:flex-row lg:items-end lg:justify-between">

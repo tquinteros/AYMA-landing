@@ -36,9 +36,9 @@ const Future = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-34 pb-34">
-          <p className="text-surface-500 text-xl sm:text-3xl">
-            PORQUE EL FUTURO SE CONSTRUYE, SE ENTRENA Y SE PRACTICA.
+        <div className="flex justify-center mt-25 lg:mt-34 pb-34">
+          <p className="text-surface-500 text-3xl text-center leading-snug lg:text-left sm:text-3xl">
+            PORQUE EL FUTURO SE CONSTRUYE, SE ENTRENA Y SE <span className="font-medium italic">PRACTICA.</span>
           </p>
         </div>
       </div>

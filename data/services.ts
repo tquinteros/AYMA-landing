@@ -5,7 +5,7 @@ export const services = [
         subtitle: "Prácticas que integran fuerza, movilidad y conexión mente-cuerpo. ",
         imgSrc:
             "/services/movement.jpg",
-        backgroundColorAccordion: "#FFFFFF",
+        backgroundColorAccordion: "#F7F0E9",
         description:
             "Fuerza, movilidad y consciencia se integran en prácticas que activan el cuerpo, liberan tensiones y ordenan la mente.",
         features: [
@@ -25,7 +25,7 @@ export const services = [
         subtitle: "Un circuito de estímulos térmicos diseñado para activar los procesos naturales de recuperación del cuerpo",
         imgSrc:
             "/services/recovery.jpeg",
-        backgroundColorAccordion: "#F7F0E9",
+        backgroundColorAccordion: "#CFC4BC",
         description:
             "Calor y frío se combinan para mejorar la circulación, reducir la inflamación y llevar el cuerpo a un estado profundo de regeneración física y mental.",
         features: [

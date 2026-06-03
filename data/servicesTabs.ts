@@ -172,16 +172,16 @@ export const terapiasRestaurativasServices: ServiceTabItem[] = [
 
 export const terapiasRestaurativasImages: ServiceTabImage[] = [
   {
+    src: "/servicesTabs/servicesTabs8.png",
+    alt: "Tecnología de bienestar",
+  },
+  {
     src: "/servicesTabs/servicesTabs6.png",
     alt: "Terapias restaurativas",
   },
   {
-    src: "/servicesTabs/servicesTabs7.png",
+    src: "/servicesTabs/servicesTabs7.jpg",
     alt: "Tratamientos de recuperación",
-  },
-  {
-    src: "/servicesTabs/servicesTabs8.png",
-    alt: "Tecnología de bienestar",
   },
 ]
 

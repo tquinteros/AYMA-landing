@@ -77,8 +77,8 @@ const Panel = ({
     <>
       {!isOpen && (
         <button
-          style={index === 0 ? undefined : { backgroundColor: backgroundColorAccordion }}
-          className={`${triggerTextClass} ${index === 0 ? "bg-surface-500" : ""} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
+          style={{ backgroundColor: backgroundColorAccordion }}
+          className={`${triggerTextClass} transition-opacity cursor-pointer hover:opacity-90 p-4 border-b border-primary-500/20 lg:border-b-0 lg:border-r flex lg:flex-col items-center justify-between lg:justify-between gap-4 min-h-[64px] lg:min-h-0 lg:w-[78px]`}
           onClick={() => setOpen(id)}
         >
           <span className=" font-bold text-2xl tracking-wide">{numberLabel}</span>
