@@ -63,7 +63,7 @@ const ContactForm = () => {
           <i>
             <b>BIENESTAR</b>
           </i>{" "}
-          SE VUELVE HÁBITO, TODO CAMBIA, ESTO ES LA <i><b>REVOLUCIÓN</b></i>.
+          SE VUELVE HÁBITO, TODO CAMBIA, ESTO ES LA <span className="font-medium italic">REVOLUCIÓN</span>.
         </h3>
         <p className="max-w-xl mt-6 lg:mt-0 text-2xl font-normal text-surface-500">
           Conectá con nosotros por consultas o asesoramiento personalizado.

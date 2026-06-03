@@ -20,10 +20,10 @@ const Hero = () => {
 
       <div className="relative z-10 flex h-full items-center px-5 sm:px-8 lg:px-24">
         <div className="flex w-full flex-col gap-12 lg:gap-16">
-          <h1 className="text-7xl uppercase leading-tight text-surface-500">
+          <h1 className="text-4xl lg:text-7xl uppercase leading-tight text-surface-500">
             DONDE COMIENZA LA
             <br />
-            REVOLUCIÓN DEL BIENESTAR.
+            REVOLUCIÓN DEL <span className="font-medium italic">BIENESTAR</span>.
           </h1>
 
           <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">

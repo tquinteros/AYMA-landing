@@ -115,7 +115,7 @@ const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
                     Si querés más información sobre las experiencias y valores, escribinos por WhatsApp. <br className="hidden sm:block" />
                     Estamos para ayudarte a encontrar tu forma de vivir AYMA.
                 </p>
-                <Button className='bg-primary-500 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-primary-500/80 text-background-100' asChild>
+                <Button className='bg-primary-500 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-primary-500/80! text-background-100' asChild>
                     <Link href="/memberships">Ver todas las membresías</Link>
                 </Button>
             </div>

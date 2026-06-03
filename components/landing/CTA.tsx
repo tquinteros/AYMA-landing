@@ -4,7 +4,7 @@ const CTA = () => {
       id="cta"
       className="relative flex items-center justify-center overflow-hidden bg-roca-500 h-screen min-h-[520px] sm:min-h-[560px] px-6 sm:px-8"
     >
-      <div className="flex w-1/2 flex-col items-center justify-center gap-8 text-center">
+      <div className="flex w-full md:w-3/4 lg:w-1/2 flex-col items-center justify-center gap-8 text-center">
         <p className="text-xl font-bold text-surface-500">
           AYMA es un club de wellness basado en The Ayma Method®, un método integral que combina movimiento, temperatura y recuperación.
         </p>

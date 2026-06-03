@@ -70,7 +70,7 @@ const ServiceTabContent = ({
         {showDownloadButton && (
           <Button
             asChild
-            className="h-auto shrink-0 rounded-[8px] bg-primary-500 px-5 py-4 text-background-500 hover:bg-primary-500/90"
+            className="h-auto shrink-0 rounded-[8px] bg-primary-500 px-5 py-4 text-background-500 hover:bg-primary-500/90!"
           >
             <a
               href={CRONOGRAMA_PDF_URL}
