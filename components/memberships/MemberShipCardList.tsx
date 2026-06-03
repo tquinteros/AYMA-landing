@@ -42,7 +42,7 @@ const MemberShipCardList = ({
     const hasSelectedPrice = selectedPrice !== undefined
 
     return (
-        <Card className={`w-full relative flex flex-col overflow-visible rounded-3xl! bg-roca-100 p-6 sm:p-8 lg:py-10 lg:px-6 ${membership.tag ? "border border-primary-500" : "border-none! border-transparent!"}`}>
+        <Card className={`w-full h-full min-h-[clamp(20rem,72vw,28.75rem)] sm:min-h-[clamp(22rem,55vw,28.75rem)] lg:min-h-[28.75rem] relative flex flex-col overflow-visible rounded-3xl! bg-roca-100 p-6 sm:p-8 lg:py-10 lg:px-6 ${membership.tag ? "border border-primary-500" : "border-none! border-transparent!"}`}>
             {membership.tag && (
                 <Badge
                     className="pointer-events-none absolute top-0 right-6 z-20 h-auto -translate-y-1/2 rounded-full border-0 bg-primary-500 px-4 py-1.5 text-xs tracking-wide text-background-500 uppercase backdrop-blur-[2px] sm:right-8 sm:text-sm"
@@ -67,7 +67,7 @@ const MemberShipCardList = ({
                     ))}
                 </ul>
             </CardContent>
-            <div className='mt-8'>
+            <div className="mt-auto pt-8">
                 {membership.bottomText && (
                     <p className="text-background-500 text-sm leading-snug">{membership.bottomText}</p>
                 )}
