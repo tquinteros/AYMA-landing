@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { useWindowsSize } from "@/lib/use-windows-size"
 import { useState } from "react"
+import Link from "next/link"
 import { MoveUp } from "lucide-react"
 import { services } from "@/data/services"
 const VerticalAccordion = () => {
@@ -155,6 +156,13 @@ const Panel = ({
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    href="/services"
+                    className="mt-6 text-sm font-regular shadow-xs duration-300 transition-all uppercase border rounded-[8px] px-5 py-2 border-surface-500 w-fit tracking-[4px] text-surface-500 hover:opacity-80 sm:text-base"
+                  >
+                    Ver más
+                  </Link>
+
                 </div>
               </div>
             </motion.div>

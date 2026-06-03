@@ -25,7 +25,7 @@ import { Switch } from "@/components/ui/switch";
 interface FormValues {
   name: string;
   price: string;
-  anualPrice: string;
+  quarterlyPrice: string;
   description: string;
   features: string[];
   tag: string;
@@ -52,7 +52,7 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
     defaultValues: {
       name: membership.name,
       price: String(membership.price),
-      anualPrice: membership.anualPrice !== undefined ? String(membership.anualPrice) : "",
+      quarterlyPrice: membership.quarterlyPrice !== undefined ? String(membership.quarterlyPrice) : "",
       description: membership.description,
       features: membership.features,
       tag: membership.tag ?? "",
@@ -143,24 +143,24 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
               )}
             </div>
             <div className="flex flex-col gap-1.5 sm:col-start-2">
-              <Label htmlFor={`edit-anual-price-${id}`}>
-                Precio anual (ARS){" "}
+              <Label htmlFor={`edit-quarterly-price-${id}`}>
+                Precio trimestral (ARS){" "}
                 <span className="text-muted-foreground font-normal">
                   (opcional)
                 </span>
               </Label>
               <Input
-                id={`edit-anual-price-${id}`}
+                id={`edit-quarterly-price-${id}`}
                 type="number"
                 min="0"
                 step="0.01"
-                aria-invalid={!!errors.anualPrice}
-                {...register("anualPrice", {
-                  min: { value: 0, message: "El precio anual no puede ser negativo." },
+                aria-invalid={!!errors.quarterlyPrice}
+                {...register("quarterlyPrice", {
+                  min: { value: 0, message: "El precio trimestral no puede ser negativo." },
                 })}
               />
-              {errors.anualPrice && (
-                <p className="text-xs text-destructive">{errors.anualPrice.message}</p>
+              {errors.quarterlyPrice && (
+                <p className="text-xs text-destructive">{errors.quarterlyPrice.message}</p>
               )}
             </div>
           </div>

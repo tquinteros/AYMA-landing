@@ -12,7 +12,7 @@ interface Membership {
   id: string
   name: string
   price: number
-  anualPrice?: number
+  quarterlyPrice?: number
   features: string[]
 }
 
@@ -80,10 +80,10 @@ const parseFeature = (feature: string): ParsedFeature => {
 
 const MembershipsTable = ({
   memberships,
-  isAnnual = false,
+  isQuarterly = false,
 }: {
   memberships: Membership[]
-  isAnnual?: boolean
+  isQuarterly?: boolean
 }) => {
   const featureRows = Array.from(
     memberships.reduce<Map<string, string>>((features, membership) => {
@@ -127,8 +127,8 @@ const MembershipsTable = ({
           <TableRow className="border-roca-500/20 hover:bg-transparent">
             <TableHead className="sticky left-0 z-20 w-[220px] border-r border-roca-500/20 bg-surface-500 text-roca-500 after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-roca-500 after:content-['']" />
             {memberships.map((membership) => {
-              const selectedPrice = isAnnual ? membership.anualPrice : membership.price
-              const periodLabel = isAnnual ? "/Año" : "/Mes"
+              const selectedPrice = isQuarterly ? membership.quarterlyPrice : membership.price
+              const periodLabel = isQuarterly ? "/Trimestre" : "/Mes"
               const hasSelectedPrice = selectedPrice !== undefined
 
               return (

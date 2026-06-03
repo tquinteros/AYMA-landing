@@ -8,7 +8,7 @@ const HeroLongevity = () => {
       className="relative h-svh overflow-hidden"
     >
       <Image
-        src="/services/wellness.png"
+        src="/longevity/longevitybg.jpg"
         alt="Membership background"
         fill
         priority

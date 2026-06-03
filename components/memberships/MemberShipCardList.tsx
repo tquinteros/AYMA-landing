@@ -8,7 +8,7 @@ interface Membership {
     name: string
     description: string
     price: number
-    anualPrice?: number
+    quarterlyPrice?: number
     features: string[]
     tag?: string
     bottomText?: string
@@ -32,13 +32,13 @@ function MembershipCardTitle({ name }: { name: string }) {
 
 const MemberShipCardList = ({
     membership,
-    isAnnual = false,
+    isQuarterly = false,
 }: {
     membership: Membership
-    isAnnual?: boolean
+    isQuarterly?: boolean
 }) => {
-    const selectedPrice = isAnnual ? membership.anualPrice : membership.price
-    const periodLabel = isAnnual ? "/Año" : "/Mes"
+    const selectedPrice = isQuarterly ? membership.quarterlyPrice : membership.price
+    const periodLabel = isQuarterly ? "/Trimestre" : "/Mes"
     const hasSelectedPrice = selectedPrice !== undefined
 
     return (

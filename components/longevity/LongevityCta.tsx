@@ -13,13 +13,13 @@ const LongevityCta = () => {
       />
       <div className="absolute inset-0 bg-roca-900/55" aria-hidden="true" />
 
-      <div className="relative z-10 flex h-full min-h-[280px] sm:min-h-[320px] lg:min-h-[425px] flex-col justify-between gap-8 px-5 py-10 sm:px-8 sm:py-12 lg:px-24 lg:py-[84px]">
+      <div className="relative z-10 flex h-full min-h-[280px] sm:min-h-[320px] lg:min-h-[425px] flex-col gap-8 px-5 py-10 sm:px-8 sm:py-12 lg:justify-between lg:px-24 lg:py-[84px]">
         <h2 className="max-w-6xl text-left text-2xl uppercase leading-tight text-background-500 sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
           CONTACTATE CON NOSOTROS
           PARA MÁS INFORMACIÓN.
         </h2>
 
-        <div className="flex w-full flex-row items-center justify-between gap-4">
+        <div className="flex w-full flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
           <Button
             asChild
             className="bg-primary-500 w-full text-[14px] shrink-0 tracking-[5px] uppercase text-base px-7 py-6 text-background-500 hover:bg-primary-500/90! sm:w-fit sm:py-7 lg:w-fit"
@@ -32,7 +32,7 @@ const LongevityCta = () => {
             alt="Integración"
             width={64}
             height={64}
-            className="h-auto w-[52px] shrink-0 sm:w-[64px] lg:w-[64px]"
+            className="h-auto w-[52px] shrink-0 sm:w-[64px]"
           />
         </div>
       </div>

@@ -8,7 +8,7 @@ const HeroServices = () => {
       className="relative h-svh overflow-hidden"
     >
       <Image
-        src="/membershipbg.png"
+        src="/services/servicesheader.png"
         alt="Membership background"
         fill
         priority

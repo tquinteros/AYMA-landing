@@ -15,7 +15,7 @@ export interface MembershipData {
   name: string;
   description: string;
   price: number;
-  anualPrice?: number;
+  quarterlyPrice?: number;
   features: string[];
   tag?: string;
   bottomText?: string;
@@ -50,8 +50,8 @@ export async function createMembership(
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
-    const anualPriceRaw = formData.get("anualPrice") as string | null;
-    const anualPrice = anualPriceRaw ? parseFloat(anualPriceRaw) : undefined;
+    const quarterlyPriceRaw = formData.get("quarterlyPrice") as string | null;
+    const quarterlyPrice = quarterlyPriceRaw ? parseFloat(quarterlyPriceRaw) : undefined;
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -65,7 +65,7 @@ export async function createMembership(
       !name ||
       !description ||
       isNaN(price) ||
-      (anualPrice !== undefined && isNaN(anualPrice)) ||
+      (quarterlyPrice !== undefined && isNaN(quarterlyPrice)) ||
       features.length === 0
     ) {
       return { error: "Completá todos los campos obligatorios." };
@@ -79,7 +79,7 @@ export async function createMembership(
       name,
       description,
       price,
-      anualPrice,
+      quarterlyPrice,
       features,
       tag: tag || undefined,
       bottomText: bottomText || undefined,
@@ -108,8 +108,8 @@ export async function updateMembership(
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
-    const anualPriceRaw = formData.get("anualPrice") as string | null;
-    const anualPrice = anualPriceRaw ? parseFloat(anualPriceRaw) : undefined;
+    const quarterlyPriceRaw = formData.get("quarterlyPrice") as string | null;
+    const quarterlyPrice = quarterlyPriceRaw ? parseFloat(quarterlyPriceRaw) : undefined;
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -124,7 +124,7 @@ export async function updateMembership(
       !name ||
       !description ||
       isNaN(price) ||
-      (anualPrice !== undefined && isNaN(anualPrice)) ||
+      (quarterlyPrice !== undefined && isNaN(quarterlyPrice)) ||
       features.length === 0
     ) {
       return { error: "Completá todos los campos obligatorios." };
@@ -139,9 +139,9 @@ export async function updateMembership(
         tag: tag || undefined,
         bottomText: bottomText || undefined,
         featured,
-        ...(anualPrice !== undefined ? { anualPrice } : {}),
+        ...(quarterlyPrice !== undefined ? { quarterlyPrice } : {}),
       },
-      ...(anualPrice === undefined ? { $unset: { anualPrice: "" } } : {}),
+      ...(quarterlyPrice === undefined ? { $unset: { quarterlyPrice: "" } } : {}),
     });
 
     revalidatePath("/");

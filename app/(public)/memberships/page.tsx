@@ -17,7 +17,7 @@ const MembershipsPages = async () => {
         name: membership.name,
         description: membership.description,
         price: membership.price,
-        anualPrice: membership.anualPrice,
+        quarterlyPrice: membership.quarterlyPrice,
         features: membership.features,
         tag: membership.tag,
         bottomText: membership.bottomText,

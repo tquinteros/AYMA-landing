@@ -12,35 +12,35 @@ interface MembershipsListMembership {
     name: string
     description: string
     price: number
-    anualPrice?: number
+    quarterlyPrice?: number
     features: string[]
     tag?: string
     bottomText?: string
 }
 
 const MembershipsList = ({ memberships }: { memberships: MembershipsListMembership[] }) => {
-    const [isAnnual, setIsAnnual] = useState(false)
+    const [isQuarterly, setIsQuarterly] = useState(false)
 
     const handleWhatsApp = () => {
         window.open("https://wa.me/5491124868493", "_blank")
     }
 
     return (
-        <div className="pt-12 pb-25 bg-roca-500 px-5 sm:px-8 lg:px-24">
+        <div className="pt-16 pb-25 bg-roca-500 px-5 sm:px-8 lg:px-24">
             <div className="mb-12 flex items-center justify-center gap-4 text-surface-500">
-                <span className={isAnnual ? "opacity-70" : "opacity-100"}>Mensual</span>
+                <span className={isQuarterly ? "opacity-70" : "opacity-100"}>Mensual</span>
                 <Switch
                     size="lg"
-                    checked={isAnnual}
-                    onCheckedChange={setIsAnnual}
+                    checked={isQuarterly}
+                    onCheckedChange={setIsQuarterly}
                     className="bg-[#4F4F4F] data-checked:bg-[#4F4F4F] data-unchecked:bg-[#4F4F4F] dark:bg-[#4F4F4F] dark:data-checked:bg-[#4F4F4F] dark:data-unchecked:bg-[#4F4F4F] **:data-[slot=switch-thumb]:bg-white **:data-[slot=switch-thumb]:data-checked:bg-white **:data-[slot=switch-thumb]:data-unchecked:bg-white **:data-[slot=switch-thumb]:dark:bg-white **:data-[slot=switch-thumb]:dark:data-checked:bg-white **:data-[slot=switch-thumb]:dark:data-unchecked:bg-white"
                 />
-                <span className={isAnnual ? "opacity-100" : "opacity-70"}>Anual</span>
+                <span className={isQuarterly ? "opacity-100" : "opacity-70"}>Trimestral</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-8 lg:gap-y-16">
                 {
                     memberships.map((membership) => (
-                        <MemberShipCardList key={membership.id} membership={membership} isAnnual={isAnnual} />
+                        <MemberShipCardList key={membership.id} membership={membership} isQuarterly={isQuarterly} />
                     ))
                 }
             </div>
@@ -56,7 +56,7 @@ const MembershipsList = ({ memberships }: { memberships: MembershipsListMembersh
             </div>
             <div className="mt-25 flex flex-col gap-6 lg:gap-12">
                 <h5 className="text-[40px] text-surface-500">Compará nuestras membresías.</h5>
-                <MembershipsTable memberships={memberships} isAnnual={isAnnual} />
+                <MembershipsTable memberships={memberships} isQuarterly={isQuarterly} />
             </div>
         </div >
     )

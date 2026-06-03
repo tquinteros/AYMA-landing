@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 interface FormValues {
     name: string;
     price: string;
-    anualPrice: string;
+    quarterlyPrice: string;
     description: string;
     features: string[];
     tag: string;
