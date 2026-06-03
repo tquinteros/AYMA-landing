@@ -43,7 +43,7 @@ export const services = [
         title: "Servicios: Terapias restaurativas",
         subtitle: "Un espacio dedicado al cuidado físico especializado y a la recuperación profunda.",
         imgSrc:
-            "/services/therapies.jpg",
+            "/services/therapies.png",
         backgroundColorAccordion: "#6C5751",
         description:
             "Tratamientos que alivian tensiones y acompañan los procesos de recuperación desde un abordaje integral.",
