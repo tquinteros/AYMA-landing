@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import Link from "next/link"
 import { getSessionAction } from "@/lib/actions/auth"
+import { useWindowsSize } from "@/lib/use-windows-size"
 
 const getHeroIdForPath = (pathname: string) => {
   if (pathname === "/") return "hero"
@@ -19,13 +20,19 @@ const getHeroIdForPath = (pathname: string) => {
   return null
 }
 
+const DESKTOP_BREAKPOINT = 768
+const MOBILE_SCROLL_THRESHOLD = 8
+
 const Header = () => {
   const pathname = usePathname()
   const heroId = getHeroIdForPath(pathname)
+  const { width } = useWindowsSize()
+  const isDesktop = width >= DESKTOP_BREAKPOINT
   const [heroState, setHeroState] = useState<{
     path: string
     intersecting: boolean
   } | null>(null)
+  const [hasScrolledOnMobile, setHasScrolledOnMobile] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const { data: isAuthenticated } = useQuery<boolean>({
     queryKey: ["session"],
@@ -34,7 +41,7 @@ const Header = () => {
   const hasSession = Boolean(isAuthenticated)
 
   useEffect(() => {
-    if (!heroId) return
+    if (!heroId || !isDesktop) return
 
     let observer: IntersectionObserver | undefined
 
@@ -64,23 +71,41 @@ const Header = () => {
       window.clearTimeout(timeoutId)
       observer?.disconnect()
     }
-  }, [pathname, heroId])
+  }, [pathname, heroId, isDesktop])
 
-  const scrolledPastHero = heroId
+  useEffect(() => {
+    if (isDesktop) return
+
+    const updateScroll = () => {
+      setHasScrolledOnMobile(window.scrollY > MOBILE_SCROLL_THRESHOLD)
+    }
+
+    updateScroll()
+    window.addEventListener("scroll", updateScroll, { passive: true })
+    return () => window.removeEventListener("scroll", updateScroll)
+  }, [isDesktop, pathname])
+
+  const scrolledPastHeroOnDesktop = heroId
     ? heroState?.path === pathname
       ? !heroState.intersecting
       : false
     : true
 
-  const navTextColor = scrolledPastHero ? "text-background-500" : "text-background-900"
+  const useSolidHeader = isDesktop
+    ? scrolledPastHeroOnDesktop
+    : heroId
+      ? hasScrolledOnMobile
+      : true
 
-  const logoSrc = scrolledPastHero ? "/header-new-pass.svg" : "/header-new.svg"
+  const navTextColor = useSolidHeader ? "text-background-500" : "text-background-900"
+
+  const logoSrc = useSolidHeader ? "/header-new-pass.svg" : "/header-new.svg"
 
   if (pathname.startsWith("/admin")) return null
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolledPastHero
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${useSolidHeader
         ? "bg-roca-500 backdrop-blur-md shadow-sm"
         : "bg-transparent"
         }`}

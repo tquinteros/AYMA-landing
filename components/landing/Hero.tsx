@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative h-[calc(100svh-124px)] overflow-hidden"
+      className="relative h-svh overflow-hidden"
     >
       <Image
         src="/hero-image.png"
@@ -18,8 +18,8 @@ const Hero = () => {
 
       <div className="absolute inset-0 bg-black/60 lg:bg-black/40" />
 
-      <div className="relative z-10 flex h-full items-center px-5 sm:px-8 lg:px-24">
-        <div className="flex w-full flex-col gap-12 lg:gap-16">
+      <div className="relative z-10 flex h-full items-center px-5 sm:px-8 lg:px-24 mt-16">
+        <div className="flex w-full flex-col justify-between h-[50vh]">
           <h1 className="text-4xl lg:text-7xl uppercase leading-tight text-surface-500">
             DONDE COMIENZA LA
             <br />
