@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { updateMembership, type MembershipData } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
@@ -21,14 +21,16 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
 import { FeatureTagInput } from "./FeatureTagInput";
-import MemberShipCard from "@/components/landing/MemberShipCard";
+import { Switch } from "@/components/ui/switch";
 interface FormValues {
   name: string;
   price: string;
+  quarterlyPrice: string;
   description: string;
   features: string[];
   tag: string;
   bottomText: string;
+  featured: boolean;
 }
 
 interface EditMembershipDialogProps {
@@ -37,7 +39,6 @@ interface EditMembershipDialogProps {
 
 export function EditMembershipDialog({ membership }: EditMembershipDialogProps) {
   const [open, setOpen] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -51,34 +52,35 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
     defaultValues: {
       name: membership.name,
       price: String(membership.price),
+      quarterlyPrice: membership.quarterlyPrice !== undefined ? String(membership.quarterlyPrice) : "",
       description: membership.description,
       features: membership.features,
       tag: membership.tag ?? "",
       bottomText: membership.bottomText ?? "",
+      featured: membership.featured ?? false,
     },
   });
-  const watchedName = useWatch({ control, name: "name" });
-  const watchedDescription = useWatch({ control, name: "description" });
-  const watchedPrice = useWatch({ control, name: "price" });
-  const watchedFeatures = useWatch({ control, name: "features" });
-  const watchedTag = useWatch({ control, name: "tag" });
-  const watchedBottomText = useWatch({ control, name: "bottomText" });
-
   function handleOpenChange(next: boolean) {
     if (isPending) return;
     setOpen(next);
     if (!next) {
       reset();
-      setShowPreview(true);
     }
   }
 
   function onSubmit(values: FormValues) {
     const formData = new FormData();
     formData.append("id", membership._id);
-    (Object.keys(values) as (keyof FormValues)[]).forEach((key) =>
-      formData.append(key, Array.isArray(values[key]) ? values[key].join("\n") : values[key])
-    );
+    (Object.keys(values) as (keyof FormValues)[]).forEach((key) => {
+      const value = values[key];
+      if (typeof value === "boolean") {
+        formData.append(key, value ? "true" : "false");
+      } else if (Array.isArray(value)) {
+        formData.append(key, value.join("\n"));
+      } else {
+        formData.append(key, value);
+      }
+    });
 
     startTransition(async () => {
       const result = await updateMembership(undefined, formData);
@@ -140,6 +142,27 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
                 <p className="text-xs text-destructive">{errors.price.message}</p>
               )}
             </div>
+            <div className="flex flex-col gap-1.5 sm:col-start-2">
+              <Label htmlFor={`edit-quarterly-price-${id}`}>
+                Precio trimestral (ARS){" "}
+                <span className="text-muted-foreground font-normal">
+                  (opcional)
+                </span>
+              </Label>
+              <Input
+                id={`edit-quarterly-price-${id}`}
+                type="number"
+                min="0"
+                step="0.01"
+                aria-invalid={!!errors.quarterlyPrice}
+                {...register("quarterlyPrice", {
+                  min: { value: 0, message: "El precio trimestral no puede ser negativo." },
+                })}
+              />
+              {errors.quarterlyPrice && (
+                <p className="text-xs text-destructive">{errors.quarterlyPrice.message}</p>
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
@@ -183,6 +206,26 @@ export function EditMembershipDialog({ membership }: EditMembershipDialogProps) 
                 {...register("bottomText")}
               />
             </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 rounded-lg border px-4 py-3">
+            <div className="flex flex-col gap-0.5">
+              <Label htmlFor={`edit-featured-${id}`}>Destacada en home</Label>
+              <p className="text-muted-foreground text-xs">
+                Mostrar esta membresía en la página principal.
+              </p>
+            </div>
+            <Controller
+              name="featured"
+              control={control}
+              render={({ field }) => (
+                <Switch
+                  id={`edit-featured-${id}`}
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              )}
+            />
           </div>
 
           {/* <div className="flex flex-col gap-2 pt-2">

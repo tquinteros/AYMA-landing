@@ -11,8 +11,8 @@ import {
 import { Button } from '../ui/button'
 import Image from "next/image"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import Link from "next/link"
 // import { memberships as localmemberships } from "@/data/membership"
-
 interface LandingMembership {
     id: string
     name: string
@@ -49,13 +49,10 @@ const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
         }
     }, [api])
 
-    const handleWhatsApp = () => {
-        window.open("https://wa.me/5491124868493", "_blank")
-    }
 
     return (
         // <div id="memberships" className="mb-64 bg-[#FFFCF8]">
-        <section id="memberships" className="py-12 sm:py-16 lg:py-20 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[auto_100%] md:bg-size-[auto_150%] bg-center bg-no-repeat">
+        <section id="memberships" className="py-12 sm:py-16 lg:py-21 bg-roca-500 bg-[url('/membershipbg.png')] bg-size-[auto_100%] md:bg-size-[auto_150%] bg-center bg-no-repeat">
             <div className="flex flex-col gap-1 px-5 sm:px-8 lg:px-24">
                 <div className="flex flex-col gap-4 lg:flex-row items-start lg:justify-between">
                     <h2 className="text-4xl sm:text-4xl uppercase lg:text-5xl text-center text-background-500 lg:text-left">
@@ -118,9 +115,8 @@ const Memberships = ({ memberships }: { memberships: LandingMembership[] }) => {
                     Si querés más información sobre las experiencias y valores, escribinos por WhatsApp. <br className="hidden sm:block" />
                     Estamos para ayudarte a encontrar tu forma de vivir AYMA.
                 </p>
-                <Button className='bg-primary-500 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-primary-500/80 text-background-100' onClick={handleWhatsApp}>
-                    <Image src="/whatsappwhite.svg" alt="Whatsapp" width={20} height={20} />
-                    WhatsApp
+                <Button className='bg-primary-500 w-full lg:w-fit text-base px-8 py-6 sm:py-7 flex items-center gap-2 hover:bg-primary-500/80! text-background-100' asChild>
+                    <Link href="/memberships">Ver todas las membresías</Link>
                 </Button>
             </div>
         </section>

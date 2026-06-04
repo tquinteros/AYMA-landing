@@ -31,7 +31,7 @@ const OurSpace = () => {
                 <Carousel opts={{ loop: true, dragFree: true }}>
                     <CarouselContent className="items-stretch gap-4 px-5 sm:px-8 lg:px-0">
                         {ourSpaceItemsSrcImages.map((ourSpaceItemSrcImage, index) => (
-                            <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/5 flex" key={index}>
+                            <CarouselItem className="basis-[88%] sm:basis-1/2 lg:basis-1/5 flex" key={index}>
                                 <Image src={ourSpaceItemSrcImage} alt="Our Space" className="w-full h-full aspect-3/4 object-cover rounded-lg" width={1200} height={1200} />
                             </CarouselItem>
                         ))}
@@ -42,6 +42,14 @@ const OurSpace = () => {
             </div>
             <div className="relative z-10 my-10 sm:my-32 px-5 sm:px-8 lg:px-24">
                 <div className="flex flex-col gap-4  lg:flex-row lg:items-end lg:justify-between">
+                    <div>
+                        <span className="text-4xl lg:text-5xl text-surface-500">&quot;La disciplina personal crea libertad&quot;</span>
+                    </div>
+                    <div>
+                        <span className="text-base lg:text-lg text-surface-500">- Brianna Wiest</span>
+                    </div>
+                </div>
+                {/* <div className="flex flex-col gap-4  lg:flex-row lg:items-end lg:justify-between">
                     <Image src="/ourspace/ourspaceicon.svg" alt="Our Space Icon" className="hidden opacity-0 md:block" width={64} height={64} />
                     <div className="flex flex-col gap-5">
                         <p className="max-w-2xl text-base font-bold sm:text-lg text-left lg:text-right text-surface-500">
@@ -52,7 +60,7 @@ const OurSpace = () => {
                             y recuperarte de una forma integral. Un espacio para bajar el ritmo y volver a vos.
                         </p>
                     </div>
-                </div>
+                </div> */}
                 {/* <div className="flex items-end justify-end mt-4">
                     <p className="max-w-2xl text-base sm:text-lg text-center lg:text-left text-surface-500">
                         Más que un lugar, somos una experiencia que te invita a respirar, moverte

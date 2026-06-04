@@ -9,10 +9,12 @@ import { Badge } from "@/components/ui/badge";
 interface FormValues {
     name: string;
     price: string;
+    quarterlyPrice: string;
     description: string;
     features: string[];
     tag: string;
     bottomText: string;
+    featured: boolean;
 }
 
 interface FeatureInputProps {

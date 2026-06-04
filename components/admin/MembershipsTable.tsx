@@ -141,8 +141,10 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
               <TableHead>Nombre</TableHead>
               <TableHead className="hidden sm:table-cell">Descripción</TableHead>
               <TableHead>Precio</TableHead>
+              <TableHead className="hidden lg:table-cell">Precio trimestral</TableHead>
               <TableHead className="hidden md:table-cell">Beneficios</TableHead>
               <TableHead className="hidden lg:table-cell">Etiqueta</TableHead>
+              <TableHead className="hidden md:table-cell">Destacada</TableHead>
               <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
           </TableHeader>
@@ -168,6 +170,13 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
                 <TableCell className="font-medium tabular-nums">
                   {formatPrice(membership.price)}
                 </TableCell>
+                <TableCell className="hidden lg:table-cell font-medium tabular-nums">
+                  {membership.quarterlyPrice ? (
+                    formatPrice(membership.quarterlyPrice)
+                  ) : (
+                    <span className="text-muted-foreground text-xs">—</span>
+                  )}
+                </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <span className="text-muted-foreground text-xs">
                     {membership.features.length} beneficio
@@ -179,6 +188,13 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
                     <Badge variant="secondary">{membership.tag}</Badge>
                   ) : (
                     <span className="text-muted-foreground text-xs">—</span>
+                  )}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {membership.featured ? (
+                    <Badge variant="secondary">Sí</Badge>
+                  ) : (
+                    <span className="text-muted-foreground text-xs">No</span>
                   )}
                 </TableCell>
                 <TableCell>

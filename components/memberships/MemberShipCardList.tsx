@@ -1,0 +1,82 @@
+import React from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Badge } from '../ui/badge'
+
+
+interface Membership {
+    id: string | number
+    name: string
+    description: string
+    price: number
+    quarterlyPrice?: number
+    features: string[]
+    tag?: string
+    bottomText?: string
+}
+
+const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('es-AR').format(price)
+}
+
+function MembershipCardTitle({ name }: { name: string }) {
+    if (name.startsWith("AYMA")) {
+        return (
+            <>
+                <span className="font-bold">AYMA</span>
+                {name.slice(4)}
+            </>
+        )
+    }
+    return <>{name}</>
+}
+
+const MemberShipCardList = ({
+    membership,
+    isQuarterly = false,
+}: {
+    membership: Membership
+    isQuarterly?: boolean
+}) => {
+    const selectedPrice = isQuarterly ? membership.quarterlyPrice : membership.price
+    const periodLabel = isQuarterly ? "/Trimestre" : "/Mes"
+    const hasSelectedPrice = selectedPrice !== undefined
+
+    return (
+        <Card className={`w-full h-full min-h-[clamp(20rem,72vw,28.75rem)] sm:min-h-[clamp(22rem,55vw,28.75rem)] lg:min-h-[28.75rem] relative flex flex-col overflow-visible rounded-3xl! bg-roca-100 p-6 sm:p-8 lg:py-10 lg:px-6 ${membership.tag ? "border border-primary-500" : "border-none! border-transparent!"}`}>
+            {membership.tag && (
+                <Badge
+                    className="pointer-events-none absolute top-0 right-6 z-20 h-auto -translate-y-1/2 rounded-full border-0 bg-primary-500 px-4 py-1.5 text-xs tracking-wide text-background-500 uppercase backdrop-blur-[2px] sm:right-8 sm:text-sm"
+                >
+                    {membership.tag}
+                </Badge>
+            )}
+            <CardHeader className="p-0">
+                <CardTitle className="text-xl sm:text-2xl font-normal text-background-500">
+                    <MembershipCardTitle name={membership.name} />
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4 flex-1 p-0 pt-3">
+                <p className="text-background-500 text-sm sm:text-md leading-snug">{membership.description}</p>
+                <span className="text-background-500 text-base sm:text-[16px] font-bold">INCLUYE</span>
+                <ul className="flex flex-col ml-2">
+                    {membership.features.map((feature: string) => (
+                        <li key={feature} className="flex text-base sm:text-[16px] items-center text-background-500 gap-2">
+                            <div className="w-1 h-1 bg-background-500 rounded-full"></div>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+            </CardContent>
+            <div className="mt-auto pt-8">
+                {membership.bottomText && (
+                    <p className="text-background-500 text-sm leading-snug">{membership.bottomText}</p>
+                )}
+                <p className="text-md sm:text-[16px] font-semibold text-background-500">
+                    {hasSelectedPrice ? `$ ${formatPrice(selectedPrice)} ${periodLabel}` : "---"}
+                </p>
+            </div>
+        </Card>
+    )
+}
+
+export default MemberShipCardList

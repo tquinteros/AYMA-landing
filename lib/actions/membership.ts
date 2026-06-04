@@ -15,9 +15,11 @@ export interface MembershipData {
   name: string;
   description: string;
   price: number;
+  quarterlyPrice?: number;
   features: string[];
   tag?: string;
   bottomText?: string;
+  featured: boolean;
   order: number;
   createdAt: string;
   updatedAt: string;
@@ -26,6 +28,14 @@ export interface MembershipData {
 export async function getMemberships(): Promise<MembershipData[]> {
   await connectDB();
   const memberships = await MembershipModel.find().sort({ order: 1, createdAt: 1 }).lean();
+  return JSON.parse(JSON.stringify(memberships));
+}
+
+export async function getFeaturedMemberships(): Promise<MembershipData[]> {
+  await connectDB();
+  const memberships = await MembershipModel.find({ featured: true })
+    .sort({ order: 1, createdAt: 1 })
+    .lean();
   return JSON.parse(JSON.stringify(memberships));
 }
 
@@ -40,6 +50,8 @@ export async function createMembership(
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
+    const quarterlyPriceRaw = formData.get("quarterlyPrice") as string | null;
+    const quarterlyPrice = quarterlyPriceRaw ? parseFloat(quarterlyPriceRaw) : undefined;
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -47,8 +59,15 @@ export async function createMembership(
       .filter(Boolean);
     const tag = (formData.get("tag") as string) || undefined;
     const bottomText = (formData.get("bottomText") as string) || undefined;
+    const featured = formData.get("featured") === "true";
 
-    if (!name || !description || isNaN(price) || features.length === 0) {
+    if (
+      !name ||
+      !description ||
+      isNaN(price) ||
+      (quarterlyPrice !== undefined && isNaN(quarterlyPrice)) ||
+      features.length === 0
+    ) {
       return { error: "Completá todos los campos obligatorios." };
     }
 
@@ -60,13 +79,16 @@ export async function createMembership(
       name,
       description,
       price,
+      quarterlyPrice,
       features,
       tag: tag || undefined,
       bottomText: bottomText || undefined,
+      featured,
       order: nextOrder,
     });
 
     revalidatePath("/");
+    revalidatePath("/memberships");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -86,6 +108,8 @@ export async function updateMembership(
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const price = parseFloat(formData.get("price") as string);
+    const quarterlyPriceRaw = formData.get("quarterlyPrice") as string | null;
+    const quarterlyPrice = quarterlyPriceRaw ? parseFloat(quarterlyPriceRaw) : undefined;
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -93,21 +117,35 @@ export async function updateMembership(
       .filter(Boolean);
     const tag = (formData.get("tag") as string) || undefined;
     const bottomText = (formData.get("bottomText") as string) || undefined;
+    const featured = formData.get("featured") === "true";
 
-    if (!id || !name || !description || isNaN(price) || features.length === 0) {
+    if (
+      !id ||
+      !name ||
+      !description ||
+      isNaN(price) ||
+      (quarterlyPrice !== undefined && isNaN(quarterlyPrice)) ||
+      features.length === 0
+    ) {
       return { error: "Completá todos los campos obligatorios." };
     }
 
     await MembershipModel.findByIdAndUpdate(id, {
-      name,
-      description,
-      price,
-      features,
-      tag: tag || undefined,
-      bottomText: bottomText || undefined,
+      $set: {
+        name,
+        description,
+        price,
+        features,
+        tag: tag || undefined,
+        bottomText: bottomText || undefined,
+        featured,
+        ...(quarterlyPrice !== undefined ? { quarterlyPrice } : {}),
+      },
+      ...(quarterlyPrice === undefined ? { $unset: { quarterlyPrice: "" } } : {}),
     });
 
     revalidatePath("/");
+    revalidatePath("/memberships");
     return { success: true };
   } catch (error) {
     console.error(error);

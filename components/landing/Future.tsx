@@ -36,17 +36,18 @@ const Future = () => {
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-25 lg:mt-34 pb-34">
+          <p className="text-surface-500 text-3xl text-center leading-snug lg:text-left sm:text-3xl">
+            PORQUE EL FUTURO SE CONSTRUYE, SE ENTRENA Y SE <span className="font-medium italic">PRACTICA.</span>
+          </p>
+        </div>
       </div>
 
-      <div className="pointer-events-none z-10 mt-12 flex flex-col items-center gap-1 px-5 pb-16 text-center sm:mt-16 sm:px-8 sm:pb-20 lg:mt-[114px] lg:items-end lg:px-24 lg:pb-[100px] lg:text-right">
-        <p className="text-surface-500 text-xl sm:text-3xl lg:text-[39px]">
-          PORQUE EL FUTURO SE CONSTRUYE,
+      {/* <div className="pointer-events-none z-10 mt-12 flex flex-col items-center gap-1 px-5 pb-16 text-center sm:mt-16 sm:px-8 sm:pb-20 lg:mt-[114px] lg:items-end lg:px-24 lg:pb-[100px] lg:text-right">
+        <p className="text-surface-500 text-xl sm:text-3xl">
+          PORQUE EL FUTURO SE CONSTRUYE, SE ENTRENA Y SE PRACTICA.
         </p>
-        <p className="text-surface-500 text-xl sm:text-3xl lg:mt-2 lg:text-[39px]">
-          SE ENTRENA, SE PRACTICA Y SE
-          <span className="font-medium italic"> HABITA.</span>
-        </p>
-      </div>
+      </div> */}
     </section>
   );
 };

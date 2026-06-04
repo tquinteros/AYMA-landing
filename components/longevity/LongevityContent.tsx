@@ -1,0 +1,122 @@
+import Image from "next/image"
+
+const LongevityContent = () => {
+  return (
+    <div className="flex flex-col gap-10 bg-roca-500 px-5 py-12 sm:gap-12 sm:px-8 sm:py-16 lg:gap-12 lg:px-24 lg:py-25">
+      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <div className="grid w-full grid-cols-[1fr_auto_1fr] items-center lg:flex lg:w-auto lg:justify-start lg:gap-7">
+            <Image
+              src="/longevity/eralongevity.svg"
+              alt="ERA Longevity"
+              width={127}
+              height={53}
+              className="h-auto w-full justify-self-start object-contain object-left lg:w-[127px] lg:shrink-0"
+            />
+            <span className="shrink-0 px-2 text-2xl text-surface-500 sm:text-3xl lg:px-0 lg:text-[39px]">
+              ×
+            </span>
+            <Image
+              src="/longevity/aymalogo.svg"
+              alt="AYMA"
+              width={127}
+              height={53}
+              className="h-auto w-full justify-self-end object-contain object-right lg:w-[127px] lg:shrink-0"
+            />
+          </div>
+          <p className="max-w-2xl text-lg text-background-500 sm:text-xl lg:text-2xl">
+            Medicina preventiva, wellness y longevidad en una misma experiencia.
+          </p>
+        </div>
+
+        <div>
+          <p className="text-base leading-relaxed text-background-500 sm:text-lg">
+            AYMA junto a ERA Longevity desarrollan un programa integral diseñado
+            para acompañar energía, recuperación, rendimiento y bienestar a
+            largo plazo desde una mirada médica e interdisciplinaria.
+            <br />
+            <br />
+            A través de medicina preventiva, diagnóstico avanzado y protocolos
+            personalizados, el programa busca comprender el estado biológico de
+            cada persona para optimizar salud antes de la aparición de síntomas
+            o enfermedad.
+            <br />
+            <br />
+            El enfoque integra: medicina de precisión, wellness, recovery,
+            nutrición, hábitos y optimización biológica.
+          </p>
+        </div>
+      </div>
+
+      <div className="relative h-[400px] w-full overflow-hidden rounded-[16px]">
+        <Image
+          src="/longevity/longevityseparator1.png"
+          alt="Longevity separator"
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_25%]"
+          unoptimized
+        />
+      </div>
+
+      <div className="flex flex-col gap-4 sm:gap-6">
+        <h5 className="text-xl text-background-500 sm:text-2xl">
+          ¿Cómo funciona?
+        </h5>
+        <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:gap-10 xl:gap-16">
+          <p className="max-w-2xl text-base leading-relaxed text-background-500 sm:text-lg">
+            El proceso comienza con una consulta integral de longevidad y una
+            evaluación personalizada orientada a comprender: hábitos, estilo de
+            vida, energía, recuperación, objetivos y estado general de salud.
+          </p>
+          <p className="max-w-2xl text-base leading-relaxed text-background-500 sm:text-lg">
+            A partir de estudios diagnósticos avanzados, el equipo médico
+            desarrolla un roadmap personalizado que puede incluir:
+            suplementación, IV Drips, protocolos recovery, optimización
+            nutricional y estrategias de wellness adaptadas a cada persona.
+          </p>
+        </div>
+      </div>
+
+      <Image
+        src="/longevity/longevityseparator2.png"
+        alt="Longevity experience"
+        width={2000}
+        height={1000}
+        className="object-cover rounded-[16px] h-auto"
+        unoptimized
+      />
+
+      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <span className="text-2xl text-surface-500 sm:text-3xl lg:text-[39px]">
+            IV DRIPS
+          </span>
+          <p className="max-w-2xl text-lg text-background-500 sm:text-xl lg:text-2xl">
+            Protocolos de sueroterapia diseñados para acompañar: hidratación,
+            energía, recuperación, Inmunidad y bienestar general.
+          </p>
+        </div>
+
+        <div>
+          <p className="text-base leading-relaxed text-background-500 sm:text-lg">
+            Cada protocolo es supervisado por especialistas y adaptado según
+            objetivos, necesidades y perfil biológico individual.
+            <br />
+            <br />
+            Una nueva forma de entender el bienestar.
+            En Ayma creemos que vivir más no es suficiente. El verdadero
+            objetivo es vivir mejor.
+            <br />
+            <br />
+            Por eso integramos movimiento, recovery, medicina y hábitos dentro
+            de un mismo ecosistema diseñado para acompañar bienestar,
+            longevidad y calidad de vida de forma sostenible.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default LongevityContent

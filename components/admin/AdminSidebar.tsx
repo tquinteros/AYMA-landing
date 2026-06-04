@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CreditCard, LogOut, Menu } from "lucide-react";
+import { CircleHelp, CreditCard, LogOut, Menu } from "lucide-react";
 import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,11 @@ const navItems = [
     label: "Membresías",
     href: "/admin/memberships",
     icon: CreditCard,
+  },
+  {
+    label: "FAQs Membresías",
+    href: "/admin/membership-faqs",
+    icon: CircleHelp,
   },
 ];
 
