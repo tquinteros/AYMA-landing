@@ -44,13 +44,13 @@ export const movimientoEntrenamientoServices: ServiceTabItem[] = [
     number: "06",
     title: "Breathwork & Meditation",
     description:
-      "Una práctica restaurativa enfocada en permanencias largas y relajación profunda. Busca trabajar tejidos profundos, flexibilidad y regulación desde la quietud.",
+      "Prácticas orientadas a entrenar respiración, foco y regulación emocional. Herramientas diseñadas para bajar el ritmo, mejorar claridad mental y generar mayor conexión interna.",
   },
   {
     number: "07",
     title: "Danceflow",
     description:
-      "Prácticas orientadas a entrenar respiración, foco y regulación emocional. Herramientas diseñadas para bajar el ritmo, mejorar claridad mental y generar mayor conexión interna.",
+      "Es un espacio para divertirse, explorar y mover el cuerpo con libertad. A través del movimiento y la música buscamos despertar la creatividad, la expresión y, por sobre todo, la esencia única de cada uno.",
   },
   {
     number: "08",

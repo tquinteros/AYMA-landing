@@ -2,12 +2,12 @@ export const services = [
     {
         id: 1,
         title: "Servicios: Movimiento y entrenamiento",
-        subtitle: "Prácticas que integran fuerza, movilidad y conexión mente-cuerpo. ",
+        subtitle: "Prácticas diseñadas para integrar fuerza, movilidad, recuperación y  la conexión de la mente con el cuerpo.",
         imgSrc:
             "/services/movement.jpg",
         backgroundColorAccordion: "#F7F0E9",
         description:
-            "Fuerza, movilidad y consciencia se integran en prácticas que activan el cuerpo, liberan tensiones y ordenan la mente.",
+            "Entendemos el movimiento como una herramienta para regular el sistema, desarrollar resiliencia y mejorar la forma en la que vivimos.",
         features: [
             "Yoga",
             "Hot yoga",
