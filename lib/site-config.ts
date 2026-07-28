@@ -1,5 +1,5 @@
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.ayma.com.ar"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.aymawellnessclub.com"
 ).replace(/\/$/, "");
 
 export function absoluteUrl(path: string): string {
