@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogBySlug, getRelatedBlogs } from "@/lib/actions/blog";
+import { BlogBreadcrumb } from "@/components/blog/BlogBreadcrumb";
 import { BlogContent } from "@/components/blog/BlogContent";
 import { RelatedBlogs } from "@/components/blog/RelatedBlogs";
 import { absoluteUrl } from "@/lib/site-config";
@@ -92,6 +93,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       />
 
       <div className="mx-auto flex max-w-3xl flex-col gap-6 px-5 sm:px-8 lg:px-0">
+        <BlogBreadcrumb title={blog.title} />
+
         {blog.category && (
           <Link
             href={`/blog?category=${encodeURIComponent(blog.category)}`}
