@@ -1,20 +1,14 @@
 import { getBlogs } from "@/lib/actions/blog";
-import { getMailchimpAudiences } from "@/lib/mailchimp";
+// import { getMailchimpAudiences } from "@/lib/mailchimp";
 import { BlogsTable } from "@/components/admin/blogs/BlogsTable";
 import { CreateBlogDialog } from "@/components/admin/blogs/CreateBlogDialog";
 
 export default async function BlogsPage() {
-  const [blogs, mailchimpAudiences] = await Promise.all([
-    getBlogs(),
-    getMailchimpAudiences().catch((error: unknown) => {
-      console.error("[Mailchimp] Error al obtener las audiencias:", error);
-      return null;
-    }),
-  ]);
+  const blogs = await getBlogs();
 
-  if (mailchimpAudiences) {
-    console.log("[Mailchimp] Audiencias:", mailchimpAudiences);
-  }
+  // Diagnóstico inicial de audiencias de Mailchimp (ya verificado).
+  // const mailchimpAudiences = await getMailchimpAudiences();
+  // console.log("[Mailchimp] Audiencias:", mailchimpAudiences);
 
   return (
     <div className="flex flex-col gap-6">
