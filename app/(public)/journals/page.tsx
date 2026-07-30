@@ -43,31 +43,29 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     <div className="bg-roca-500">
       <HeroBlog />
 
-      <div className="px-5 pb-24 pt-12 sm:px-8 lg:px-24">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-10">
-          <BlogFilters
-            categories={categories}
-            tags={tags}
-            activeCategory={category}
-            activeTag={tag}
-          />
+      <div className="flex flex-col gap-10 px-5 pb-24 pt-12 sm:px-8 lg:px-24">
+        <BlogFilters
+          categories={categories}
+          tags={tags}
+          activeCategory={category}
+          activeTag={tag}
+        />
 
-          {blogs.length === 0 ? (
-            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-primary-900/20 py-24 text-center">
-              <p className="text-primary-900/60">
-                Todavía no hay artículos publicados{tag || category ? " con este filtro" : ""}.
-              </p>
-            </div>
-          ) : (
-            <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
-              {blogs.map((blog) => (
-                <BlogCard key={blog._id} blog={blog} />
-              ))}
-            </div>
-          )}
+        {blogs.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-primary-900/20 py-24 text-center">
+            <p className="text-primary-900/60">
+              Todavía no hay artículos publicados{tag || category ? " con este filtro" : ""}.
+            </p>
+          </div>
+        ) : (
+          <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+            {blogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))}
+          </div>
+        )}
 
-          <BlogPagination page={page} totalPages={totalPages} category={category} tag={tag} />
-        </div>
+        <BlogPagination page={page} totalPages={totalPages} category={category} tag={tag} />
       </div>
     </div>
   );
