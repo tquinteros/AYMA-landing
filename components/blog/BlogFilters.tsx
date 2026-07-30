@@ -13,7 +13,7 @@ function buildHref(params: { category?: string; tag?: string }) {
   if (params.category) search.set("category", params.category);
   if (params.tag) search.set("tag", params.tag);
   const query = search.toString();
-  return query ? `/blog?${query}` : "/blog";
+  return query ? `/journals?${query}` : "/journals";
 }
 
 export function BlogFilters({
@@ -68,7 +68,7 @@ export function BlogFilters({
               className={cn(
                 "rounded-full px-3 py-1 text-xs transition-opacity hover:opacity-75",
                 activeTag === tag
-                  ? "bg-primary-500 text-background-100"
+                  ? "bg-primary-100 text-background-100"
                   : "bg-surface-100 text-primary-900/70"
               )}
             >

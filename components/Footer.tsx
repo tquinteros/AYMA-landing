@@ -39,7 +39,7 @@ const Footer = () => {
       <div className="px-6 py-10 sm:px-8 lg:px-24 lg:py-12">
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-2 lg:gap-y-12">
           <div className="min-w-0">
-            <p className="mb-3 text-[14px] tracking-[0.4em] text-surface-900 uppercase">
+            <p className="mb-3 text-[14px] tracking-[0.43em] text-surface-900 uppercase">
               AYMA JOURNALS
             </p>
             <h2 className="text-[24px] leading-snug text-background-500">
@@ -94,7 +94,7 @@ const Footer = () => {
                 type="submit"
                 size="lg"
                 disabled={isPending || isSubscribed}
-                className="h-12 rounded-lg bg-primary-500 px-6 text-sm tracking-[0.25em] text-background-500 uppercase hover:bg-primary-500/90 sm:min-w-40"
+                className="h-12 rounded-lg cursor-pointer bg-primary-500 px-6 text-sm tracking-[0.25em] text-background-500 uppercase hover:bg-primary-500/90 sm:min-w-40"
               >
                 {isPending ? (
                   <>

@@ -12,11 +12,11 @@ import HeroBlog from "@/components/blog/HeroBlog";
 const PAGE_SIZE = 9;
 
 export const metadata: Metadata = {
-  title: "Blog | AYMA Wellness Club",
+  title: "Journals | AYMA Wellness Club",
   description:
     "Artículos sobre bienestar, longevidad y estilo de vida para acompañarte en tu revolución del bienestar.",
   openGraph: {
-    title: "Blog | AYMA Wellness Club",
+    title: "Journals | AYMA Wellness Club",
     description:
       "Artículos sobre bienestar, longevidad y estilo de vida para acompañarte en tu revolución del bienestar.",
     type: "website",

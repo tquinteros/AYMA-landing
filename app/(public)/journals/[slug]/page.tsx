@@ -28,13 +28,13 @@ export async function generateMetadata({
   const blog = await getBlogBySlug(slug);
 
   if (!blog) {
-    return { title: "Blog no encontrado | AYMA" };
+    return { title: "Journal no encontrado | AYMA" };
   }
 
   const title = blog.seo?.metaTitle || `${blog.title} | AYMA Wellness Club`;
   const description = blog.seo?.metaDescription || blog.excerpt;
   const ogImage = blog.seo?.ogImage || blog.coverImage.url;
-  const url = absoluteUrl(`/blog/${blog.slug}`);
+  const url = absoluteUrl(`/journals/${blog.slug}`);
 
   return {
     title,
@@ -82,7 +82,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       "@type": "Organization",
       name: "AYMA Wellness Club",
     },
-    mainEntityOfPage: absoluteUrl(`/blog/${blog.slug}`),
+    mainEntityOfPage: absoluteUrl(`/journals/${blog.slug}`),
   };
 
   return (
@@ -99,7 +99,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
             {blog.category && (
               <Link
-                href={`/blog?category=${encodeURIComponent(blog.category)}`}
+                href={`/journals?category=${encodeURIComponent(blog.category)}`}
                 className="w-fit rounded-full bg-primary-500 px-4 py-2 text-xs uppercase tracking-wide text-background-100"
               >
                 {blog.category}
@@ -140,8 +140,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 {blog.tags.map((tag) => (
                   <Link
                     key={tag}
-                    href={`/blog?tag=${encodeURIComponent(tag)}`}
-                    className="rounded-full bg-background-100/10 px-3 py-1 text-xs text-background-100 hover:bg-background-100/20"
+                    href={`/journals?tag=${encodeURIComponent(tag)}`}
+                    className="rounded-full bg-surface-100 px-3 py-1.5 text-xs text-roca-500 "
                   >
                     #{tag}
                   </Link>

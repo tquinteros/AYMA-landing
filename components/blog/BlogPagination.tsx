@@ -15,7 +15,7 @@ function buildHref(page: number, category?: string, tag?: string) {
   if (category) search.set("category", category);
   if (tag) search.set("tag", tag);
   const query = search.toString();
-  return query ? `/blog?${query}` : "/blog";
+  return query ? `/journals?${query}` : "/journals";
 }
 
 export function BlogPagination({ page, totalPages, category, tag }: BlogPaginationProps) {

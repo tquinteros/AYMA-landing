@@ -10,7 +10,7 @@ export function RelatedBlogs({ blogs }: RelatedBlogsProps) {
 
   return (
     <div className="flex flex-col gap-5 lg:sticky lg:top-32">
-      <h2 className="text-xl font-medium text-background-100">Artículos relacionados</h2>
+      <h2 className="text-2xl font-medium text-background-100">Artículos relacionados</h2>
       <div className="flex flex-col gap-5">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} variant="list" />

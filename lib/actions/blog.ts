@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { connectDB } from "@/lib/db";
+import { Types } from "mongoose";
 import { BlogModel, type BlogStatus } from "@/lib/models/Blog";
 import { getSession } from "@/lib/auth";
 import { deleteImage } from "@/lib/actions/upload";
@@ -136,16 +137,45 @@ export async function getRelatedBlogs(
   limit = 3
 ): Promise<BlogData[]> {
   await connectDB();
-  if (!category) return [];
-  const blogs = await BlogModel.find({
-    ...publicVisibilityFilter(),
-    category,
-    _id: { $ne: excludeId },
-  })
-    .sort({ publishedAt: -1, createdAt: -1 })
-    .limit(limit)
-    .lean();
-  return serialize(blogs);
+
+  const related: BlogData[] = [];
+  const excludeIds = [excludeId];
+
+  if (category) {
+    const categoryBlogs = await BlogModel.find({
+      ...publicVisibilityFilter(),
+      category,
+      _id: { $nin: excludeIds },
+    })
+      .sort({ publishedAt: -1, createdAt: -1 })
+      .limit(limit)
+      .lean();
+
+    const serialized = serialize<BlogData[]>(categoryBlogs);
+    related.push(...serialized);
+    excludeIds.push(...serialized.map((blog) => blog._id));
+  }
+
+  const remaining = limit - related.length;
+  if (remaining > 0) {
+    const objectIds = excludeIds
+      .filter((id) => Types.ObjectId.isValid(id))
+      .map((id) => new Types.ObjectId(id));
+
+    const randomBlogs = await BlogModel.aggregate([
+      {
+        $match: {
+          ...publicVisibilityFilter(),
+          _id: { $nin: objectIds },
+        },
+      },
+      { $sample: { size: remaining } },
+    ]);
+
+    related.push(...serialize<BlogData[]>(randomBlogs));
+  }
+
+  return related;
 }
 
 export async function getBlogCategories(): Promise<string[]> {
@@ -231,7 +261,7 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
     });
 
     revalidatePath("/admin/blogs");
-    revalidatePath("/blog");
+    revalidatePath("/journals");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -307,9 +337,9 @@ export async function updateBlog(_prevState: unknown, formData: FormData) {
     }
 
     revalidatePath("/admin/blogs");
-    revalidatePath("/blog");
-    revalidatePath(`/blog/${existing.slug}`);
-    if (finalSlug !== existing.slug) revalidatePath(`/blog/${finalSlug}`);
+    revalidatePath("/journals");
+    revalidatePath(`/journals/${existing.slug}`);
+    if (finalSlug !== existing.slug) revalidatePath(`/journals/${finalSlug}`);
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -328,7 +358,7 @@ export async function deleteBlog(id: string) {
     }
 
     revalidatePath("/admin/blogs");
-    revalidatePath("/blog");
+    revalidatePath("/journals");
     return { success: true };
   } catch (error) {
     console.error(error);

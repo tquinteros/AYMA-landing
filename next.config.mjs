@@ -27,6 +27,20 @@ const nextConfig = {
   images: {
     remotePatterns,
   },
+  async redirects() {
+    return [
+      {
+        source: "/blog",
+        destination: "/journals",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/journals/:slug",
+        permanent: true,
+      },
+    ];
+  },
   experimental: {
     serverActions: {
       // Nuestro límite de imagen es 5MB (ver lib/actions/upload.ts); dejamos
