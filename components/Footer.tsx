@@ -38,7 +38,7 @@ const Footer = () => {
     <footer className="border-t border-primary-500 bg-roca-500">
       <div className="px-6 py-10 sm:px-8 lg:px-24 lg:py-12">
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-2 lg:gap-y-12">
-          <div className="min-w-0">
+          <div className="order-1 min-w-0">
             <p className="mb-3 text-[14px] tracking-[0.43em] text-surface-900 uppercase">
               AYMA JOURNALS
             </p>
@@ -47,20 +47,20 @@ const Footer = () => {
             </h2>
           </div>
 
-          <div className="flex min-w-0 items-center justify-start lg:justify-end lg:self-center">
+          <div className="order-3 flex min-w-0 items-center justify-center lg:order-2 lg:justify-end lg:self-center">
             <Image
               src="/footer-logo.svg"
               alt="AYMA"
               width={126}
               height={36}
-              className="h-8 w-auto sm:h-14"
+              className="h-14 w-auto sm:h-14"
             />
           </div>
 
           <form
             ref={formRef}
             action={formAction}
-            className="w-full min-w-0 self-end"
+            className="order-2 w-full min-w-0 lg:order-3 lg:self-end"
           >
             <label
               htmlFor="newsletter-email"
@@ -126,8 +126,8 @@ const Footer = () => {
             ) : null}
           </form>
 
-          <div className="flex flex-col items-start gap-4 self-end lg:items-end">
-            <div className="flex items-center gap-5">
+          <div className="order-4 flex flex-col items-center gap-4 text-center lg:items-end lg:self-end lg:text-right">
+            <div className="flex items-center justify-center gap-5">
               <a
                 href="https://www.instagram.com/aymawellness/"
                 target="_blank"
@@ -153,7 +153,7 @@ const Footer = () => {
               info@aymawellnessclub.com
             </a>
 
-            <p className="text-sm text-background-500 lg:text-right">
+            <p className="text-sm text-background-500">
               © AYMA Wellness Club | Camino de los Remeros 1585, Tigre | Remeros Beach
             </p>
           </div>

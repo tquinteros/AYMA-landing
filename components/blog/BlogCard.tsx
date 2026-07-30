@@ -33,7 +33,7 @@ export function BlogCard({ blog, variant = "grid" }: BlogCardProps) {
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         {blog.category && (
-          <span className="absolute left-3 top-3 rounded-full bg-primary-500/90 px-3 py-1 text-xs uppercase tracking-wide text-background-100">
+          <span className="absolute left-3 top-3 rounded-full bg-primary-500/90 px-3.5 py-1.5 text-xs uppercase tracking-wide text-background-100">
             {blog.category}
           </span>
         )}
@@ -43,21 +43,21 @@ export function BlogCard({ blog, variant = "grid" }: BlogCardProps) {
         className={`flex flex-1 flex-col gap-3 ${isList ? "p-4" : "p-5"}`}
       >
         <h3
-          className={`font-medium leading-snug text-roca-500 line-clamp-1 ${
+          className={`leading-snug text-roca-500 line-clamp-1 ${
             isList ? "text-base" : "text-[18px]"
           }`}
         >
-          {blog.title}asd
+          {blog.title}
         </h3>
         <p
-          className={`flex-1 text-roca-500 ${
+          className={`flex-1 text-roca-100 ${
             isList ? "text-xs line-clamp-2" : "text-sm line-clamp-3"
           }`}
         >
           {blog.excerpt}
         </p>
         <div
-          className={`flex items-center justify-between pt-2 text-surface-900 ${
+          className={`flex items-center justify-between pt-2 text-roca-500 ${
             isList ? "text-[11px]" : "text-xs"
           }`}
         >
