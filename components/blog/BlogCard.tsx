@@ -4,6 +4,7 @@ import type { BlogData } from "@/lib/actions/blog";
 
 interface BlogCardProps {
   blog: BlogData;
+  variant?: "grid" | "list";
 }
 
 function formatDate(date?: string) {
@@ -15,11 +16,13 @@ function formatDate(date?: string) {
   }).format(new Date(date));
 }
 
-export function BlogCard({ blog }: BlogCardProps) {
+export function BlogCard({ blog, variant = "grid" }: BlogCardProps) {
+  const isList = variant === "list";
+
   return (
     <Link
       href={`/blog/${blog.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-background-100 ring-1 ring-primary-900/10 transition-shadow hover:shadow-lg"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-background-500 text-roca-100 ring-1 ring-primary-900/10 transition-shadow hover:shadow-lg"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-background-900">
         <Image
@@ -36,14 +39,28 @@ export function BlogCard({ blog }: BlogCardProps) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="text-xl font-medium leading-snug text-roca-500 line-clamp-2">
-          {blog.title}
+      <div
+        className={`flex flex-1 flex-col gap-3 ${isList ? "p-4" : "p-5"}`}
+      >
+        <h3
+          className={`font-medium leading-snug text-roca-500 line-clamp-1 ${
+            isList ? "text-base" : "text-[18px]"
+          }`}
+        >
+          {blog.title}asd
         </h3>
-        <p className="flex-1 text-sm text-primary-900/70 line-clamp-3">
+        <p
+          className={`flex-1 text-roca-500 ${
+            isList ? "text-xs line-clamp-2" : "text-sm line-clamp-3"
+          }`}
+        >
           {blog.excerpt}
         </p>
-        <div className="flex items-center justify-between pt-2 text-xs text-primary-900/60">
+        <div
+          className={`flex items-center justify-between pt-2 text-surface-900 ${
+            isList ? "text-[11px]" : "text-xs"
+          }`}
+        >
           <span>{formatDate(blog.publishedAt)}</span>
           <span>{blog.readingTimeMinutes} min de lectura</span>
         </div>

@@ -27,6 +27,7 @@ export function BlogPagination({ page, totalPages, category, tag }: BlogPaginati
     <nav className="flex items-center justify-center gap-1.5 pt-4">
       <Link
         href={buildHref(Math.max(1, page - 1), category, tag)}
+        scroll={false}
         aria-disabled={page === 1}
         className={cn(
           "flex size-9 items-center justify-center rounded-full border border-primary-900/20 text-primary-900/70 transition-colors hover:border-primary-500",
@@ -40,6 +41,7 @@ export function BlogPagination({ page, totalPages, category, tag }: BlogPaginati
         <Link
           key={p}
           href={buildHref(p, category, tag)}
+          scroll={false}
           className={cn(
             "flex size-9 items-center justify-center rounded-full text-sm transition-colors",
             p === page
@@ -53,6 +55,7 @@ export function BlogPagination({ page, totalPages, category, tag }: BlogPaginati
 
       <Link
         href={buildHref(Math.min(totalPages, page + 1), category, tag)}
+        scroll={false}
         aria-disabled={page === totalPages}
         className={cn(
           "flex size-9 items-center justify-center rounded-full border border-primary-900/20 text-primary-900/70 transition-colors hover:border-primary-500",

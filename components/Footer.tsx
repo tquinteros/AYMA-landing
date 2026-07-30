@@ -36,25 +36,39 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-primary-500 bg-roca-500">
-      <div className="px-6 sm:px-8 lg:px-24">
-        <section className="grid gap-8 border-b border-background-500/20 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,0.9fr)] lg:items-end lg:gap-16 lg:py-12">
-          <div className="max-w-xl">
-            <p className="mb-2 text-xs font-medium tracking-[0.2em] text-surface-900 uppercase">
-              Newsletter AYMA
+      <div className="px-6 py-10 sm:px-8 lg:px-24 lg:py-12">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-2 lg:gap-y-12">
+          <div className="min-w-0">
+            <p className="mb-3 text-[14px] tracking-[0.4em] text-surface-900 uppercase">
+              AYMA JOURNALS
             </p>
-            <h2 className="font-bodoni text-3xl leading-tight text-background-500 sm:text-4xl">
-              Bienestar que llega a vos
-            </h2>
-            <p className="mt-3 max-w-lg text-sm leading-relaxed text-surface-500 sm:text-base">
+            <h2 className="text-[24px] leading-snug text-background-500">
               Recibí novedades, experiencias y contenido para acompañar tu bienestar.
-            </p>
+            </h2>
           </div>
 
-          <form ref={formRef} action={formAction} className="w-full">
+          <div className="flex min-w-0 items-center justify-start lg:justify-end lg:self-center">
+            <Image
+              src="/footer-logo.svg"
+              alt="AYMA"
+              width={126}
+              height={36}
+              className="h-8 w-auto sm:h-14"
+            />
+          </div>
+
+          <form
+            ref={formRef}
+            action={formAction}
+            className="w-full min-w-0 self-end"
+          >
+            <label
+              htmlFor="newsletter-email"
+              className="mb-2 block text-[16px] text-surface-500"
+            >
+              Tu email
+            </label>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <label htmlFor="newsletter-email" className="sr-only">
-                Email
-              </label>
               <Input
                 id="newsletter-email"
                 name="email"
@@ -62,11 +76,11 @@ const Footer = () => {
                 required
                 autoComplete="email"
                 inputMode="email"
-                placeholder="Tu email"
+                placeholder="ejemplo@email.com"
                 disabled={isPending || isSubscribed}
                 aria-invalid={state.status === "error"}
                 aria-describedby={state.message ? "newsletter-message" : undefined}
-                className="h-12 flex-1 border-background-500/30 bg-background-500/10 px-4 text-base text-background-500 placeholder:text-surface-500 focus-visible:border-background-500/70 focus-visible:ring-background-500/20 disabled:bg-background-500/10 md:text-base"
+                className="h-12 flex-1 rounded-lg border-0 bg-background-500 px-4 text-base text-roca-500 placeholder:text-surface-500 focus-visible:ring-primary-500/30 disabled:opacity-70 md:text-base"
               />
               <input
                 name="company"
@@ -80,7 +94,7 @@ const Footer = () => {
                 type="submit"
                 size="lg"
                 disabled={isPending || isSubscribed}
-                className="h-12 bg-background-500 px-6 text-roca-500 hover:bg-background-900 sm:min-w-36"
+                className="h-12 rounded-lg bg-primary-500 px-6 text-sm tracking-[0.25em] text-background-500 uppercase hover:bg-primary-500/90 sm:min-w-40"
               >
                 {isPending ? (
                   <>
@@ -98,43 +112,50 @@ const Footer = () => {
               </Button>
             </div>
 
-            <p
-              id="newsletter-message"
-              role={state.status === "error" ? "alert" : "status"}
-              aria-live="polite"
-              className={`mt-3 min-h-5 text-sm ${
-                state.status === "error" ? "text-red-300" : "text-surface-500"
-              }`}
-            >
-              {state.message}
-            </p>
+            {state.message ? (
+              <p
+                id="newsletter-message"
+                role={state.status === "error" ? "alert" : "status"}
+                aria-live="polite"
+                className={`mt-3 text-sm ${
+                  state.status === "error" ? "text-red-300" : "text-surface-500"
+                }`}
+              >
+                {state.message}
+              </p>
+            ) : null}
           </form>
-        </section>
 
-        <div className="flex flex-col gap-8 py-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-          <p className="text-center text-sm text-background-500 sm:text-base lg:text-left">
-            © AYMA Wellness Club · Camino de los Remeros 1585, Tigre · Remeros Beach
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-            <a
-              href="mailto:info@aymawellnessclub.com"
-              className="break-all text-center text-base text-background-500 underline transition-opacity duration-300 hover:opacity-75"
-            >
-              info@aymawellnessclub.com
-            </a>
-            <span className="hidden text-background-500 sm:block">|</span>
-            <div className="flex items-center gap-2">
-              <a href="https://wa.me/5491124868493" target="_blank" rel="noreferrer">
-                <Image src="/whatsapp.svg" alt="WhatsApp" width={28} height={28} />
-              </a>
+          <div className="flex flex-col items-start gap-4 self-end lg:items-end">
+            <div className="flex items-center gap-5">
               <a
                 href="https://www.instagram.com/aymawellness/"
                 target="_blank"
                 rel="noreferrer"
+                className="transition-opacity hover:opacity-75"
               >
-                <Image src="/instagram.svg" alt="Instagram" width={28} height={28} />
+                <Image src="/instagram.svg" alt="Instagram" width={36} height={36} />
+              </a>
+              <a
+                href="https://wa.me/5491124868493"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-opacity hover:opacity-75"
+              >
+                <Image src="/whatsapp.svg" alt="WhatsApp" width={36} height={36} />
               </a>
             </div>
+
+            <a
+              href="mailto:info@aymawellnessclub.com"
+              className="text-base text-background-500 underline transition-opacity duration-300 hover:opacity-75"
+            >
+              info@aymawellnessclub.com
+            </a>
+
+            <p className="text-sm text-background-500 lg:text-right">
+              © AYMA Wellness Club | Camino de los Remeros 1585, Tigre | Remeros Beach
+            </p>
           </div>
         </div>
       </div>

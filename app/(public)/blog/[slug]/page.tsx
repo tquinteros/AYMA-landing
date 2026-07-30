@@ -86,70 +86,74 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   };
 
   return (
-    <article className="pb-24 pt-32">
+    <article className="min-h-screen bg-roca-500 pb-24 pt-32">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="mx-auto flex max-w-3xl flex-col gap-6 px-5 sm:px-8 lg:px-0">
-        <BlogBreadcrumb title={blog.title} />
+      <div className="px-5 sm:px-8 lg:px-24">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-6">
+          <div className="flex flex-col gap-6 lg:col-span-8">
+            <BlogBreadcrumb title={blog.title} />
 
-        {blog.category && (
-          <Link
-            href={`/blog?category=${encodeURIComponent(blog.category)}`}
-            className="w-fit rounded-full bg-primary-500/10 px-3.5 py-1.5 text-xs uppercase tracking-wide text-primary-500"
-          >
-            {blog.category}
-          </Link>
-        )}
-
-        <h1 className="text-3xl font-medium leading-tight text-roca-500 sm:text-5xl">
-          {blog.title}
-        </h1>
-
-        <div className="flex flex-wrap items-center gap-3 text-sm text-primary-900/60">
-          <span className="font-medium text-roca-500">{blog.author.name}</span>
-          <span aria-hidden>·</span>
-          <span>{formatDate(blog.publishedAt)}</span>
-          <span aria-hidden>·</span>
-          <span>{blog.readingTimeMinutes} min de lectura</span>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-8 max-w-5xl px-5 sm:px-8 lg:px-0">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-background-900">
-          <Image
-            src={blog.coverImage.url}
-            alt={blog.coverImage.alt || blog.title}
-            fill
-            unoptimized
-            priority
-            className="object-cover"
-          />
-        </div>
-      </div>
-
-      <div className="mx-auto mt-10 max-w-3xl px-5 sm:px-8 lg:px-0">
-        <BlogContent html={blog.content} />
-
-        {blog.tags.length > 0 && (
-          <div className="mt-10 flex flex-wrap gap-2 border-t border-primary-900/10 pt-6">
-            {blog.tags.map((tag) => (
+            {blog.category && (
               <Link
-                key={tag}
-                href={`/blog?tag=${encodeURIComponent(tag)}`}
-                className="rounded-full bg-background-900/60 px-3 py-1 text-xs text-primary-900/70 hover:bg-background-900"
+                href={`/blog?category=${encodeURIComponent(blog.category)}`}
+                className="w-fit rounded-full bg-primary-500 px-4 py-2 text-xs uppercase tracking-wide text-background-100"
               >
-                #{tag}
+                {blog.category}
               </Link>
-            ))}
-          </div>
-        )}
-      </div>
+            )}
 
-      <div className="px-5 sm:px-8 lg:px-0">
-        <RelatedBlogs blogs={relatedBlogs} />
+            <h1 className="text-3xl leading-tight text-background-100 sm:text-[40px]">
+              {blog.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-3 text-sm text-background-100/70">
+              <span className="font-medium text-background-100">{blog.author.name}</span>
+              <span aria-hidden className="text-background-100">·</span>
+              <span className="text-background-100">{formatDate(blog.publishedAt)}</span>
+              <span aria-hidden className="text-background-100">·</span>
+              <span className="text-background-100">{blog.readingTimeMinutes} min de lectura</span>
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-none lg:col-span-8">
+            <div className="relative h-[200px] w-full overflow-hidden rounded-2xl bg-background-900 sm:h-[260px] lg:h-[360px]">
+              <Image
+                src={blog.coverImage.url}
+                alt={blog.coverImage.alt || blog.title}
+                fill
+                unoptimized
+                priority
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="order-2 lg:order-none lg:col-span-8">
+            <BlogContent html={blog.content} />
+
+            {blog.tags.length > 0 && (
+              <div className="mt-10 flex flex-wrap gap-2 border-t border-background-100/10 pt-6">
+                {blog.tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/blog?tag=${encodeURIComponent(tag)}`}
+                    className="rounded-full bg-background-100/10 px-3 py-1 text-xs text-background-100 hover:bg-background-100/20"
+                  >
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <aside className="order-3 lg:order-none lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-2 lg:self-start">
+            <RelatedBlogs blogs={relatedBlogs} />
+          </aside>
+        </div>
       </div>
     </article>
   );

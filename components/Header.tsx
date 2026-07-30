@@ -32,10 +32,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", updateScroll)
   }, [pathname])
 
-  // El blog no tiene un hero de fondo detrás del header, así que siempre
-  // mostramos la versión "sólida" en vez de la transparente inicial.
-  const isBlogRoute = pathname.startsWith("/blog")
-  const isSolid = hasScrolled || isBlogRoute
+  // El detalle del blog no tiene hero; el listado sí.
+  const isBlogDetailRoute = pathname.startsWith("/blog/");
+  const isSolid = hasScrolled || isBlogDetailRoute;
 
   const navTextColor = isSolid ? "text-background-500" : "text-background-900"
 

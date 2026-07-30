@@ -5,7 +5,7 @@ interface BlogContentProps {
 export function BlogContent({ html }: BlogContentProps) {
   return (
     <div
-      className="prose prose-lg max-w-none font-sans prose-headings:font-sans prose-headings:font-medium prose-headings:text-roca-500 prose-p:text-primary-900/80 prose-a:text-primary-500 prose-strong:text-roca-500 prose-blockquote:border-primary-500 prose-img:rounded-xl"
+      className="prose prose-lg max-w-none font-sans prose-headings:font-sans prose-headings:font-medium prose-headings:text-background-100 prose-p:text-background-100 prose-a:text-primary-500 prose-strong:text-background-100 prose-blockquote:border-primary-500 prose-img:rounded-xl"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

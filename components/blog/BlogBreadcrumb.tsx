@@ -8,16 +8,16 @@ interface BlogBreadcrumbProps {
 export function BlogBreadcrumb({ title }: BlogBreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-primary-900/60">
+      <ol className="flex flex-wrap items-center gap-1.5 text-sm">
         <li>
-          <Link href="/blog" className="transition-colors hover:text-primary-500">
-            Blog
+          <Link href="/blog" className="transition-colors text-background-900">
+            Journals
           </Link>
         </li>
-        <li aria-hidden className="text-primary-900/30">
+        <li aria-hidden className="text-surface-500">
           <ChevronRight className="size-3.5" />
         </li>
-        <li className="line-clamp-1 font-medium text-roca-500" aria-current="page">
+        <li className="line-clamp-1 text-background-100" aria-current="page">
           {title}
         </li>
       </ol>

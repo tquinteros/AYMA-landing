@@ -30,11 +30,12 @@ export function BlogFilters({
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={buildHref({ tag: activeTag })}
+            scroll={false}
             className={cn(
-              "rounded-full border px-3.5 py-1.5 text-xs uppercase tracking-wide transition-colors",
+              "rounded-full border px-3.5 py-1.5 text-xs uppercase tracking-wide transition-opacity hover:opacity-75",
               !activeCategory
                 ? "border-primary-500 bg-primary-500 text-background-100"
-                : "border-primary-900/20 text-primary-900/70 hover:border-primary-500"
+                : "border-surface-500 text-surface-500"
             )}
           >
             Todas
@@ -43,11 +44,12 @@ export function BlogFilters({
             <Link
               key={category}
               href={buildHref({ category, tag: activeTag })}
+              scroll={false}
               className={cn(
-                "rounded-full border px-3.5 py-1.5 text-xs uppercase tracking-wide transition-colors",
+                "rounded-full border px-3.5 py-1.5 text-xs uppercase tracking-wide transition-opacity hover:opacity-75",
                 activeCategory === category
                   ? "border-primary-500 bg-primary-500 text-background-100"
-                  : "border-primary-900/20 text-primary-900/70 hover:border-primary-500"
+                  : "border-surface-500 text-surface-500"
               )}
             >
               {category}
@@ -62,11 +64,12 @@ export function BlogFilters({
             <Link
               key={tag}
               href={buildHref({ category: activeCategory, tag: activeTag === tag ? undefined : tag })}
+              scroll={false}
               className={cn(
-                "rounded-full px-3 py-1 text-xs transition-colors",
+                "rounded-full px-3 py-1 text-xs transition-opacity hover:opacity-75",
                 activeTag === tag
                   ? "bg-primary-500 text-background-100"
-                  : "bg-background-900/60 text-primary-900/70 hover:bg-primary-500/10"
+                  : "bg-surface-100 text-primary-900/70"
               )}
             >
               #{tag}
