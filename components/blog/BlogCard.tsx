@@ -44,21 +44,21 @@ export function BlogCard({ blog, variant = "grid" }: BlogCardProps) {
       >
         <h3
           className={`leading-snug text-roca-500 line-clamp-1 ${
-            isList ? "text-base" : "text-[18px]"
+            isList ? "text-[18px]" : "text-[18px]"
           }`}
         >
           {blog.title}
         </h3>
         <p
           className={`flex-1 text-roca-100 ${
-            isList ? "text-xs line-clamp-2" : "text-sm line-clamp-3"
+            isList ? "text-sm line-clamp-2" : "text-sm line-clamp-3"
           }`}
         >
           {blog.excerpt}
         </p>
         <div
           className={`flex items-center justify-between pt-2 text-roca-500 ${
-            isList ? "text-[11px]" : "text-xs"
+            isList ? "text-xs" : "text-xs"
           }`}
         >
           <span>{formatDate(blog.publishedAt)}</span>

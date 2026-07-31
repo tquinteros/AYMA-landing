@@ -110,7 +110,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               {blog.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-3 text-sm text-background-100/70">
+            <div className="flex flex-wrap items-center gap-3 text-base text-background-100/70">
               <span className="font-medium text-background-100">{blog.author.name}</span>
               <span aria-hidden className="text-background-100">·</span>
               <span className="text-background-100">{formatDate(blog.publishedAt)}</span>
