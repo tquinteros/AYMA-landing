@@ -68,8 +68,8 @@ export function BlogFilters({
               className={cn(
                 "rounded-full px-3 py-1 text-xs transition-opacity hover:opacity-75",
                 activeTag === tag
-                  ? "bg-primary-100 text-background-100"
-                  : "bg-surface-100 text-primary-900/70"
+                  ? "bg-primary-100 text-roca-500"
+                  : "bg-[#E0D5CD] text-roca-500"
               )}
             >
               #{tag}

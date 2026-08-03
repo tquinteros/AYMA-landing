@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogBySlug, getRelatedBlogs } from "@/lib/actions/blog";
 import { BlogBreadcrumb } from "@/components/blog/BlogBreadcrumb";
@@ -98,12 +97,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             <BlogBreadcrumb title={blog.title} />
 
             {blog.category && (
-              <Link
-                href={`/journals?category=${encodeURIComponent(blog.category)}`}
-                className="w-fit rounded-full bg-primary-500 px-4 py-2 text-xs uppercase tracking-wide text-background-100"
-              >
+              <span className="w-fit rounded-full bg-primary-500 px-4 py-2 text-xs uppercase tracking-wide text-background-100">
                 {blog.category}
-              </Link>
+              </span>
             )}
 
             <h1 className="text-3xl leading-tight text-background-100 sm:text-[40px]">
@@ -138,13 +134,12 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             {blog.tags.length > 0 && (
               <div className="mt-10 flex flex-wrap gap-2 border-t border-background-100/10 pt-6">
                 {blog.tags.map((tag) => (
-                  <Link
+                  <span
                     key={tag}
-                    href={`/journals?tag=${encodeURIComponent(tag)}`}
-                    className="rounded-full bg-surface-100 px-3 py-1.5 text-xs text-roca-500 "
+                    className="rounded-full bg-[#E0D5CD] px-3 py-1.5 text-xs text-roca-500"
                   >
                     #{tag}
-                  </Link>
+                  </span>
                 ))}
               </div>
             )}
