@@ -17,7 +17,7 @@ interface LandingMembership {
     id: string
     name: string
     description: string
-    price: number
+    price?: number
     features: string[]
     tag?: string
     bottomText?: string

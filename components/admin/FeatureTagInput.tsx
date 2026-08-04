@@ -10,6 +10,7 @@ interface FormValues {
     name: string;
     price: string;
     quarterlyPrice: string;
+    priceOnRequest: boolean;
     description: string;
     features: string[];
     tag: string;

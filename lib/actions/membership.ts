@@ -14,7 +14,8 @@ export interface MembershipData {
   _id: string;
   name: string;
   description: string;
-  price: number;
+  /** Undefined when price should display as "Consultar" */
+  price?: number;
   quarterlyPrice?: number;
   features: string[];
   tag?: string;
@@ -23,6 +24,14 @@ export interface MembershipData {
   order: number;
   createdAt: string;
   updatedAt: string;
+}
+
+function parseOptionalPrice(raw: FormDataEntryValue | null): number | undefined {
+  if (raw == null) return undefined;
+  const value = String(raw).trim();
+  if (!value || value === "-" || /^consultar$/i.test(value)) return undefined;
+  const parsed = parseFloat(value);
+  return Number.isFinite(parsed) ? parsed : NaN;
 }
 
 export async function getMemberships(): Promise<MembershipData[]> {
@@ -49,9 +58,8 @@ export async function createMembership(
 
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
-    const price = parseFloat(formData.get("price") as string);
-    const quarterlyPriceRaw = formData.get("quarterlyPrice") as string | null;
-    const quarterlyPrice = quarterlyPriceRaw ? parseFloat(quarterlyPriceRaw) : undefined;
+    const price = parseOptionalPrice(formData.get("price"));
+    const quarterlyPrice = parseOptionalPrice(formData.get("quarterlyPrice"));
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -64,7 +72,7 @@ export async function createMembership(
     if (
       !name ||
       !description ||
-      isNaN(price) ||
+      (price !== undefined && isNaN(price)) ||
       (quarterlyPrice !== undefined && isNaN(quarterlyPrice)) ||
       features.length === 0
     ) {
@@ -78,8 +86,8 @@ export async function createMembership(
     await MembershipModel.create({
       name,
       description,
-      price,
-      quarterlyPrice,
+      ...(price !== undefined ? { price } : {}),
+      ...(quarterlyPrice !== undefined ? { quarterlyPrice } : {}),
       features,
       tag: tag || undefined,
       bottomText: bottomText || undefined,
@@ -107,9 +115,8 @@ export async function updateMembership(
     const id = formData.get("id") as string;
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
-    const price = parseFloat(formData.get("price") as string);
-    const quarterlyPriceRaw = formData.get("quarterlyPrice") as string | null;
-    const quarterlyPrice = quarterlyPriceRaw ? parseFloat(quarterlyPriceRaw) : undefined;
+    const price = parseOptionalPrice(formData.get("price"));
+    const quarterlyPrice = parseOptionalPrice(formData.get("quarterlyPrice"));
     const featuresRaw = formData.get("features") as string;
     const features = featuresRaw
       .split("\n")
@@ -123,25 +130,29 @@ export async function updateMembership(
       !id ||
       !name ||
       !description ||
-      isNaN(price) ||
+      (price !== undefined && isNaN(price)) ||
       (quarterlyPrice !== undefined && isNaN(quarterlyPrice)) ||
       features.length === 0
     ) {
       return { error: "Completá todos los campos obligatorios." };
     }
 
+    const unsetFields: Record<string, string> = {};
+    if (price === undefined) unsetFields.price = "";
+    if (quarterlyPrice === undefined) unsetFields.quarterlyPrice = "";
+
     await MembershipModel.findByIdAndUpdate(id, {
       $set: {
         name,
         description,
-        price,
         features,
         tag: tag || undefined,
         bottomText: bottomText || undefined,
         featured,
+        ...(price !== undefined ? { price } : {}),
         ...(quarterlyPrice !== undefined ? { quarterlyPrice } : {}),
       },
-      ...(quarterlyPrice === undefined ? { $unset: { quarterlyPrice: "" } } : {}),
+      ...(Object.keys(unsetFields).length > 0 ? { $unset: unsetFields } : {}),
     });
 
     revalidatePath("/");

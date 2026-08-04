@@ -11,7 +11,7 @@ import {
 interface Membership {
   id: string
   name: string
-  price: number
+  price?: number
   quarterlyPrice?: number
   features: string[]
 }
@@ -129,7 +129,10 @@ const MembershipsTable = ({
             {memberships.map((membership) => {
               const selectedPrice = isQuarterly ? membership.quarterlyPrice : membership.price
               const periodLabel = isQuarterly ? "/Trimestre" : "/Mes"
-              const hasSelectedPrice = selectedPrice !== undefined
+              const priceOnRequest =
+                membership.price === undefined || membership.price === null
+              const hasSelectedPrice =
+                selectedPrice !== undefined && selectedPrice !== null
 
               return (
                 <TableHead
@@ -141,11 +144,17 @@ const MembershipsTable = ({
                       {membership.name}
                     </span>
                     <span className="text-lg font-bold">
-                      {hasSelectedPrice ? `$${formatPrice(selectedPrice)}` : "---"}
-                      {hasSelectedPrice && (
-                        <span className="ml-1 text-[14px] font-normal">
-                          {periodLabel}
-                        </span>
+                      {hasSelectedPrice ? (
+                        <>
+                          ${formatPrice(selectedPrice)}
+                          <span className="ml-1 text-[14px] font-normal">
+                            {periodLabel}
+                          </span>
+                        </>
+                      ) : priceOnRequest ? (
+                        "Consultar"
+                      ) : (
+                        "—"
                       )}
                     </span>
                   </div>

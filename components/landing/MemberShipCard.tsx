@@ -7,7 +7,7 @@ interface Membership {
     id: string | number
     name: string
     description: string
-    price: number
+    price?: number
     features: string[]
     tag?: string
     bottomText?: string
@@ -15,6 +15,11 @@ interface Membership {
 
 const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-AR').format(price)
+}
+
+function formatMembershipPrice(price?: number) {
+    if (price === undefined || price === null) return "Consultar"
+    return `$ ${formatPrice(price)}`
 }
 
 function MembershipCardTitle({ name }: { name: string }) {
@@ -60,7 +65,7 @@ const MemberShipCard = ({ membership }: { membership: Membership }) => {
                 {membership.bottomText && (
                     <p className="text-background-500 text-sm leading-snug">{membership.bottomText}</p>
                 )}
-                <p className="text-md sm:text-[16px] font-semibold text-background-500">$ {formatPrice(membership.price)}</p>
+                <p className="text-md sm:text-[16px] font-semibold text-background-500">{formatMembershipPrice(membership.price)}</p>
             </div>
         </Card>
     )

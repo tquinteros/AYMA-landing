@@ -27,7 +27,8 @@ interface MembershipsTableProps {
   memberships: MembershipData[];
 }
 
-function formatPrice(price: number) {
+function formatPrice(price?: number) {
+  if (price === undefined || price === null) return "Consultar";
   return new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "ARS",
@@ -168,10 +169,17 @@ export function MembershipsTable({ memberships }: MembershipsTableProps) {
                   {membership.description}
                 </TableCell>
                 <TableCell className="font-medium tabular-nums">
-                  {formatPrice(membership.price)}
+                  {membership.price === undefined || membership.price === null ? (
+                    <span className="text-muted-foreground">Consultar</span>
+                  ) : (
+                    formatPrice(membership.price)
+                  )}
                 </TableCell>
                 <TableCell className="hidden lg:table-cell font-medium tabular-nums">
-                  {membership.quarterlyPrice ? (
+                  {membership.price === undefined || membership.price === null ? (
+                    <span className="text-muted-foreground">Consultar</span>
+                  ) : membership.quarterlyPrice !== undefined &&
+                    membership.quarterlyPrice !== null ? (
                     formatPrice(membership.quarterlyPrice)
                   ) : (
                     <span className="text-muted-foreground text-xs">—</span>

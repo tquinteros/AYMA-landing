@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { createMembership } from "@/lib/actions/membership";
 import { Button } from "@/components/ui/button";
@@ -22,10 +22,12 @@ import { useRouter } from "next/navigation";
 import { membershipsQueryKey } from "@/lib/queries/memberships";
 import { FeatureTagInput } from "./FeatureTagInput";
 import { Switch } from "@/components/ui/switch";
+
 interface FormValues {
   name: string;
   price: string;
   quarterlyPrice: string;
+  priceOnRequest: boolean;
   description: string;
   features: string[];
   tag: string;
@@ -43,13 +45,19 @@ export function CreateMembershipDialog() {
     handleSubmit,
     reset,
     control,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
       featured: false,
+      priceOnRequest: false,
       features: [],
+      price: "",
+      quarterlyPrice: "",
     },
   });
+  const priceOnRequest = useWatch({ control, name: "priceOnRequest" });
+
   function handleOpenChange(next: boolean) {
     if (isPending) return;
     setOpen(next);
@@ -61,11 +69,14 @@ export function CreateMembershipDialog() {
   function onSubmit(values: FormValues) {
     const formData = new FormData();
     (Object.keys(values) as (keyof FormValues)[]).forEach((key) => {
+      if (key === "priceOnRequest") return;
       const value = values[key];
       if (typeof value === "boolean") {
         formData.append(key, value ? "true" : "false");
       } else if (Array.isArray(value)) {
         formData.append(key, value.join("\n"));
+      } else if (key === "price" || key === "quarterlyPrice") {
+        formData.append(key, values.priceOnRequest ? "" : value);
       } else {
         formData.append(key, value);
       }
@@ -102,7 +113,7 @@ export function CreateMembershipDialog() {
           className="flex flex-col gap-4"
         >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 sm:col-span-2">
               <Label htmlFor="create-name">Nombre *</Label>
               <Input
                 id="create-name"
@@ -114,25 +125,59 @@ export function CreateMembershipDialog() {
                 <p className="text-xs text-destructive">{errors.name.message}</p>
               )}
             </div>
+
+            <div className="flex items-center justify-between gap-4 rounded-lg border px-4 py-3 sm:col-span-2">
+              <div className="flex flex-col gap-0.5">
+                <Label htmlFor="create-price-on-request">Precio a consultar</Label>
+                <p className="text-muted-foreground text-xs">
+                  Mostrará &quot;Consultar&quot; en lugar de un monto fijo.
+                </p>
+              </div>
+              <Controller
+                name="priceOnRequest"
+                control={control}
+                render={({ field }) => (
+                  <Switch
+                    id="create-price-on-request"
+                    checked={field.value}
+                    onCheckedChange={(checked) => {
+                      field.onChange(checked);
+                      if (checked) {
+                        setValue("price", "");
+                        setValue("quarterlyPrice", "");
+                      }
+                    }}
+                  />
+                )}
+              />
+            </div>
+
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="create-price">Precio (ARS) *</Label>
+              <Label htmlFor="create-price">
+                Precio (ARS) {priceOnRequest ? "" : "*"}
+              </Label>
               <Input
                 id="create-price"
-                type="number"
+                type={priceOnRequest ? "text" : "number"}
                 min="0"
                 step="0.01"
-                placeholder="15000"
+                placeholder={priceOnRequest ? "Consultar" : "15000"}
+                disabled={priceOnRequest}
                 aria-invalid={!!errors.price}
                 {...register("price", {
-                  required: "El precio es obligatorio.",
-                  min: { value: 0, message: "El precio no puede ser negativo." },
+                  validate: (v) => {
+                    if (priceOnRequest) return true;
+                    if (!v?.trim()) return "El precio es obligatorio.";
+                    if (Number(v) < 0) return "El precio no puede ser negativo.";
+                    return true;
+                  },
                 })}
               />
               {errors.price && (
                 <p className="text-xs text-destructive">{errors.price.message}</p>
               )}
             </div>
-            <div className="flex flex-col gap-1.5 sm:col-start-2">
+            <div className="flex flex-col gap-1.5">
               <Label htmlFor="create-quarterly-price">
                 Precio trimestral (ARS){" "}
                 <span className="text-muted-foreground font-normal">
@@ -141,13 +186,19 @@ export function CreateMembershipDialog() {
               </Label>
               <Input
                 id="create-quarterly-price"
-                type="number"
+                type={priceOnRequest ? "text" : "number"}
                 min="0"
                 step="0.01"
-                placeholder="45000"
+                placeholder={priceOnRequest ? "Consultar" : "45000"}
+                disabled={priceOnRequest}
                 aria-invalid={!!errors.quarterlyPrice}
                 {...register("quarterlyPrice", {
-                  min: { value: 0, message: "El precio trimestral no puede ser negativo." },
+                  validate: (v) => {
+                    if (priceOnRequest || !v?.trim()) return true;
+                    if (Number(v) < 0)
+                      return "El precio trimestral no puede ser negativo.";
+                    return true;
+                  },
                 })}
               />
               {errors.quarterlyPrice && (
@@ -175,32 +226,6 @@ export function CreateMembershipDialog() {
           </div>
 
           <FeatureTagInput control={control} errors={errors} />
-
-          {/* <div className="flex flex-col gap-1.5">
-            <Label htmlFor="create-features">
-              Beneficios *{" "}
-              <span className="text-muted-foreground font-normal">
-                (uno por línea)
-              </span>
-            </Label>
-            <Textarea
-              id="create-features"
-              placeholder={"Acceso ilimitado\nClases grupales\nVestuarios"}
-              rows={4}
-              aria-invalid={!!errors.features}
-              {...register("features", {
-                required: "Agregá al menos un beneficio.",
-                validate: (v) =>
-                  Array.isArray(v) && v.some((l) => l.trim()) ||
-                  "Agregá al menos un beneficio.",
-              })}
-            />
-            {errors.features && (
-              <p className="text-xs text-destructive">
-                {errors.features.message}
-              </p>
-            )}
-          </div> */}
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
@@ -250,38 +275,6 @@ export function CreateMembershipDialog() {
               )}
             />
           </div>
-
-          {/* <div className="flex flex-col gap-2 pt-2">
-            <div className="flex items-center mb-2 justify-between gap-2">
-              <p className="text-sm font-medium">Vista previa</p>
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                onClick={() => setShowPreview((prev) => !prev)}
-              >
-                {showPreview ? "Ocultar" : "Mostrar"}
-              </Button>
-            </div>
-            {showPreview && (
-              <MemberShipCard
-                membership={{
-                  id: "create-preview",
-                  name: watchedName?.trim() || "AYMA Plan",
-                  description:
-                    watchedDescription?.trim() ||
-                    "Describí los beneficios principales...",
-                  price: Number(watchedPrice || 0),
-                  features:
-                    Array.isArray(watchedFeatures) && watchedFeatures.length > 0
-                      ? watchedFeatures
-                      : ["Acceso ilimitado"],
-                  tag: watchedTag?.trim() || undefined,
-                  bottomText: watchedBottomText?.trim() || undefined,
-                }}
-              />
-            )}
-          </div> */}
 
           <DialogFooter showCloseButton>
             <Button type="submit" disabled={isPending} className="bg-primary-500 hover:bg-primary-500/90 text-background-500">

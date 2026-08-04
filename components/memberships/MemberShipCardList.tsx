@@ -7,7 +7,7 @@ interface Membership {
     id: string | number
     name: string
     description: string
-    price: number
+    price?: number
     quarterlyPrice?: number
     features: string[]
     tag?: string
@@ -16,6 +16,10 @@ interface Membership {
 
 const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-AR').format(price)
+}
+
+function formatMembershipPrice(price: number, periodLabel: string) {
+    return `$ ${formatPrice(price)} ${periodLabel}`
 }
 
 function MembershipCardTitle({ name }: { name: string }) {
@@ -39,7 +43,13 @@ const MemberShipCardList = ({
 }) => {
     const selectedPrice = isQuarterly ? membership.quarterlyPrice : membership.price
     const periodLabel = isQuarterly ? "/Trimestre" : "/Mes"
-    const hasSelectedPrice = selectedPrice !== undefined
+    const priceOnRequest = membership.price === undefined || membership.price === null
+    const priceLabel =
+        selectedPrice !== undefined && selectedPrice !== null
+            ? formatMembershipPrice(selectedPrice, periodLabel)
+            : priceOnRequest
+              ? "Consultar"
+              : "—"
 
     return (
         <Card className={`w-full h-full min-h-[clamp(20rem,72vw,28.75rem)] sm:min-h-[clamp(22rem,55vw,28.75rem)] lg:min-h-[28.75rem] relative flex flex-col overflow-visible rounded-3xl! bg-roca-100 p-6 sm:p-8 lg:py-10 lg:px-6 ${membership.tag ? "border border-primary-500" : "border-none! border-transparent!"}`}>
@@ -72,7 +82,7 @@ const MemberShipCardList = ({
                     <p className="text-background-500 text-sm leading-snug">{membership.bottomText}</p>
                 )}
                 <p className="text-md sm:text-[16px] font-semibold text-background-500">
-                    {hasSelectedPrice ? `$ ${formatPrice(selectedPrice)} ${periodLabel}` : "---"}
+                    {priceLabel}
                 </p>
             </div>
         </Card>

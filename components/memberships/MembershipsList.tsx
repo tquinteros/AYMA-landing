@@ -10,7 +10,7 @@ interface MembershipsListMembership {
     id: string
     name: string
     description: string
-    price: number
+    price?: number
     quarterlyPrice?: number
     features: string[]
     tag?: string
