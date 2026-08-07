@@ -61,9 +61,6 @@ const Header = () => {
         </Link>
 
         <nav className={`hidden md:flex items-center ${navTextColor} uppercase`}>
-          {/* <a href="#hero" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</a> */}
-          <Link href="/" className="text-[14px] hover:opacity-75 duration-300 font-thin transition-all tracking-[6px]">Home</Link>
-          <span className="mx-5 select-none" aria-hidden>|</span>
           {/* <a href="#services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Servicios</a> */}
           <Link href="/services" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Servicios</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
@@ -102,13 +99,6 @@ const Header = () => {
             <SheetContent side="right" className="bg-roca-500">
               <SheetTitle className="sr-only">Menú</SheetTitle>
               <div className="flex flex-col gap-10 py-24 px-12 mt-8">
-                <Link
-                  href="/"
-                  className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Home
-                </Link>
                 <Link href="/services" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Servicios</Link>
                 <Link href="/longevity" className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity" onClick={() => setIsOpen(false)}>Longevidad</Link>
                 {/* <a
