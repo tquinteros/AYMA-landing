@@ -115,7 +115,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             </div>
           </div>
 
-          <div className="order-1 lg:order-none lg:col-span-8">
+          {/* Image + content share one cell so the related sidebar can't stretch the cover row */}
+          <div className="order-1 flex flex-col gap-6 lg:order-none lg:col-span-8">
             <div className="relative h-[200px] w-full overflow-hidden rounded-2xl bg-background-900 sm:h-[260px] lg:h-[360px]">
               <Image
                 src={blog.coverImage.url}
@@ -123,16 +124,15 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 fill
                 unoptimized
                 priority
+                sizes="(max-width: 1024px) 100vw, 66vw"
                 className="object-cover"
               />
             </div>
-          </div>
 
-          <div className="order-2 lg:order-none lg:col-span-8">
             <BlogContent html={blog.content} />
 
             {blog.tags.length > 0 && (
-              <div className="mt-10 flex flex-wrap gap-2 border-t border-background-100/10 pt-6">
+              <div className="mt-4 flex flex-wrap gap-2 border-t border-background-100/10 pt-6">
                 {blog.tags.map((tag) => (
                   <span
                     key={tag}
@@ -145,7 +145,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             )}
           </div>
 
-          <aside className="order-3 lg:order-none lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-2 lg:self-start">
+          <aside className="order-2 lg:order-none lg:col-span-4 lg:col-start-9 lg:row-start-2 lg:self-start">
             <RelatedBlogs blogs={relatedBlogs} />
           </aside>
         </div>

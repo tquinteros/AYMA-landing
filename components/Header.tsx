@@ -32,7 +32,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", updateScroll)
   }, [pathname])
 
-  // El detalle del blog no tiene hero; el listado sí.
   const isBlogDetailRoute = pathname.startsWith("/journals/");
   const isSolid = hasScrolled || isBlogDetailRoute;
 
