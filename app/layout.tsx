@@ -5,8 +5,10 @@ import { QueryProvider } from "@/components/query-client-provider";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import localFont from "next/font/local"
+import { SITE_URL } from "@/lib/site-config"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "AYMA | Wellness Club",
   description: "Donde comienza la revolución del bienestar. Un espacio donde dejás de dividirte en partes - cuerpo, mente, alma - y empezás a habitarte por completo.",
   openGraph: {
