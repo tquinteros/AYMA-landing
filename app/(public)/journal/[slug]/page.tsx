@@ -33,7 +33,7 @@ export async function generateMetadata({
   const title = blog.seo?.metaTitle || `${blog.title} | AYMA Wellness Club`;
   const description = blog.seo?.metaDescription || blog.excerpt;
   const ogImage = blog.seo?.ogImage || blog.coverImage.url;
-  const url = absoluteUrl(`/journals/${blog.slug}`);
+  const url = absoluteUrl(`/journal/${blog.slug}`);
 
   return {
     title,
@@ -81,7 +81,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       "@type": "Organization",
       name: "AYMA Wellness Club",
     },
-    mainEntityOfPage: absoluteUrl(`/journals/${blog.slug}`),
+    mainEntityOfPage: absoluteUrl(`/journal/${blog.slug}`),
   };
 
   return (

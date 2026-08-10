@@ -5,7 +5,7 @@ const HeroBlog = () => {
     <section id="hero-blog" className="relative h-[75svh] overflow-hidden">
       <Image
         src="/heroblogs.png"
-        alt="Journals background"
+        alt="Journal background"
         fill
         priority
         sizes="100vw"
@@ -15,7 +15,7 @@ const HeroBlog = () => {
 
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <h1 className="text-5xl text-surface-500 lg:text-[64px]">JOURNALS</h1>
+        <h1 className="text-5xl text-surface-500 lg:text-[64px]">JOURNAL</h1>
       </div>
     </section>
   );

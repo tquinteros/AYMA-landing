@@ -40,7 +40,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-2 lg:gap-y-12">
           <div className="order-1 min-w-0">
             <p className="mb-3 text-[14px] tracking-[0.43em] text-surface-900 uppercase">
-              AYMA JOURNALS
+              AYMA JOURNAL
             </p>
             <h2 className="text-[24px] leading-snug text-background-500">
               Recibí novedades, experiencias y contenido para acompañar tu bienestar.

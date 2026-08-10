@@ -8,7 +8,7 @@ const STATIC_ROUTES = [
   "/longevity",
   "/memberships",
   "/contact",
-  "/journals",
+  "/journal",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const blogEntries: MetadataRoute.Sitemap = blogs.map((blog) => ({
-    url: `${SITE_URL}/journals/${blog.slug}`,
+    url: `${SITE_URL}/journal/${blog.slug}`,
     lastModified: new Date(blog.updatedAt),
   }));
 

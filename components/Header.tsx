@@ -32,7 +32,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", updateScroll)
   }, [pathname])
 
-  const isBlogDetailRoute = pathname.startsWith("/journals/");
+  const isBlogDetailRoute = pathname.startsWith("/journal/");
   const isSolid = hasScrolled || isBlogDetailRoute;
 
   const navTextColor = isSolid ? "text-background-500" : "text-background-900"
@@ -69,7 +69,7 @@ const Header = () => {
           {/* <a href="#memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]">Membresías</a> */}
           <Link href="/memberships" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Membresías</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
-          <Link href="/journals" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Journals</Link>
+          <Link href="/journal" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Journal</Link>
           <span className="mx-5 select-none" aria-hidden>|</span>
           {/* <a href="https://wa.me/5491124868493" target="_blank" className="text-[14px] hover:opacity-75 duration-300 font-thin tracking-[6px] transition-all">Contacto</a> */}
           <Link href="/contact" className="text-[14px] hover:opacity-75 duration-300 transition-all font-thin tracking-[6px]" onClick={() => setIsOpen(false)}>Contacto</Link>
@@ -116,11 +116,11 @@ const Header = () => {
                   Membresías
                 </Link>
                 <Link
-                  href="/journals"
+                  href="/journal"
                   className="text-lg font-light uppercase tracking-[4px] text-background-500 hover:opacity-75 transition-opacity"
                   onClick={() => setIsOpen(false)}
                 >
-                  Journals
+                  Journal
                 </Link>
                 {/* <a
                   href="https://wa.me/5491124868493"

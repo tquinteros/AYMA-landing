@@ -21,7 +21,7 @@ export function BlogCard({ blog, variant = "grid" }: BlogCardProps) {
 
   return (
     <Link
-      href={`/journals/${blog.slug}`}
+      href={`/journal/${blog.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl bg-background-500 text-roca-100 ring-1 ring-primary-900/10 transition-shadow hover:shadow-lg"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-background-900">

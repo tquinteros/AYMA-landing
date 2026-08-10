@@ -261,7 +261,7 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
     });
 
     revalidatePath("/admin/blogs");
-    revalidatePath("/journals");
+    revalidatePath("/journal");
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -337,9 +337,9 @@ export async function updateBlog(_prevState: unknown, formData: FormData) {
     }
 
     revalidatePath("/admin/blogs");
-    revalidatePath("/journals");
-    revalidatePath(`/journals/${existing.slug}`);
-    if (finalSlug !== existing.slug) revalidatePath(`/journals/${finalSlug}`);
+    revalidatePath("/journal");
+    revalidatePath(`/journal/${existing.slug}`);
+    if (finalSlug !== existing.slug) revalidatePath(`/journal/${finalSlug}`);
     return { success: true };
   } catch (error) {
     console.error(error);
@@ -358,7 +358,7 @@ export async function deleteBlog(id: string) {
     }
 
     revalidatePath("/admin/blogs");
-    revalidatePath("/journals");
+    revalidatePath("/journal");
     return { success: true };
   } catch (error) {
     console.error(error);

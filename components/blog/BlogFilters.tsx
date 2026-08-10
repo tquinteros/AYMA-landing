@@ -13,7 +13,7 @@ function buildHref(params: { category?: string; tag?: string }) {
   if (params.category) search.set("category", params.category);
   if (params.tag) search.set("tag", params.tag);
   const query = search.toString();
-  return query ? `/journals?${query}` : "/journals";
+  return query ? `/journal?${query}` : "/journal";
 }
 
 export function BlogFilters({

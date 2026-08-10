@@ -10,8 +10,8 @@ export function BlogBreadcrumb({ title }: BlogBreadcrumbProps) {
     <nav aria-label="Breadcrumb">
       <ol className="flex flex-wrap items-center gap-1.5 text-sm">
         <li>
-          <Link href="/journals" className="transition-colors text-background-900">
-            Journals
+          <Link href="/journal" className="transition-colors text-background-900">
+            Journal
           </Link>
         </li>
         <li aria-hidden className="text-surface-500">
