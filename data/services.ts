@@ -24,7 +24,7 @@ export const services = [
         title: "Servicios: Recuperación y contraste",
         subtitle: "Un circuito de estímulos térmicos diseñado para activar los procesos naturales de recuperación del cuerpo",
         imgSrc:
-            "/services/recovery.jpeg",
+            "/services/recovery.JPG",
         backgroundColorAccordion: "#CFC4BC",
         description:
             "Calor y frío se combinan para mejorar la circulación, reducir la inflamación y llevar el cuerpo a un estado profundo de regeneración física y mental.",
@@ -43,7 +43,7 @@ export const services = [
         title: "Servicios: Terapias restaurativas",
         subtitle: "Un espacio dedicado al cuidado físico especializado y a la recuperación profunda.",
         imgSrc:
-            "/services/therapies.png",
+            "/services/therapies.jpg",
         backgroundColorAccordion: "#6C5751",
         description:
             "Tratamientos que alivian tensiones y acompañan los procesos de recuperación desde un abordaje integral.",

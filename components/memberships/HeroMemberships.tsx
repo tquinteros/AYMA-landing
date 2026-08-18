@@ -8,11 +8,11 @@ const HeroMemberships = () => {
       className="relative h-svh overflow-hidden"
     >
       <Image
-        src="/memberships/membershipshero.webp"
+        src="/memberships/membershipshero.jpg"
         alt="Membership background"
         fill
         priority
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[center_90%]"
       />
 
       <div className="absolute inset-0 bg-black/40" />

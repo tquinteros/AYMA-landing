@@ -115,6 +115,8 @@ const ServiceTabContent = ({
                 className={`object-cover w-full h-full ${image.src === "/servicesTabs/servicesTabs3.png" && "object-[center_80%]"}
                   ${image.src === "/servicesTabs/servicesTabs4.png" && "object-top"}
                   ${image.src === "/servicesTabs/servicesTabs5.png" && "object-[center_20%]"}
+                  ${image.src === "/servicesTabs/servicesTabs1.JPG" && "object-[center_75%]"}
+                  ${image.src === "/servicesTabs/servicesTabs3.JPG" && "object-[center_10%]"}
                   `}
               />
             </div>

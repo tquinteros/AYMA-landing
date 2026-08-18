@@ -8,7 +8,7 @@ const HeroContact = () => {
       className="relative h-svh overflow-hidden"
     >
       <Image
-        src="/contact/contacthero.png"
+        src="/contact/contacthero.jpg"
         alt="Membership background"
         fill
         priority

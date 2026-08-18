@@ -6,7 +6,7 @@ const LongevityCta = () => {
   return (
     <section className="relative min-h-[280px] h-auto sm:min-h-[320px] lg:h-[425px] overflow-hidden">
       <Image
-        src="/longevity/longevitycta.JPEG"
+        src="/longevity/longevitycta.jpg"
         alt=""
         fill
         className="absolute inset-0 h-full w-full object-cover"

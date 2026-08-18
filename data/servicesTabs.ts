@@ -62,15 +62,15 @@ export const movimientoEntrenamientoServices: ServiceTabItem[] = [
 
 export const movimientoEntrenamientoImages: ServiceTabImage[] = [
   {
-    src: "/servicesTabs/servicesTabs1.png",
+    src: "/servicesTabs/servicesTabs1.JPG",
     alt: "Práctica de yoga",
   },
   {
-    src: "/servicesTabs/servicesTabs2.png",
+    src: "/servicesTabs/servicesTabs2.JPG",
     alt: "Entrenamiento Lagree",
   },
   {
-    src: "/servicesTabs/servicesTabs3.png",
+    src: "/servicesTabs/servicesTabs3.JPG",
     alt: "Meditación al aire libre",
   },
 ]
@@ -110,11 +110,11 @@ export const recuperacionContrasteServices: ServiceTabItem[] = [
 
 export const recuperacionContrasteImages: ServiceTabImage[] = [
   {
-    src: "/servicesTabs/servicesTabs4.png",
+    src: "/servicesTabs/servicesTabs4.JPG",
     alt: "Sauna y recuperación térmica",
   },
   {
-    src: "/servicesTabs/servicesTabs5.png",
+    src: "/servicesTabs/servicesTabs5.JPG",
     alt: "Cold plunge y contrastes",
   },
 ]
@@ -172,16 +172,16 @@ export const terapiasRestaurativasServices: ServiceTabItem[] = [
 
 export const terapiasRestaurativasImages: ServiceTabImage[] = [
   {
+    src: "/servicesTabs/servicesTabs7.jpg",
+    alt: "Tratamientos de recuperación",
+  },
+  {
     src: "/servicesTabs/servicesTabs8.png",
     alt: "Tecnología de bienestar",
   },
   {
-    src: "/servicesTabs/servicesTabs6.png",
+    src: "/servicesTabs/servicesTabs6.jpg",
     alt: "Terapias restaurativas",
-  },
-  {
-    src: "/servicesTabs/servicesTabs7.jpg",
-    alt: "Tratamientos de recuperación",
   },
 ]
 

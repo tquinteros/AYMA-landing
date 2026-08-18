@@ -3,11 +3,11 @@ import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import { Button } from '../ui/button'
 
 const ourSpaceItemsSrcImages = [
-    "/ourspace/ourspace1.png",
-    "/ourspace/ourspace2.png",
-    "/ourspace/ourspace3.png",
-    "/ourspace/ourspace4.png",
-    "/ourspace/ourspace5.png",
+    "/ourspace/ourspace2.jpg",
+    "/ourspace/ourspace1.JPG",
+    "/ourspace/ourspace5.jpg",
+    "/ourspace/ourspace4.jpg",
+    "/ourspace/ourspace3.jpg",
 ]
 
 const OurSpace = () => {
